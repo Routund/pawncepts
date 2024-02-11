@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://so1vseffcoo2"]
+[gd_scene load_steps=6 format=3 uid="uid://so1vseffcoo2"]
 
-[ext_resource type="Script" path="res://Money.gd" id="1_hq5p4"]
+[ext_resource type="Script" path="res://Scripts/Money.gd" id="1_dygwe"]
+[ext_resource type="Texture2D" uid="uid://bbk2g748hlv51" path="res://Assets/person_base.png" id="2_q2o5f"]
+[ext_resource type="Script" path="res://Scenes/Customer_functions.gd" id="3_x5wk7"]
 
 [sub_resource type="FontVariation" id="FontVariation_uji3a"]
 spacing_glyph = 6
@@ -31,4 +33,10 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "adsasd"
 label_settings = SubResource("LabelSettings_04taw")
-script = ExtResource("1_hq5p4")
+script = ExtResource("1_dygwe")
+
+[node name="Customer" type="Sprite2D" parent="."]
+position = Vector2(600, 323)
+scale = Vector2(0.0721125, 0.0710185)
+texture = ExtResource("2_q2o5f")
+script = ExtResource("3_x5wk7")

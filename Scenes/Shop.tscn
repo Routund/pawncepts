@@ -1,0 +1,83 @@
+[gd_scene load_steps=10 format=3 uid="uid://so1vseffcoo2"]
+
+[ext_resource type="Script" path="res://Scripts/Money.gd" id="1_dygwe"]
+[ext_resource type="Script" path="res://Scripts/Shop_Manager.gd" id="1_ruhxm"]
+[ext_resource type="Texture2D" uid="uid://bbk2g748hlv51" path="res://Assets/person_base.png" id="2_q2o5f"]
+[ext_resource type="Script" path="res://Scripts/Customer_functions.gd" id="3_x5wk7"]
+[ext_resource type="Script" path="res://Scripts/Speech_manager.gd" id="5_2j8ui"]
+[ext_resource type="Texture2D" uid="uid://bg7r14a7t7y5h" path="res://Assets/icon.svg" id="6_n6cel"]
+
+[sub_resource type="FontVariation" id="FontVariation_uji3a"]
+spacing_glyph = 6
+
+[sub_resource type="LabelSettings" id="LabelSettings_04taw"]
+font = SubResource("FontVariation_uji3a")
+font_size = 44
+font_color = Color(0, 0.521569, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_anbuk"]
+font_size = 500
+font_color = Color(0, 0, 0, 1)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_ruhxm")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(573, 323)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.006
+anchor_top = 0.009
+anchor_right = 0.006
+anchor_bottom = 0.009
+offset_left = 0.0879998
+offset_top = 0.168
+offset_right = 178.088
+offset_bottom = 73.168
+grow_horizontal = 2
+grow_vertical = 2
+text = "adsasd"
+label_settings = SubResource("LabelSettings_04taw")
+script = ExtResource("1_dygwe")
+
+[node name="Customer" type="Sprite2D" parent="."]
+position = Vector2(600, 323)
+scale = Vector2(0.0721125, 0.0710185)
+texture = ExtResource("2_q2o5f")
+script = ExtResource("3_x5wk7")
+
+[node name="Speech_bubble" type="Node2D" parent="Customer"]
+visible = false
+position = Vector2(-3217.2, -2027.64)
+script = ExtResource("5_2j8ui")
+
+[node name="Control" type="Control" parent="Customer/Speech_bubble"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Customer/Speech_bubble/Control"]
+layout_mode = 0
+offset_left = -1650.2
+offset_top = -605.476
+offset_right = -1610.2
+offset_bottom = -565.476
+scale = Vector2(84.568, 28.8665)
+texture = ExtResource("6_n6cel")
+
+[node name="Label" type="Label" parent="Customer/Speech_bubble/Control"]
+layout_mode = 0
+offset_left = -1289.65
+offset_top = -352.021
+offset_right = 1392.35
+offset_bottom = 329.979
+text = "Hello there
+"
+label_settings = SubResource("LabelSettings_anbuk")
+
+[connection signal="entered" from="Customer" to="." method="_on_customer_entered"]
+[connection signal="entered" from="Customer" to="Customer/Speech_bubble" method="_on_customer_entered"]

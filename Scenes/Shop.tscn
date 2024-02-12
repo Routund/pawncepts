@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://so1vseffcoo2"]
+[gd_scene load_steps=11 format=3 uid="uid://so1vseffcoo2"]
 
 [ext_resource type="Script" path="res://Scripts/Money.gd" id="1_dygwe"]
 [ext_resource type="Script" path="res://Scripts/Shop_Manager.gd" id="1_ruhxm"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/Customer_functions.gd" id="3_x5wk7"]
 [ext_resource type="Script" path="res://Scripts/Speech_manager.gd" id="5_2j8ui"]
 [ext_resource type="Texture2D" uid="uid://bg7r14a7t7y5h" path="res://Assets/icon.svg" id="6_n6cel"]
+[ext_resource type="Texture2D" uid="uid://t5lxafalxrrj" path="res://Assets/storefront.png" id="7_fdiy1"]
 
 [sub_resource type="FontVariation" id="FontVariation_uji3a"]
 spacing_glyph = 6
@@ -29,14 +30,14 @@ position = Vector2(573, 323)
 
 [node name="Label" type="Label" parent="CanvasLayer"]
 anchors_preset = -1
-anchor_left = 0.006
-anchor_top = 0.009
-anchor_right = 0.006
-anchor_bottom = 0.009
-offset_left = 0.0879998
-offset_top = 0.168
-offset_right = 178.088
-offset_bottom = 73.168
+anchor_left = 0.014
+anchor_top = 0.071
+anchor_right = 0.014
+anchor_bottom = 0.071
+offset_left = -0.128
+offset_top = -0.00800323
+offset_right = 177.872
+offset_bottom = 72.992
 grow_horizontal = 2
 grow_vertical = 2
 text = "adsasd"
@@ -44,7 +45,7 @@ label_settings = SubResource("LabelSettings_04taw")
 script = ExtResource("1_dygwe")
 
 [node name="Customer" type="Sprite2D" parent="."]
-position = Vector2(600, 323)
+position = Vector2(222, 331)
 scale = Vector2(0.0721125, 0.0710185)
 texture = ExtResource("2_q2o5f")
 script = ExtResource("3_x5wk7")
@@ -61,13 +62,21 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Customer/Speech_bubble/Control"]
-layout_mode = 0
-offset_left = -1650.2
-offset_top = -605.476
-offset_right = -1610.2
-offset_bottom = -565.476
-scale = Vector2(84.568, 28.8665)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -3.655
+anchor_right = 34.358
+anchor_bottom = 5.981
+offset_left = -1830.47
+offset_top = -754.974
+offset_right = -3126.79
+offset_bottom = -1100.41
+scale = Vector2(50, 50)
 texture = ExtResource("6_n6cel")
+patch_margin_left = 11
+patch_margin_top = 10
+patch_margin_right = 11
+patch_margin_bottom = 10
 
 [node name="Label" type="Label" parent="Customer/Speech_bubble/Control"]
 layout_mode = 0
@@ -75,9 +84,14 @@ offset_left = -1289.65
 offset_top = -352.021
 offset_right = 1392.35
 offset_bottom = 329.979
-text = "Hello there
+text = "Hello there 
 "
 label_settings = SubResource("LabelSettings_anbuk")
+
+[node name="Storefront" type="Sprite2D" parent="."]
+position = Vector2(573, 323)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("7_fdiy1")
 
 [connection signal="entered" from="Customer" to="." method="_on_customer_entered"]
 [connection signal="entered" from="Customer" to="Customer/Speech_bubble" method="_on_customer_entered"]

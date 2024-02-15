@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://so1vseffcoo2"]
+[gd_scene load_steps=14 format=3 uid="uid://so1vseffcoo2"]
 
 [ext_resource type="Script" path="res://Scripts/Money.gd" id="1_dygwe"]
 [ext_resource type="Script" path="res://Scripts/Shop_Manager.gd" id="1_ruhxm"]
@@ -14,12 +14,19 @@ spacing_glyph = 6
 
 [sub_resource type="LabelSettings" id="LabelSettings_04taw"]
 font = SubResource("FontVariation_uji3a")
-font_size = 44
+font_size = 43
 font_color = Color(0, 0.521569, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_anbuk"]
 font_size = 200
 font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_5vnj3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gjitf"]
+font = SubResource("FontVariation_5vnj3")
+font_size = 200
+font_color = Color(0.866667, 0.878431, 0.858824, 1)
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_ruhxm")
@@ -80,7 +87,7 @@ patch_margin_top = 10
 patch_margin_right = 11
 patch_margin_bottom = 10
 
-[node name="Label" type="Label" parent="Customer/Speech_bubble/Control"]
+[node name="Dialogue" type="Label" parent="Customer/Speech_bubble/Control"]
 layout_mode = 0
 offset_left = -1401.0
 offset_top = -563.0
@@ -93,13 +100,33 @@ autowrap_mode = 2
 
 [node name="Spinner" type="TextureButton" parent="Customer/Speech_bubble/Control"]
 layout_mode = 0
-offset_left = -1345.12
-offset_top = 1323.6
-offset_right = -1217.12
-offset_bottom = 1451.6
+offset_left = -1164.84
+offset_top = 1717.86
+offset_right = -1036.84
+offset_bottom = 1845.86
 scale = Vector2(7, 7)
+pivot_offset = Vector2(64.9713, 64.2457)
 texture_normal = ExtResource("6_n6cel")
 script = ExtResource("7_1lkl0")
+
+[node name="Price" type="Label" parent="Customer/Speech_bubble/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.014
+anchor_top = 0.071
+anchor_right = 0.014
+anchor_bottom = 0.071
+offset_left = -1553.56
+offset_top = 1335.16
+offset_right = -666.56
+offset_bottom = 2222.16
+grow_horizontal = 2
+grow_vertical = 2
+text = "$9999"
+label_settings = SubResource("LabelSettings_gjitf")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="Storefront" type="Sprite2D" parent="."]
 position = Vector2(573, 323)

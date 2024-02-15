@@ -6,7 +6,7 @@ var min_price = 0
 var initial_price = 0
 var sell_price = 100
 @onready var spinner = get_node("Control/Spinner")
-@onready var dialogue = get_node("Control/Label")
+@onready var dialogue = get_node("Control/Dialogue")
 
 var customerTypes = [
 	0, # Stingy, give high price and have relatively high min price
@@ -70,4 +70,5 @@ func _on_customer_entered():
 		3:
 			dialogue.text = "I've done my own appraisal, and this %s is worth $%d" % [items_dict[item],initial_price]
 	spinner.price=initial_price
+	spinner.dialogue.text="$%s"%[initial_price]
 	pass

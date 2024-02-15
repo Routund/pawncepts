@@ -5,6 +5,7 @@ var item = 0
 var min_price = 0
 var initial_price = 0
 var sell_price = 100
+@onready var spinner = get_node("Control/Spinner")
 @onready var dialogue = get_node("Control/Label")
 
 var customerTypes = [
@@ -14,11 +15,17 @@ var customerTypes = [
 	3, # Veteran, give low price, and have relatively high min price
 ]
 var cust_variance = [
-	1.1, # Stingy, give high price and have relatively high min price
+	1,1, # Stingy, give high price and have relatively high min price
 	0.4, # Desperate, give low price, and have relatively low min price
-	0.7, # Clueless, give high price, and have relatively low min price
+	0.6, # Clueless, give high price, and have relatively low min price
 	1, # Veteran, give low price, and have relatively high min price   
 ]
+var init_variance = [
+	1.4, # Stingy, give high price and have relatively high min price
+	1.5, # Desperate, give low price, and have relatively low min price
+	3, # Clueless, give high price, and have relatively low min price
+	1.1, # Veteran, give low price, and have relatively high min price   
+]	
 var items_dict = {
 	0:"Necklace",
 	1:"Ring",
@@ -47,8 +54,8 @@ func _process(delta):
 func _on_customer_entered():
 	item = randi() % items_dict.size()
 	cust = customerTypes[randi() % customerTypes.size()]
-	min_price = int(prices[item] * (cust_variance[cust] + rng.randf_range(-0.2, 0.2)))
-	initial_price = min_price + randi_range(10, 50)  # Set an initial price above min_price
+	min_price = int(prices[item] * (cust_variance[cust] + rng.randf_range(-0.1, 0.1)))
+	initial_price = int(min_price*(init_variance[cust]+rng.randf_range(-0.05, 0.1)))  # Set an initial price above min_price
 
 	visible = true
 
@@ -62,4 +69,5 @@ func _on_customer_entered():
 			dialogue.text = "I'm not really sure what this %s is worth. would $%d work?" % [items_dict[item],initial_price]
 		3:
 			dialogue.text = "I've done my own appraisal, and this %s is worth $%d" % [items_dict[item],initial_price]
+	spinner.price=initial_price
 	pass

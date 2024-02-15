@@ -17,7 +17,7 @@ font_size = 44
 font_color = Color(0, 0.521569, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_anbuk"]
-font_size = 500
+font_size = 200
 font_color = Color(0, 0, 0, 1)
 
 [node name="Node2D" type="Node2D"]
@@ -42,6 +42,7 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "adsasd"
 label_settings = SubResource("LabelSettings_04taw")
+autowrap_mode = 2
 script = ExtResource("1_dygwe")
 
 [node name="Customer" type="Sprite2D" parent="."]
@@ -80,13 +81,14 @@ patch_margin_bottom = 10
 
 [node name="Label" type="Label" parent="Customer/Speech_bubble/Control"]
 layout_mode = 0
-offset_left = -1289.65
-offset_top = -352.021
-offset_right = 1392.35
-offset_bottom = 329.979
+offset_left = -1401.0
+offset_top = -563.0
+offset_right = 1609.0
+offset_bottom = 746.0
 text = "Hello there 
 "
 label_settings = SubResource("LabelSettings_anbuk")
+autowrap_mode = 2
 
 [node name="Storefront" type="Sprite2D" parent="."]
 position = Vector2(573, 323)

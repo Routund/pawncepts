@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://so1vseffcoo2"]
+[gd_scene load_steps=12 format=3 uid="uid://so1vseffcoo2"]
 
 [ext_resource type="Script" path="res://Scripts/Money.gd" id="1_dygwe"]
 [ext_resource type="Script" path="res://Scripts/Shop_Manager.gd" id="1_ruhxm"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/Customer_functions.gd" id="3_x5wk7"]
 [ext_resource type="Script" path="res://Scripts/Speech_manager.gd" id="5_2j8ui"]
 [ext_resource type="Texture2D" uid="uid://bg7r14a7t7y5h" path="res://Assets/icon.svg" id="6_n6cel"]
+[ext_resource type="Script" path="res://Scenes/spin.gd" id="7_1lkl0"]
 [ext_resource type="Texture2D" uid="uid://t5lxafalxrrj" path="res://Assets/storefront.png" id="7_fdiy1"]
 
 [sub_resource type="FontVariation" id="FontVariation_uji3a"]
@@ -89,6 +90,16 @@ text = "Hello there
 "
 label_settings = SubResource("LabelSettings_anbuk")
 autowrap_mode = 2
+
+[node name="Spinner" type="TextureButton" parent="Customer/Speech_bubble/Control"]
+layout_mode = 0
+offset_left = -1345.12
+offset_top = 1323.6
+offset_right = -1217.12
+offset_bottom = 1451.6
+scale = Vector2(7, 7)
+texture_normal = ExtResource("6_n6cel")
+script = ExtResource("7_1lkl0")
 
 [node name="Storefront" type="Sprite2D" parent="."]
 position = Vector2(573, 323)

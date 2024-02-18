@@ -5,12 +5,12 @@ var sensitivity = 1.0
 var mouse_pos
 var start_angle = 0
 var clockwise = false
-@onready var dialogue = get_node("../Price")
+@onready var priceText = get_node("../Price")
 
 func _ready():
 	set_process_input(true)
 
-func _process(delta):
+func _process(_delta):
 	if is_pressed():
 		var new_mouse_pos = get_global_mouse_position()
 		var current_angle = (new_mouse_pos - global_position).angle()
@@ -21,8 +21,9 @@ func _process(delta):
 				if clockwise:
 					price += sensitivity
 				else:
-					price -= sensitivity
-				dialogue.text="$%s"%[price]
+					if (price-sensitivity>0):
+						price -= sensitivity
+				priceText.text="$%s"%[price]
 			rotation+=angle_difference
 		mouse_pos = new_mouse_pos
 		start_angle = current_angle

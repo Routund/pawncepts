@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<dialogues>
+	<customer_type id="0">
+		<dialogue>I'm looking to sell this %s. It's worth $%d. Any objections?</dialogue>
+	</customer_type>
+	<customer_type id="1">
+		<dialogue>Look man, you think this %s, is worth at least $%d?</dialogue>
+	</customer_type>
+	<customer_type id="2">
+		<dialogue>I'm not really sure what this %s is worth. would $%d work?</dialogue>
+	</customer_type>
+	<customer_type id="3">
+		<dialogue>I've done my own appraisal, and this %s is worth $%d</dialogue>
+	</customer_type>
+</dialogues>

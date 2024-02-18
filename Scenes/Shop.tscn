@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://so1vseffcoo2"]
+[gd_scene load_steps=20 format=3 uid="uid://so1vseffcoo2"]
 
 [ext_resource type="Script" path="res://Scripts/Money.gd" id="1_dygwe"]
 [ext_resource type="Script" path="res://Scripts/Shop_Manager.gd" id="1_ruhxm"]
@@ -6,8 +6,14 @@
 [ext_resource type="Script" path="res://Scripts/Customer_functions.gd" id="3_x5wk7"]
 [ext_resource type="Script" path="res://Scripts/Speech_manager.gd" id="5_2j8ui"]
 [ext_resource type="Texture2D" uid="uid://bg7r14a7t7y5h" path="res://Assets/icon.svg" id="6_n6cel"]
-[ext_resource type="Script" path="res://Scenes/spin.gd" id="7_1lkl0"]
+[ext_resource type="Texture2D" uid="uid://br03r3febb2sk" path="res://Assets/spinner.png" id="7_7b1i1"]
 [ext_resource type="Texture2D" uid="uid://t5lxafalxrrj" path="res://Assets/storefront.png" id="7_fdiy1"]
+[ext_resource type="Script" path="res://Scripts/spin.gd" id="8_rf3ha"]
+[ext_resource type="Texture2D" uid="uid://d1h4mxerlnj6f" path="res://Assets/check_norm.png" id="9_fqr4x"]
+[ext_resource type="Texture2D" uid="uid://dw3wlawekx5te" path="res://Assets/check_press.png" id="10_g7l0n"]
+[ext_resource type="Script" path="res://Scenes/Check.gd" id="11_ca2va"]
+[ext_resource type="Texture2D" uid="uid://cadatuipseqoy" path="res://Assets/cross_norm.png" id="11_tse4m"]
+[ext_resource type="Texture2D" uid="uid://dytvihovhihl4" path="res://Assets/cross_press.png" id="12_5beyp"]
 
 [sub_resource type="FontVariation" id="FontVariation_uji3a"]
 spacing_glyph = 6
@@ -100,14 +106,14 @@ autowrap_mode = 2
 
 [node name="Spinner" type="TextureButton" parent="Customer/Speech_bubble/Control"]
 layout_mode = 0
-offset_left = -1164.84
-offset_top = 1717.86
-offset_right = -1036.84
-offset_bottom = 1845.86
-scale = Vector2(7, 7)
-pivot_offset = Vector2(64.9713, 64.2457)
-texture_normal = ExtResource("6_n6cel")
-script = ExtResource("7_1lkl0")
+offset_left = -2208.47
+offset_top = 804.79
+offset_right = -48.4685
+offset_bottom = 2964.79
+scale = Vector2(0.65, 0.65)
+pivot_offset = Vector2(1080, 1080)
+texture_normal = ExtResource("7_7b1i1")
+script = ExtResource("8_rf3ha")
 
 [node name="Price" type="Label" parent="Customer/Speech_bubble/Control"]
 layout_mode = 1
@@ -116,10 +122,10 @@ anchor_left = 0.014
 anchor_top = 0.071
 anchor_right = 0.014
 anchor_bottom = 0.071
-offset_left = -1553.56
-offset_top = 1335.16
-offset_right = -666.56
-offset_bottom = 2222.16
+offset_left = -1571.14
+offset_top = 1421.5
+offset_right = -684.138
+offset_bottom = 2308.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "$9999"
@@ -127,6 +133,26 @@ label_settings = SubResource("LabelSettings_gjitf")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+
+[node name="Check" type="TextureButton" parent="Customer/Speech_bubble/Control"]
+layout_mode = 0
+offset_left = -152.535
+offset_top = 1281.36
+offset_right = 2007.47
+offset_bottom = 3441.36
+scale = Vector2(0.25, 0.25)
+texture_normal = ExtResource("9_fqr4x")
+texture_pressed = ExtResource("10_g7l0n")
+script = ExtResource("11_ca2va")
+
+[node name="Cross" type="TextureButton" parent="Customer/Speech_bubble/Control"]
+offset_left = -152.535
+offset_top = 1985.4
+offset_right = 2007.47
+offset_bottom = 4145.4
+scale = Vector2(0.25, 0.25)
+texture_normal = ExtResource("11_tse4m")
+texture_pressed = ExtResource("12_5beyp")
 
 [node name="Storefront" type="Sprite2D" parent="."]
 position = Vector2(573, 323)

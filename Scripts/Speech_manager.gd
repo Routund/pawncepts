@@ -7,6 +7,8 @@ var initial_price = 0
 var sell_price = 100
 @onready var spinner = get_node("Control/Spinner")
 @onready var dialogue = get_node("Control/Dialogue")
+var dialogues = [];
+var check_price;
 
 var customerTypes = [
 	0, # Stingy, give high price and have relatively high min price
@@ -22,7 +24,7 @@ var cust_variance = [
 ]
 var init_variance = [
 	1.4, # Stingy, give high price and have relatively high min price
-	1.5, # Desperate, give low price, and have relatively low min price
+	1.3, # Desperate, give low price, and have relatively low min price
 	3, # Clueless, give high price, and have relatively low min price
 	1.1, # Veteran, give low price, and have relatively high min price   
 ]	
@@ -47,28 +49,44 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 
 
 func _on_customer_entered():
+	# Pick random values for customer
 	item = randi() % items_dict.size()
 	cust = customerTypes[randi() % customerTypes.size()]
 	min_price = int(prices[item] * (cust_variance[cust] + rng.randf_range(-0.1, 0.1)))
-	initial_price = int(min_price*(init_variance[cust]+rng.randf_range(-0.05, 0.1)))  # Set an initial price above min_price
-
+	initial_price = int(min_price*(init_variance[cust]+rng.randf_range(-0.05, 0.1)))  
+	
+	# Load Dialogue
+	dialogues = load_dialogues()
+	dialogue.text=dialogues[1]%[items_dict[item],initial_price]
+	
+	
+	# Initialize all visible displays
 	visible = true
-
-	# Display dialogue based on customer type
-	match cust:
-		0:
-			dialogue.text = "I'm looking to sell this %s. It's worth $%d. Any objections?" % [items_dict[item],initial_price]
-		1:
-			dialogue.text = "Look man, you think this %s, is worth at least $%d?" % [items_dict[item],initial_price]
-		2:
-			dialogue.text = "I'm not really sure what this %s is worth. would $%d work?" % [items_dict[item],initial_price]
-		3:
-			dialogue.text = "I've done my own appraisal, and this %s is worth $%d" % [items_dict[item],initial_price]
 	spinner.price=initial_price
-	spinner.dialogue.text="$%s"%[initial_price]
+	spinner.priceText.text="$%s"%[initial_price]
 	pass
+	
+func load_dialogues() -> Array:
+	var dialogues2 = []
+	
+	# Set up Parser
+	var parser = XMLParser.new()
+	parser.open("res://Scripts/dialogues.xml")
+	
+	while parser.read() != ERR_FILE_EOF:
+		# If node is element, check if it is a customer node that isn't the one we want, and in that case, to skip section
+		if parser.get_node_type()== XMLParser.NODE_ELEMENT:
+			if(parser.get_node_name()=="customer_type"):
+				if(parser.get_attribute_value(0)!=str(cust)):
+					parser.skip_section()
+					
+		# Append node value of text nodes
+		if(parser.get_node_type()==XMLParser.NODE_TEXT):
+			dialogues2.append(parser.get_node_data())
+
+	return dialogues2

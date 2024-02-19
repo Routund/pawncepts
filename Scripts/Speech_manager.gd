@@ -97,13 +97,13 @@ func load_dialogues() -> Array:
 
 
 func _on_check_checked():
-	
-	if(spinner.price>=initial_price):
+	check_price=spinner.price
+	if(check_price>=initial_price):
 		sold.emit()
-	elif(spinner.price<min_price):
+	elif(check_price<min_price):
 		no_deal.emit()
 	else:
-		var diff = initial_price-spinner.price
+		var diff = initial_price-check_price
 		var action = rng.randf_range(0, 100)+min(30,diff*7/initial_price)
 		if(action<20):
 			sold.emit()
@@ -111,6 +111,14 @@ func _on_check_checked():
 			no_deal.emit()
 		else:
 			patience-= int(rng.randf_range(1, 2.4))
-			
+			if(patience==0):
+				no_deal.emit()
+			else:
+				var newPrice=(initial_price+spinner.price)/2
+				newPrice=int(newPrice*(rng.randf_range(check_price/newPrice,initial_price/newPrice)))
+				spinner.price=newPrice
+				spinner.priceText.text="$%s"%[newPrice]
+				initial_price=newPrice
+				pass
 			
 	pass # Replace with function body.

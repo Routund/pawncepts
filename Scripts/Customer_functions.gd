@@ -18,9 +18,9 @@ func _process(delta):
 			entered.emit()
 			customer_enter=false
 	if(customer_leave):
-		position.x-=5*delta
-		position.y=sin(5*position.x)*8+320
-		if(position.x==600):
+		position.x-=450*delta
+		position.y=sin(position.x/20)*8+320
+		if(position.x==0):
 			customer_leave==false
 	pass
 

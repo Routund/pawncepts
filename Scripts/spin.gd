@@ -33,3 +33,15 @@ func _on_TextureButton_input_event(viewport, event, shape_idx):
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			mouse_pos = get_global_mouse_position()
 			start_angle = (mouse_pos - global_position).angle()
+			
+func _on_speech_bubble_no_deal():
+	visible=false
+	priceText.visible=false
+	pass # Replace with function body.
+
+
+func _on_speech_bubble_sold(price):
+	visible=false
+	priceText.visible=false
+	pass # Replace with function body.
+

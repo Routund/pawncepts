@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://so1vseffcoo2"]
+[gd_scene load_steps=21 format=3 uid="uid://so1vseffcoo2"]
 
 [ext_resource type="Script" path="res://Scripts/Money.gd" id="1_dygwe"]
 [ext_resource type="Script" path="res://Scripts/Shop_Manager.gd" id="1_ruhxm"]
@@ -11,9 +11,10 @@
 [ext_resource type="Script" path="res://Scripts/spin.gd" id="8_rf3ha"]
 [ext_resource type="Texture2D" uid="uid://d1h4mxerlnj6f" path="res://Assets/check_norm.png" id="9_fqr4x"]
 [ext_resource type="Texture2D" uid="uid://dw3wlawekx5te" path="res://Assets/check_press.png" id="10_g7l0n"]
-[ext_resource type="Script" path="res://Scenes/Check.gd" id="11_ca2va"]
+[ext_resource type="Script" path="res://Scripts/Check.gd" id="11_ca2va"]
 [ext_resource type="Texture2D" uid="uid://cadatuipseqoy" path="res://Assets/cross_norm.png" id="11_tse4m"]
 [ext_resource type="Texture2D" uid="uid://dytvihovhihl4" path="res://Assets/cross_press.png" id="12_5beyp"]
+[ext_resource type="Script" path="res://Scripts/Cross.gd" id="14_ynerj"]
 
 [sub_resource type="FontVariation" id="FontVariation_uji3a"]
 spacing_glyph = 6
@@ -66,7 +67,6 @@ texture = ExtResource("2_q2o5f")
 script = ExtResource("3_x5wk7")
 
 [node name="Speech_bubble" type="Node2D" parent="Customer"]
-visible = false
 position = Vector2(-3217.2, -2027.64)
 script = ExtResource("5_2j8ui")
 
@@ -106,10 +106,10 @@ autowrap_mode = 2
 
 [node name="Spinner" type="TextureButton" parent="Customer/Speech_bubble/Control"]
 layout_mode = 0
-offset_left = -2208.47
-offset_top = 804.79
-offset_right = -48.4685
-offset_bottom = 2964.79
+offset_left = -114.518
+offset_top = 818.87
+offset_right = 2045.48
+offset_bottom = 2978.87
 scale = Vector2(0.65, 0.65)
 pivot_offset = Vector2(1080, 1080)
 texture_normal = ExtResource("7_7b1i1")
@@ -122,10 +122,10 @@ anchor_left = 0.014
 anchor_top = 0.071
 anchor_right = 0.014
 anchor_bottom = 0.071
-offset_left = -1571.14
-offset_top = 1421.5
-offset_right = -684.138
-offset_bottom = 2308.5
+offset_left = 522.812
+offset_top = 1435.58
+offset_right = 1409.81
+offset_bottom = 2322.58
 grow_horizontal = 2
 grow_vertical = 2
 text = "$9999"
@@ -136,10 +136,10 @@ autowrap_mode = 2
 
 [node name="Check" type="TextureButton" parent="Customer/Speech_bubble/Control"]
 layout_mode = 0
-offset_left = -152.535
-offset_top = 1281.36
-offset_right = 2007.47
-offset_bottom = 3441.36
+offset_left = -1414.45
+offset_top = 1295.44
+offset_right = 745.553
+offset_bottom = 3455.44
 scale = Vector2(0.25, 0.25)
 texture_normal = ExtResource("9_fqr4x")
 texture_pressed = ExtResource("10_g7l0n")
@@ -147,13 +147,14 @@ script = ExtResource("11_ca2va")
 
 [node name="Cross" type="TextureButton" parent="Customer/Speech_bubble/Control"]
 layout_mode = 0
-offset_left = -152.535
-offset_top = 1985.4
-offset_right = 2007.47
-offset_bottom = 4145.4
+offset_left = -540.817
+offset_top = 1295.44
+offset_right = 1619.19
+offset_bottom = 3455.44
 scale = Vector2(0.25, 0.25)
 texture_normal = ExtResource("11_tse4m")
 texture_pressed = ExtResource("12_5beyp")
+script = ExtResource("14_ynerj")
 
 [node name="Storefront" type="Sprite2D" parent="."]
 position = Vector2(573, 323)
@@ -162,4 +163,10 @@ texture = ExtResource("7_fdiy1")
 
 [connection signal="entered" from="Customer" to="." method="_on_customer_entered"]
 [connection signal="entered" from="Customer" to="Customer/Speech_bubble" method="_on_customer_entered"]
+[connection signal="no_deal" from="Customer/Speech_bubble" to="Customer/Speech_bubble/Control/Spinner" method="_on_speech_bubble_no_deal"]
+[connection signal="no_deal" from="Customer/Speech_bubble" to="Customer/Speech_bubble/Control/Cross" method="_on_speech_bubble_no_deal"]
+[connection signal="sold" from="Customer/Speech_bubble" to="." method="_on_speech_bubble_sold"]
+[connection signal="sold" from="Customer/Speech_bubble" to="CanvasLayer/Label" method="_on_speech_bubble_sold"]
+[connection signal="sold" from="Customer/Speech_bubble" to="Customer/Speech_bubble/Control/Spinner" method="_on_speech_bubble_sold"]
+[connection signal="sold" from="Customer/Speech_bubble" to="Customer/Speech_bubble/Control/Cross" method="_on_speech_bubble_sold"]
 [connection signal="checked" from="Customer/Speech_bubble/Control/Check" to="Customer/Speech_bubble" method="_on_check_checked"]

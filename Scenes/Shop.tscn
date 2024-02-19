@@ -146,6 +146,7 @@ texture_pressed = ExtResource("10_g7l0n")
 script = ExtResource("11_ca2va")
 
 [node name="Cross" type="TextureButton" parent="Customer/Speech_bubble/Control"]
+layout_mode = 0
 offset_left = -152.535
 offset_top = 1985.4
 offset_right = 2007.47
@@ -161,3 +162,4 @@ texture = ExtResource("7_fdiy1")
 
 [connection signal="entered" from="Customer" to="." method="_on_customer_entered"]
 [connection signal="entered" from="Customer" to="Customer/Speech_bubble" method="_on_customer_entered"]
+[connection signal="checked" from="Customer/Speech_bubble/Control/Check" to="Customer/Speech_bubble" method="_on_check_checked"]

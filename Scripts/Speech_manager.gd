@@ -9,6 +9,9 @@ var sell_price = 100
 @onready var dialogue = get_node("Control/Dialogue")
 var dialogues = [];
 var check_price;
+signal sold(price: int)
+signal no_deal()
+var patience = 5
 
 var customerTypes = [
 	0, # Stingy, give high price and have relatively high min price
@@ -58,7 +61,8 @@ func _on_customer_entered():
 	item = randi() % items_dict.size()
 	cust = customerTypes[randi() % customerTypes.size()]
 	min_price = int(prices[item] * (cust_variance[cust] + rng.randf_range(-0.1, 0.1)))
-	initial_price = int(min_price*(init_variance[cust]+rng.randf_range(-0.05, 0.1)))  
+	initial_price = int(min_price*(init_variance[cust]+rng.randf_range(-0.05, 0.1))) 
+	patience = 5
 	
 	# Load Dialogue
 	dialogues = load_dialogues()
@@ -90,3 +94,23 @@ func load_dialogues() -> Array:
 			dialogues2.append(parser.get_node_data())
 
 	return dialogues2
+
+
+func _on_check_checked():
+	
+	if(spinner.price>=initial_price):
+		sold.emit()
+	elif(spinner.price<min_price):
+		no_deal.emit()
+	else:
+		var diff = initial_price-spinner.price
+		var action = rng.randf_range(0, 100)+min(30,diff*7/initial_price)
+		if(action<20):
+			sold.emit()
+		elif(action>90):
+			no_deal.emit()
+		else:
+			patience-= int(rng.randf_range(1, 2.4))
+			
+			
+	pass # Replace with function body.

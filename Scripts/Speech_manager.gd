@@ -63,7 +63,7 @@ func _process(_delta):
 
 
 func _on_customer_entered():
-		if(randi_range(0,10)>=inventory.size()):
+		if(randi_range(0,6)>=inventory.size()):
 			customerState="sell"
 			
 			# Pick random values for customer
@@ -162,7 +162,7 @@ func _on_check_checked():
 						exit = true
 						no_deal.emit()
 					else:
-						var newPrice = (initial_price + spinner.price) / 2
+						var newPrice = (initial_price + spinner.price) / 2.1
 						newPrice = int(newPrice * (rng.randf_range(check_price / newPrice, initial_price / newPrice)))
 						spinner.price = newPrice
 						spinner.priceText.text = "$%s" % [newPrice]

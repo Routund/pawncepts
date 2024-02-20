@@ -67,6 +67,7 @@ texture = ExtResource("2_q2o5f")
 script = ExtResource("3_x5wk7")
 
 [node name="Speech_bubble" type="Node2D" parent="Customer"]
+visible = false
 position = Vector2(-3217.2, -2027.64)
 script = ExtResource("5_2j8ui")
 
@@ -173,3 +174,4 @@ one_shot = true
 [connection signal="sold" from="Customer/Speech_bubble" to="Customer/Speech_bubble/Control/Spinner" method="_on_speech_bubble_sold"]
 [connection signal="sold" from="Customer/Speech_bubble" to="Customer/Speech_bubble/Control/Cross" method="_on_speech_bubble_sold"]
 [connection signal="checked" from="Customer/Speech_bubble/Control/Check" to="Customer/Speech_bubble" method="_on_check_checked"]
+[connection signal="crossed" from="Customer/Speech_bubble/Control/Cross" to="Customer/Speech_bubble" method="_on_cross_crossed"]

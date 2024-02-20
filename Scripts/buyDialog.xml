@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <dialogues>
 	<customer_type id="0">
-		<dialogue>I'm looking to sell this %s. It's worth $%d. Any objections?</dialogue>
-		<dialogue>Harrumph. Fine, How about $%d.</dialogue>
-		<dialogue>You clearly have no appreciation for true value.</dialogue>
-		<dialogue>Fine, if you say so.</dialogue>
+		<dialogue>I need a %s for cheap. Heres $%d for it</dialogue>
+		<dialogue>It isn't even worth that much, can't you give it to me for like $%d</dialogue>
+		<dialogue>I bet no one's ever going to buy it. Ta-ta.</dialogue>
+		<dialogue>I guess I can pay for that</dialogue>
 	</customer_type>
 	<customer_type id="1">
-		<dialogue>Hey, is that %s available for like $%d, my kid is going to keep me up all night if I dont buy one</dialogue>
-		<dialogue>Umm, I could do %$d</dialogue>
-		<dialogue>I am going to blame you for my sleepless nights. Thanks alot.</dialogue>
-		<dialogue>I can finally rest.</dialogue>
+		<dialogue>Hey, is that %s available for like $%d, my kid is going to keep me up all night if I dont buy one.</dialogue>
+		<dialogue>Umm, I could do %$d.</dialogue>
+		<dialogue>I'm going to blame you for my sleepless nights. Thanks alot.</dialogue>
+		<dialogue>I can finally sleep tonight. Thank you.</dialogue>
 	</customer_type>
 	<customer_type id="2">
-		<dialogue>I'm not really sure what this %s is worth. would $%d work?</dialogue>
-		<dialogue>Oh, I see. Would $%d also work?</dialogue>
-		<dialogue>I may be dumb, but not that dumb.</dialogue>
-		<dialogue>I guess that's fair. Bye then.</dialogue>
+		<dialogue>Hey, that $%s looks really cool. Could I get it for $%d</dialogue>
+		<dialogue>Oh ok. could you maybe do $%d</dialogue>
+		<dialogue>I may be stupid, but even I have my limits</dialogue>
+		<dialogue>Thanks so much!</dialogue>
 	</customer_type>
 	<customer_type id="3">
-		<dialogue>I've done my own appraisal, and this %s is worth $%d.</dialogue>
-		<dialogue>Hmm, how about $%d.</dialogue>
-		<dialogue>Newbie.</dialogue>
-		<dialogue>I'll take it, pleasure doing business</dialogue>
+		<dialogue>I saw that %s in your window. Are you willing to part with it for $%d?</dialogue>
+		<dialogue>You're never going to be able to move it at that price. How about $%d?</dialogue>
+		<dialogue>I was trying to be nice, but oh well, bye.</dialogue>
+		<dialogue>I'll take it, pleasure doing business.</dialogue>
 	</customer_type>
 </dialogues>

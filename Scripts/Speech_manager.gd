@@ -2,18 +2,22 @@ extends Node2D
 
 var cust = 0
 var item = 0
+var item_index=0
 var min_price = 0
 var initial_price = 0
 var sell_price = 100
 @onready var spinner = get_node("Control/Spinner")
 @onready var dialogue = get_node("Control/Dialogue")
-var dialogues = [];
-var check_price;
+@onready var cross = get_node("Control/Cross")
+var inventory = []
+var dialogues = []
+var check_price
 signal sold(price: int)
 signal no_deal()
 var patience = 5
 var exit =false
 var exitNow=false
+var customerState;
 
 var customerTypes = [
 	0, # Stingy, give high price and have relatively high min price
@@ -22,16 +26,16 @@ var customerTypes = [
 	3, # Veteran, give low price, and have relatively high min price
 ]
 var cust_variance = [
-	1,1, # Stingy, give high price and have relatively high min price
-	0.4, # Desperate, give low price, and have relatively low min price
+	0.9, # Stingy, give high price and have relatively high min price
+	0.3, # Desperate, give low price, and have relatively low min price
 	0.6, # Clueless, give high price, and have relatively low min price
-	1, # Veteran, give low price, and have relatively high min price   
+	0.8, # Veteran, give low price, and have relatively high min price   
 ]
 var init_variance = [
 	1.4, # Stingy, give high price and have relatively high min price
 	1.3, # Desperate, give low price, and have relatively low min price
 	3, # Clueless, give high price, and have relatively low min price
-	1.1, # Veteran, give low price, and have relatively high min price   
+	1.2, # Veteran, give low price, and have relatively high min price   
 ]	
 var items_dict = {
 	0:"Necklace",
@@ -59,35 +63,51 @@ func _process(_delta):
 
 
 func _on_customer_entered():
-	if(!exit):
-		# Pick random values for customer
-		item = randi() % items_dict.size()
-		cust = customerTypes[randi() % customerTypes.size()]
-		min_price = int(prices[item] * (cust_variance[cust] + rng.randf_range(-0.1, 0.1)))
-		initial_price = int(min_price*(init_variance[cust]+rng.randf_range(-0.05, 0.1))) 
-		patience = 5
-		
-		# Load Dialogue
-		dialogues = load_dialogues()
-		dialogue.text=dialogues[1]%[items_dict[item],initial_price]
-		
-		
-		
+		if(randi_range(0,10)>=inventory.size()):
+			customerState="sell"
+			
+			# Pick random values for customer
+			item = randi() % items_dict.size()
+			cust = customerTypes[randi() % customerTypes.size()]
+			min_price = int(prices[item] * (cust_variance[cust] + rng.randf_range(-0.1, 0.1)))
+			initial_price = int(min_price*(init_variance[cust]+rng.randf_range(-0.05, 0.1))) 
+			patience = 5
+			
+			# Load Dialogue
+			dialogues = load_dialogues("res://Scripts/sellDialog.xml")
+			dialogue.text=dialogues[1]%[items_dict[item],initial_price]
+			
+			
+			
+		else:
+			customerState="buy"
+			item_index = randi() % inventory.size()
+			# Pick random values for customer
+			item = inventory[item_index]
+			cust = customerTypes[randi() % customerTypes.size()]
+			min_price = int(prices[item] / (cust_variance[cust] + rng.randf_range(-0.1, 0.1)))
+			initial_price = int(min_price/(init_variance[cust]+rng.randf_range(-0.1, 0.05))) 
+			patience = 5
+			
+			# Load Dialogue
+			dialogues = load_dialogues("res://Scripts/buyDialog.xml")
+			dialogue.text=dialogues[1]%[items_dict[item],initial_price]
+			
+			
+			
 		# Initialize all visible displays
 		visible = true
 		spinner.visible=true
+		cross.visible=true
+		spinner.priceText.visible=true
 		spinner.price=initial_price
 		spinner.priceText.text="$%s"%[initial_price]
-	else:
-		visible = false
-		pass
-	
-func load_dialogues() -> Array:
+func load_dialogues(path : String) -> Array:
 	var dialogues2 = []
 	
 	# Set up Parser
 	var parser = XMLParser.new()
-	parser.open("res://Scripts/dialogues.xml")
+	parser.open(path)
 	
 	while parser.read() != ERR_FILE_EOF:
 		# If node is element, check if it is a customer node that isn't the one we want, and in that case, to skip section
@@ -100,7 +120,6 @@ func load_dialogues() -> Array:
 		if(parser.get_node_type()==XMLParser.NODE_TEXT):
 			if(parser.get_node_data()!=""):
 				dialogues2.append(parser.get_node_data())
-
 	return dialogues2
 
 
@@ -112,6 +131,7 @@ func _on_check_checked():
 			dialogue.text=dialogues[7]
 			exit=true
 			sold.emit(check_price)
+			inventory.append(item)
 		elif(check_price<min_price):
 			dialogue.text=dialogues[5]
 			exit=true
@@ -123,6 +143,7 @@ func _on_check_checked():
 				dialogue.text=dialogues[7]
 				exit=true
 				sold.emit(check_price)
+				inventory.append(item)
 			elif(action>90):
 				dialogue.text=dialogues[5]
 				exit=true

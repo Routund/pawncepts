@@ -17,11 +17,12 @@ func _process(delta):
 		if(position.x>=550):
 			entered.emit()
 			customer_enter=false
+		
 	if(customer_leave):
 		position.x-=450*delta
 		position.y=sin(position.x/20)*8+320
-		if(position.x==0):
-			customer_leave==false
+		if(position.x<-185):
+			customer_leave=false
 	pass
 
 func enter():

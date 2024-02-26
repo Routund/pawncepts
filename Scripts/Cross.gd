@@ -5,7 +5,7 @@ var is_button_pressed = false
 signal crossed
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if is_button_pressed and not is_pressed():
 		# Button was pressed and is now released
 		is_button_pressed = false
@@ -19,6 +19,6 @@ func _on_speech_bubble_no_deal():
 	pass # Replace with function body.
 
 
-func _on_speech_bubble_sold(price):
+func _on_speech_bubble_sold(_price):
 	visible=false
 	pass # Replace with function body.

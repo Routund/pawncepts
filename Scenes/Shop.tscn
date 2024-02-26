@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" path="res://Scripts/Money.gd" id="1_dygwe"]
 [ext_resource type="Script" path="res://Scripts/Shop_Manager.gd" id="1_ruhxm"]
+[ext_resource type="Texture2D" uid="uid://bxe4nq618qyr5" path="res://Assets/Wall with guitar.png" id="2_ii5ta"]
 [ext_resource type="Texture2D" uid="uid://bbk2g748hlv51" path="res://Assets/person_base.png" id="2_q2o5f"]
-[ext_resource type="Texture2D" uid="uid://co55y88nigfxd" path="res://Assets/Wall 1.png" id="2_vby4j"]
 [ext_resource type="Texture2D" uid="uid://ct6vrrwc8lssc" path="res://Assets/cash final 64x64.png" id="3_clsbt"]
 [ext_resource type="Script" path="res://Scripts/Customer_functions.gd" id="3_x5wk7"]
 [ext_resource type="Script" path="res://Scripts/Speech_manager.gd" id="5_2j8ui"]
-[ext_resource type="Texture2D" uid="uid://daxw6o2fhaprx" path="res://Assets/Speech Bubble Final 64x64.png" id="6_4uqg8"]
+[ext_resource type="Texture2D" uid="uid://d37rpu5aixpdx" path="res://Assets/Speech Bubble Final 64x64 (less shading).png" id="6_ahva7"]
 [ext_resource type="Texture2D" uid="uid://br03r3febb2sk" path="res://Assets/spinner.png" id="7_7b1i1"]
 [ext_resource type="Texture2D" uid="uid://t5lxafalxrrj" path="res://Assets/storefront.png" id="7_fdiy1"]
 [ext_resource type="Script" path="res://Scripts/spin.gd" id="8_rf3ha"]
@@ -17,14 +17,6 @@
 [ext_resource type="Texture2D" uid="uid://cadatuipseqoy" path="res://Assets/cross_norm.png" id="11_tse4m"]
 [ext_resource type="Texture2D" uid="uid://dytvihovhihl4" path="res://Assets/cross_press.png" id="12_5beyp"]
 [ext_resource type="Script" path="res://Scripts/Cross.gd" id="14_ynerj"]
-
-[sub_resource type="FontVariation" id="FontVariation_uji3a"]
-spacing_glyph = 6
-
-[sub_resource type="LabelSettings" id="LabelSettings_04taw"]
-font = SubResource("FontVariation_uji3a")
-font_size = 43
-font_color = Color(0, 0.521569, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_anbuk"]
 font_size = 200
@@ -37,18 +29,125 @@ font = SubResource("FontVariation_5vnj3")
 font_size = 200
 font_color = Color(0.866667, 0.878431, 0.858824, 1)
 
+[sub_resource type="FontVariation" id="FontVariation_uji3a"]
+spacing_glyph = 6
+
+[sub_resource type="LabelSettings" id="LabelSettings_04taw"]
+font = SubResource("FontVariation_uji3a")
+font_size = 43
+font_color = Color(0, 0.521569, 0, 1)
+
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_ruhxm")
-
-[node name="Wall1" type="Sprite2D" parent="."]
-position = Vector2(576.5, 323)
-scale = Vector2(16.6875, 16.8)
-texture = ExtResource("2_vby4j")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(573, 323)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Customer" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(222, 331)
+scale = Vector2(0.0721125, 0.0710185)
+texture = ExtResource("2_q2o5f")
+script = ExtResource("3_x5wk7")
+
+[node name="Speech_bubble" type="Node2D" parent="CanvasLayer/Customer"]
+visible = false
+position = Vector2(-3217.2, -2027.64)
+script = ExtResource("5_2j8ui")
+
+[node name="Bubble" type="NinePatchRect" parent="CanvasLayer/Customer/Speech_bubble"]
+texture_filter = 1
+anchors_preset = -1
+anchor_top = -3.655
+anchor_right = 34.358
+anchor_bottom = 5.981
+offset_left = -1899.8
+offset_top = -774.447
+offset_right = -1819.8
+offset_bottom = -741.447
+scale = Vector2(50, 50)
+texture = ExtResource("6_ahva7")
+patch_margin_left = 11
+patch_margin_top = 4
+patch_margin_right = 28
+patch_margin_bottom = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="Dialogue" type="Label" parent="CanvasLayer/Customer/Speech_bubble"]
+offset_left = -1581.8
+offset_top = -591.447
+offset_right = 1858.2
+offset_bottom = 351.553
+text = "Hello there 
+"
+label_settings = SubResource("LabelSettings_anbuk")
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Spinner" type="TextureButton" parent="CanvasLayer/Customer/Speech_bubble"]
+offset_left = -485.817
+offset_top = 339.948
+offset_right = 1674.18
+offset_bottom = 2499.95
+scale = Vector2(0.65, 0.65)
+pivot_offset = Vector2(1080, 1080)
+texture_normal = ExtResource("7_7b1i1")
+script = ExtResource("8_rf3ha")
+metadata/_edit_use_anchors_ = true
+
+[node name="Price" type="Label" parent="CanvasLayer/Customer/Speech_bubble"]
+anchors_preset = -1
+anchor_left = 0.014
+anchor_top = 0.071
+anchor_right = 0.014
+anchor_bottom = 0.071
+offset_left = 193.677
+offset_top = 987.666
+offset_right = 1080.68
+offset_bottom = 1874.67
+grow_horizontal = 2
+grow_vertical = 2
+text = "$9999"
+label_settings = SubResource("LabelSettings_gjitf")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Check" type="TextureButton" parent="CanvasLayer/Customer/Speech_bubble"]
+offset_left = -1720.0
+offset_top = 875.02
+offset_right = 440.004
+offset_bottom = 3035.02
+scale = Vector2(0.25, 0.25)
+texture_normal = ExtResource("9_fqr4x")
+texture_pressed = ExtResource("10_g7l0n")
+script = ExtResource("11_ca2va")
+metadata/_edit_use_anchors_ = true
+
+[node name="Cross" type="TextureButton" parent="CanvasLayer/Customer/Speech_bubble"]
+offset_left = -846.366
+offset_top = 875.02
+offset_right = 1313.64
+offset_bottom = 3035.02
+scale = Vector2(0.25, 0.25)
+texture_normal = ExtResource("11_tse4m")
+texture_pressed = ExtResource("12_5beyp")
+script = ExtResource("14_ynerj")
+metadata/_edit_use_anchors_ = true
+
+[node name="Control" type="Control" parent="CanvasLayer/Customer/Speech_bubble"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Storefront" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(573, 321)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("7_fdiy1")
 
 [node name="CashFinal64x64" type="Sprite2D" parent="CanvasLayer"]
 position = Vector2(59, 81)
@@ -72,118 +171,21 @@ label_settings = SubResource("LabelSettings_04taw")
 autowrap_mode = 2
 script = ExtResource("1_dygwe")
 
-[node name="Customer" type="Sprite2D" parent="."]
-position = Vector2(222, 331)
-scale = Vector2(0.0721125, 0.0710185)
-texture = ExtResource("2_q2o5f")
-script = ExtResource("3_x5wk7")
-
-[node name="Speech_bubble" type="Node2D" parent="Customer"]
-visible = false
-position = Vector2(-3217.2, -2027.64)
-script = ExtResource("5_2j8ui")
-
-[node name="Control" type="Control" parent="Customer/Speech_bubble"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="NinePatchRect" type="NinePatchRect" parent="Customer/Speech_bubble/Control"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = -3.655
-anchor_right = 34.358
-anchor_bottom = 5.981
-offset_left = -1830.47
-offset_top = -754.974
-offset_right = -3126.79
-offset_bottom = -1100.41
-scale = Vector2(50, 50)
-texture = ExtResource("6_4uqg8")
-patch_margin_left = 11
-patch_margin_top = 4
-patch_margin_right = 28
-patch_margin_bottom = 4
-
-[node name="Dialogue" type="Label" parent="Customer/Speech_bubble/Control"]
-layout_mode = 0
-offset_left = -1401.0
-offset_top = -563.0
-offset_right = 1609.0
-offset_bottom = 746.0
-text = "Hello there 
-"
-label_settings = SubResource("LabelSettings_anbuk")
-autowrap_mode = 2
-
-[node name="Spinner" type="TextureButton" parent="Customer/Speech_bubble/Control"]
-layout_mode = 0
-offset_left = -114.518
-offset_top = 818.87
-offset_right = 2045.48
-offset_bottom = 2978.87
-scale = Vector2(0.65, 0.65)
-pivot_offset = Vector2(1080, 1080)
-texture_normal = ExtResource("7_7b1i1")
-script = ExtResource("8_rf3ha")
-
-[node name="Price" type="Label" parent="Customer/Speech_bubble/Control"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.014
-anchor_top = 0.071
-anchor_right = 0.014
-anchor_bottom = 0.071
-offset_left = 522.812
-offset_top = 1435.58
-offset_right = 1409.81
-offset_bottom = 2322.58
-grow_horizontal = 2
-grow_vertical = 2
-text = "$9999"
-label_settings = SubResource("LabelSettings_gjitf")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-
-[node name="Check" type="TextureButton" parent="Customer/Speech_bubble/Control"]
-layout_mode = 0
-offset_left = -1414.45
-offset_top = 1295.44
-offset_right = 745.553
-offset_bottom = 3455.44
-scale = Vector2(0.25, 0.25)
-texture_normal = ExtResource("9_fqr4x")
-texture_pressed = ExtResource("10_g7l0n")
-script = ExtResource("11_ca2va")
-
-[node name="Cross" type="TextureButton" parent="Customer/Speech_bubble/Control"]
-layout_mode = 0
-offset_left = -540.817
-offset_top = 1295.44
-offset_right = 1619.19
-offset_bottom = 3455.44
-scale = Vector2(0.25, 0.25)
-texture_normal = ExtResource("11_tse4m")
-texture_pressed = ExtResource("12_5beyp")
-script = ExtResource("14_ynerj")
-
-[node name="Storefront" type="Sprite2D" parent="."]
-position = Vector2(573, 323)
-scale = Vector2(0.35, 0.35)
-texture = ExtResource("7_fdiy1")
-
 [node name="Customer_timer" type="Timer" parent="."]
 one_shot = true
 
-[connection signal="entered" from="Customer" to="." method="_on_customer_entered"]
-[connection signal="entered" from="Customer" to="Customer/Speech_bubble" method="_on_customer_entered"]
-[connection signal="no_deal" from="Customer/Speech_bubble" to="Customer/Speech_bubble/Control/Spinner" method="_on_speech_bubble_no_deal"]
-[connection signal="no_deal" from="Customer/Speech_bubble" to="Customer/Speech_bubble/Control/Cross" method="_on_speech_bubble_no_deal"]
-[connection signal="sold" from="Customer/Speech_bubble" to="." method="_on_speech_bubble_sold"]
-[connection signal="sold" from="Customer/Speech_bubble" to="CanvasLayer/Label" method="_on_speech_bubble_sold"]
-[connection signal="sold" from="Customer/Speech_bubble" to="Customer/Speech_bubble/Control/Spinner" method="_on_speech_bubble_sold"]
-[connection signal="sold" from="Customer/Speech_bubble" to="Customer/Speech_bubble/Control/Cross" method="_on_speech_bubble_sold"]
-[connection signal="checked" from="Customer/Speech_bubble/Control/Check" to="Customer/Speech_bubble" method="_on_check_checked"]
-[connection signal="crossed" from="Customer/Speech_bubble/Control/Cross" to="Customer/Speech_bubble" method="_on_cross_crossed"]
+[node name="WallWithGuitar2" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(573, 321)
+scale = Vector2(16.8, 16.8)
+texture = ExtResource("2_ii5ta")
+
+[connection signal="entered" from="CanvasLayer/Customer" to="CanvasLayer/Customer/Speech_bubble" method="_on_customer_entered"]
+[connection signal="no_deal" from="CanvasLayer/Customer/Speech_bubble" to="CanvasLayer/Customer/Speech_bubble/Spinner" method="_on_speech_bubble_no_deal"]
+[connection signal="no_deal" from="CanvasLayer/Customer/Speech_bubble" to="CanvasLayer/Customer/Speech_bubble/Cross" method="_on_speech_bubble_no_deal"]
+[connection signal="sold" from="CanvasLayer/Customer/Speech_bubble" to="." method="_on_speech_bubble_sold"]
+[connection signal="sold" from="CanvasLayer/Customer/Speech_bubble" to="CanvasLayer/Customer/Speech_bubble/Spinner" method="_on_speech_bubble_sold"]
+[connection signal="sold" from="CanvasLayer/Customer/Speech_bubble" to="CanvasLayer/Customer/Speech_bubble/Cross" method="_on_speech_bubble_sold"]
+[connection signal="sold" from="CanvasLayer/Customer/Speech_bubble" to="CanvasLayer/Label" method="_on_speech_bubble_sold"]
+[connection signal="checked" from="CanvasLayer/Customer/Speech_bubble/Check" to="CanvasLayer/Customer/Speech_bubble" method="_on_check_checked"]
+[connection signal="crossed" from="CanvasLayer/Customer/Speech_bubble/Cross" to="CanvasLayer/Customer/Speech_bubble" method="_on_cross_crossed"]

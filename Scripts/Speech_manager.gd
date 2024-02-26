@@ -13,7 +13,6 @@ var inventory = []
 var dialogues = []
 var check_price
 signal sold(price: int)
-signal no_deal()
 var patience = 5
 var exit =false
 var exitNow=false
@@ -141,45 +140,25 @@ func _on_check_checked():
 			
 			# Check if the offered price is higher than or equal to the initial price
 			if check_price >= initial_price:
-				dia=dialogues[7]
-				dialogue.text=""
-				dia_index=0  # Sold at a good price
-				exit = true
-				sold.emit(check_price)
+				fin(check_price,7)
 				inventory.append(item)
 			# Check if the offered price is lower than the minimum acceptable price
 			elif check_price < min_price:
-				dia=dialogues[5]
-				dialogue.text=""
-				dia_index=0  # Price is too low, no deal
-				exit = true
-				no_deal.emit()
+				fin(0,5)
 			else:
 				# Calculate a decision based on the difference between initial and offered prices
 				var diff = initial_price - check_price
 				var action = rng.randf_range(0, 100) + min(30, diff * 7 / initial_price)
 				if action < 20:
-					dia=dialogues[7]
-					dialogue.text=""
-					dia_index=0  # Sold at a good price
-					exit = true
-					sold.emit(check_price)
+					fin(check_price,7)
 					inventory.append(item)
 				elif action > 90:
-					dia=dialogues[5]
-					dialogue.text=""
-					dia_index=0  # Price is too low, no deal
-					exit = true
-					no_deal.emit()
+					fin(0,5)
 				else:
 					# Adjust the patience level and negotiate the price
 					patience -= int(rng.randf_range(1, 2.4))
 					if patience == 0:
-						dia=dialogues[5]
-						dialogue.text=""
-						dia_index=0  # Price is too low, no deal
-						exit = true
-						no_deal.emit()
+						fin(0,5)
 					else:
 						var newPrice = (initial_price + spinner.price) / 2.1
 						newPrice = int(newPrice * (rng.randf_range(check_price / newPrice, initial_price / newPrice)))
@@ -195,42 +174,26 @@ func _on_check_checked():
 			
 			# Check if the offered price is lower than or equal to the initial price
 			if check_price <= initial_price:
-				dia=dialogues[7]
-				dialogue.text=""
-				dia_index=0 # Sold at a good price
-				exit = true
-				sold.emit(-check_price)
+				fin(-check_price,7)
 				inventory.pop_at(item_index)
 			elif check_price < min_price:
 				dialogue.text = dialogues[5]  # Price is too high, no deal
 				exit = true
-				no_deal.emit()
+				sold.emit(0)
 			else:
 				# Calculate a decision based on the difference between initial and offered prices
 				var diff = check_price - initial_price
 				var action = rng.randf_range(0, 100) + min(30, diff * 7 / initial_price)
 				if action < 20:
-					dia=dialogues[7]
-					dialogue.text=""
-					dia_index=0  # Sold at a good price
-					exit = true
-					sold.emit(-check_price)
-					inventory.append(item)
+					fin(-check_price,7)
+					inventory.pop_at(item_index)
 				elif action > 90:
-					dia=dialogues[5]
-					dialogue.text=""
-					dia_index=0  # Price is too high, no deal
-					exit = true
-					no_deal.emit()
+					fin(0,5)
 				else:
 					# Adjust the patience level and negotiate the price
 					patience -= int(rng.randf_range(1, 2.4))
 					if patience == 0:
-						dia=dialogues[5]
-						dialogue.text=""
-						dia_index=0  # Price is too high, no deal
-						exit = true
-						no_deal.emit()
+						fin(0,5)
 					else:
 						var newPrice = (initial_price + spinner.price) / 2
 						newPrice = int(newPrice * (rng.randf_range(check_price / newPrice, initial_price / newPrice)))
@@ -246,12 +209,13 @@ func _on_check_checked():
 		exit = false
 		exitNow = true
 	
-
+func fin(price,dia_id):
+	dia=dialogues[dia_id]
+	dialogue.text=""
+	dia_index=0
+	exit = true
+	sold.emit(price)
 
 func _on_cross_crossed():
-	dia=dialogues[5]
-	dialogue.text=""
-	dia_index=0  # Price is too low, no deal
-	exit = true
-	no_deal.emit()
+	fin(0,5)
 	pass # Replace with function body.

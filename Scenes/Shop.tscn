@@ -181,8 +181,6 @@ scale = Vector2(16.8, 16.8)
 texture = ExtResource("2_ii5ta")
 
 [connection signal="entered" from="CanvasLayer/Customer" to="CanvasLayer/Customer/Speech_bubble" method="_on_customer_entered"]
-[connection signal="no_deal" from="CanvasLayer/Customer/Speech_bubble" to="CanvasLayer/Customer/Speech_bubble/Spinner" method="_on_speech_bubble_no_deal"]
-[connection signal="no_deal" from="CanvasLayer/Customer/Speech_bubble" to="CanvasLayer/Customer/Speech_bubble/Cross" method="_on_speech_bubble_no_deal"]
 [connection signal="sold" from="CanvasLayer/Customer/Speech_bubble" to="." method="_on_speech_bubble_sold"]
 [connection signal="sold" from="CanvasLayer/Customer/Speech_bubble" to="CanvasLayer/Customer/Speech_bubble/Spinner" method="_on_speech_bubble_sold"]
 [connection signal="sold" from="CanvasLayer/Customer/Speech_bubble" to="CanvasLayer/Customer/Speech_bubble/Cross" method="_on_speech_bubble_sold"]

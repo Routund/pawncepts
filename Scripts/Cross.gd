@@ -14,11 +14,6 @@ func _process(_delta):
 		# Button is pressed for the first time
 		is_button_pressed = true
 
-func _on_speech_bubble_no_deal():
-	visible=false
-	pass # Replace with function body.
-
-
 func _on_speech_bubble_sold(_price):
 	visible=false
 	pass # Replace with function body.

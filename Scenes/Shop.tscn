@@ -1,8 +1,7 @@
-[gd_scene load_steps=23 format=3 uid="uid://so1vseffcoo2"]
+[gd_scene load_steps=25 format=3 uid="uid://so1vseffcoo2"]
 
 [ext_resource type="Script" path="res://Scripts/Money.gd" id="1_dygwe"]
 [ext_resource type="Script" path="res://Scripts/Shop_Manager.gd" id="1_ruhxm"]
-[ext_resource type="Texture2D" uid="uid://bxe4nq618qyr5" path="res://Assets/Wall with guitar.png" id="2_ii5ta"]
 [ext_resource type="Texture2D" uid="uid://bbk2g748hlv51" path="res://Assets/person_base.png" id="2_q2o5f"]
 [ext_resource type="Texture2D" uid="uid://ct6vrrwc8lssc" path="res://Assets/cash final 64x64.png" id="3_clsbt"]
 [ext_resource type="Script" path="res://Scripts/Customer_functions.gd" id="3_x5wk7"]
@@ -17,6 +16,9 @@
 [ext_resource type="Texture2D" uid="uid://cadatuipseqoy" path="res://Assets/cross_norm.png" id="11_tse4m"]
 [ext_resource type="Texture2D" uid="uid://dytvihovhihl4" path="res://Assets/cross_press.png" id="12_5beyp"]
 [ext_resource type="Script" path="res://Scripts/Cross.gd" id="14_ynerj"]
+[ext_resource type="Texture2D" uid="uid://dvcqo0t7qd1j0" path="res://Assets/Wall with guitar-1.png" id="17_cg7pp"]
+[ext_resource type="Texture2D" uid="uid://bg7r14a7t7y5h" path="res://Assets/icon.svg" id="17_dfkq0"]
+[ext_resource type="Script" path="res://Scenes/Menu.gd" id="18_x3lcq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_anbuk"]
 font_size = 200
@@ -45,15 +47,17 @@ position = Vector2(573, 323)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Customer" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(222, 331)
+[node name="Customer" type="TextureRect" parent="CanvasLayer"]
+offset_left = -227.0
+offset_top = 119.0
+offset_right = 4734.0
+offset_bottom = 4910.0
 scale = Vector2(0.0721125, 0.0710185)
 texture = ExtResource("2_q2o5f")
 script = ExtResource("3_x5wk7")
 
 [node name="Speech_bubble" type="Node2D" parent="CanvasLayer/Customer"]
-visible = false
-position = Vector2(-3217.2, -2027.64)
+position = Vector2(-707.229, 605.476)
 script = ExtResource("5_2j8ui")
 
 [node name="Bubble" type="NinePatchRect" parent="CanvasLayer/Customer/Speech_bubble"]
@@ -137,20 +141,16 @@ texture_pressed = ExtResource("12_5beyp")
 script = ExtResource("14_ynerj")
 metadata/_edit_use_anchors_ = true
 
-[node name="Control" type="Control" parent="CanvasLayer/Customer/Speech_bubble"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-metadata/_edit_use_anchors_ = true
-
 [node name="Storefront" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(573, 321)
+position = Vector2(573, 323)
 scale = Vector2(0.35, 0.35)
 texture = ExtResource("7_fdiy1")
 
-[node name="CashFinal64x64" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(59, 81)
+[node name="CashFinal64x64" type="TextureRect" parent="CanvasLayer"]
+offset_left = 36.0
+offset_top = 46.0
+offset_right = 100.0
+offset_bottom = 110.0
 scale = Vector2(1.35938, 1.39063)
 texture = ExtResource("3_clsbt")
 
@@ -171,14 +171,22 @@ label_settings = SubResource("LabelSettings_04taw")
 autowrap_mode = 2
 script = ExtResource("1_dygwe")
 
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 1149.0
+offset_bottom = 649.0
+texture = ExtResource("17_dfkq0")
+script = ExtResource("18_x3lcq")
+
 [node name="Customer_timer" type="Timer" parent="."]
 one_shot = true
 
 [node name="WallWithGuitar2" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(573, 321)
-scale = Vector2(16.8, 16.8)
-texture = ExtResource("2_ii5ta")
+position = Vector2(572.5, 321)
+scale = Vector2(4.19688, 4.2)
+texture = ExtResource("17_cg7pp")
 
 [connection signal="entered" from="CanvasLayer/Customer" to="CanvasLayer/Customer/Speech_bubble" method="_on_customer_entered"]
 [connection signal="sold" from="CanvasLayer/Customer/Speech_bubble" to="." method="_on_speech_bubble_sold"]

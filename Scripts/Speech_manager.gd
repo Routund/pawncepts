@@ -53,7 +53,7 @@ var rng = RandomNumberGenerator.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	rng.seed = hash("I missed my lunch")
+	rng.randomize()
 	pass
 
 
@@ -137,7 +137,6 @@ func _on_check_checked():
 		if customerState == "sell":
 			# Handle selling behavior
 			check_price = spinner.price
-			
 			# Check if the offered price is higher than or equal to the initial price
 			if check_price >= initial_price:
 				fin(check_price,7)
@@ -176,10 +175,8 @@ func _on_check_checked():
 			if check_price <= initial_price:
 				fin(-check_price,7)
 				inventory.pop_at(item_index)
-			elif check_price < min_price:
-				dialogue.text = dialogues[5]  # Price is too high, no deal
-				exit = true
-				sold.emit(0)
+			elif check_price > min_price:
+				fin(0,5)
 			else:
 				# Calculate a decision based on the difference between initial and offered prices
 				var diff = check_price - initial_price

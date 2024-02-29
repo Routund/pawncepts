@@ -8,16 +8,16 @@
 [ext_resource type="Script" path="res://Scripts/Speech_manager.gd" id="5_2j8ui"]
 [ext_resource type="Texture2D" uid="uid://d37rpu5aixpdx" path="res://Assets/Speech Bubble Final 64x64 (less shading).png" id="6_ahva7"]
 [ext_resource type="Texture2D" uid="uid://br03r3febb2sk" path="res://Assets/spinner.png" id="7_7b1i1"]
-[ext_resource type="Texture2D" uid="uid://t5lxafalxrrj" path="res://Assets/storefront.png" id="7_fdiy1"]
 [ext_resource type="Script" path="res://Scripts/spin.gd" id="8_rf3ha"]
 [ext_resource type="Texture2D" uid="uid://d1h4mxerlnj6f" path="res://Assets/check_norm.png" id="9_fqr4x"]
 [ext_resource type="Texture2D" uid="uid://dw3wlawekx5te" path="res://Assets/check_press.png" id="10_g7l0n"]
 [ext_resource type="Script" path="res://Scripts/Check.gd" id="11_ca2va"]
 [ext_resource type="Texture2D" uid="uid://cadatuipseqoy" path="res://Assets/cross_norm.png" id="11_tse4m"]
 [ext_resource type="Texture2D" uid="uid://dytvihovhihl4" path="res://Assets/cross_press.png" id="12_5beyp"]
+[ext_resource type="Texture2D" uid="uid://b34hnxcmmeh3t" path="res://Assets/Counter top placeholder.png" id="14_hqgfg"]
 [ext_resource type="Script" path="res://Scripts/Cross.gd" id="14_ynerj"]
+[ext_resource type="FontFile" uid="uid://b3v1an5qk731n" path="res://Assets/PatrickHand-Regular.ttf" id="16_1ht2d"]
 [ext_resource type="Texture2D" uid="uid://dvcqo0t7qd1j0" path="res://Assets/Wall with guitar-1.png" id="17_cg7pp"]
-[ext_resource type="Texture2D" uid="uid://bg7r14a7t7y5h" path="res://Assets/icon.svg" id="17_dfkq0"]
 [ext_resource type="Script" path="res://Scenes/Menu.gd" id="18_x3lcq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_anbuk"]
@@ -32,7 +32,7 @@ font_size = 200
 font_color = Color(0.866667, 0.878431, 0.858824, 1)
 
 [sub_resource type="FontVariation" id="FontVariation_uji3a"]
-spacing_glyph = 6
+base_font = ExtResource("16_1ht2d")
 
 [sub_resource type="LabelSettings" id="LabelSettings_04taw"]
 font = SubResource("FontVariation_uji3a")
@@ -57,6 +57,7 @@ texture = ExtResource("2_q2o5f")
 script = ExtResource("3_x5wk7")
 
 [node name="Speech_bubble" type="Node2D" parent="CanvasLayer/Customer"]
+visible = false
 position = Vector2(-707.229, 605.476)
 script = ExtResource("5_2j8ui")
 
@@ -142,9 +143,10 @@ script = ExtResource("14_ynerj")
 metadata/_edit_use_anchors_ = true
 
 [node name="Storefront" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(573, 323)
-scale = Vector2(0.35, 0.35)
-texture = ExtResource("7_fdiy1")
+texture_filter = 1
+position = Vector2(572, 321)
+scale = Vector2(4.2, 4.2)
+texture = ExtResource("14_hqgfg")
 
 [node name="CashFinal64x64" type="TextureRect" parent="CanvasLayer"]
 offset_left = 36.0
@@ -171,13 +173,17 @@ label_settings = SubResource("LabelSettings_04taw")
 autowrap_mode = 2
 script = ExtResource("1_dygwe")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
-offset_left = 4.0
-offset_top = 3.0
-offset_right = 1149.0
-offset_bottom = 649.0
-texture = ExtResource("17_dfkq0")
+[node name="Inventory" type="ScrollContainer" parent="CanvasLayer"]
+offset_left = 1.0
+offset_right = 1152.0
+offset_bottom = 624.0
+scale = Vector2(1, 1.038)
+horizontal_scroll_mode = 0
 script = ExtResource("18_x3lcq")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Inventory"]
+layout_mode = 2
+size_flags_horizontal = 0
 
 [node name="Customer_timer" type="Timer" parent="."]
 one_shot = true
@@ -193,5 +199,6 @@ texture = ExtResource("17_cg7pp")
 [connection signal="sold" from="CanvasLayer/Customer/Speech_bubble" to="CanvasLayer/Customer/Speech_bubble/Spinner" method="_on_speech_bubble_sold"]
 [connection signal="sold" from="CanvasLayer/Customer/Speech_bubble" to="CanvasLayer/Customer/Speech_bubble/Cross" method="_on_speech_bubble_sold"]
 [connection signal="sold" from="CanvasLayer/Customer/Speech_bubble" to="CanvasLayer/Label" method="_on_speech_bubble_sold"]
+[connection signal="sold" from="CanvasLayer/Customer/Speech_bubble" to="CanvasLayer/Inventory" method="_on_speech_bubble_sold"]
 [connection signal="checked" from="CanvasLayer/Customer/Speech_bubble/Check" to="CanvasLayer/Customer/Speech_bubble" method="_on_check_checked"]
 [connection signal="crossed" from="CanvasLayer/Customer/Speech_bubble/Cross" to="CanvasLayer/Customer/Speech_bubble" method="_on_cross_crossed"]

@@ -56,7 +56,6 @@ func _ready():
 	rng.randomize()
 	pass
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if(dia!=""):
@@ -64,7 +63,6 @@ func _process(_delta):
 			dialogue.text+=dia[dia_index]
 			dia_index+=1
 	pass
-
 
 func _on_customer_entered():
 		if(randi_range(0,6)>=inventory.size()):
@@ -82,9 +80,7 @@ func _on_customer_entered():
 			dia=dialogues[1]%[items_dict[item],initial_price]
 			dialogue.text=""
 			dia_index=0
-			
-			
-			
+
 		else:
 			customerState="buy"
 			item_index = randi() % inventory.size()
@@ -100,8 +96,6 @@ func _on_customer_entered():
 			dia=dialogues[1]%[items_dict[item],initial_price]
 			dialogue.text=""
 			dia_index=0
-			
-			
 			
 		# Initialize all visible displays
 		visible = true
@@ -205,7 +199,7 @@ func _on_check_checked():
 		visible = false
 		exit = false
 		exitNow = true
-	
+
 func fin(price,dia_id):
 	dia=dialogues[dia_id]
 	dialogue.text=""

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://t5lxafalxrrj"
-path="res://.godot/imported/storefront.png-f18f9264f8826c2c4b35a791fd8a4d0d.ctex"
+uid="uid://b34hnxcmmeh3t"
+path="res://.godot/imported/Counter top placeholder.png-e3177aaf2bc94c5c03f90d964ec3a7b9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/storefront.png"
-dest_files=["res://.godot/imported/storefront.png-f18f9264f8826c2c4b35a791fd8a4d0d.ctex"]
+source_file="res://Assets/Counter top placeholder.png"
+dest_files=["res://.godot/imported/Counter top placeholder.png-e3177aaf2bc94c5c03f90d964ec3a7b9.ctex"]
 
 [params]
 

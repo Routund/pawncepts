@@ -15,10 +15,6 @@ run/main_scene="res://Scenes/Shop.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://Assets/icon.svg"
 
-[display]
-
-window/stretch/mode="canvas_items"
-
 [input]
 
 Menu={

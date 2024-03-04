@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://dggqc1lplbq2f"]
 
 [ext_resource type="Script" path="res://Scenes/Inventory_base.gd" id="1_01dfa"]
-[ext_resource type="Texture2D" uid="uid://br03r3febb2sk" path="res://Assets/spinner.png" id="2_7m28q"]
-[ext_resource type="Texture2D" uid="uid://n7hmsu5gx70y" path="res://Assets/Inventory 160x23.png" id="2_odsqg"]
+[ext_resource type="Texture2D" uid="uid://n7hmsu5gx70y" path="res://Assets/InventorySlot.png" id="2_gxvrx"]
 [ext_resource type="FontFile" uid="uid://b3v1an5qk731n" path="res://Assets/PatrickHand-Regular.ttf" id="3_ory4n"]
+[ext_resource type="Texture2D" uid="uid://coyjgk852o645" path="res://Assets/Ring final 64x64.png" id="3_wjr1e"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_y36q5"]
 resource_name = "Inv_Big"
@@ -11,7 +11,10 @@ font = ExtResource("3_ory4n")
 font_size = 33
 
 [sub_resource type="LabelSettings" id="LabelSettings_t51pq"]
+resource_local_to_scene = true
+line_spacing = 5.0
 font = ExtResource("3_ory4n")
+font_size = 19
 
 [sub_resource type="LabelSettings" id="LabelSettings_on5cu"]
 font = ExtResource("3_ory4n")
@@ -23,7 +26,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -2.0
 offset_top = -1.0
-offset_right = -1.0
+offset_right = -34.0
 offset_bottom = -488.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -33,39 +36,45 @@ script = ExtResource("1_01dfa")
 texture_filter = 1
 custom_minimum_size = Vector2(1120, 161)
 layout_mode = 2
-texture = ExtResource("2_odsqg")
+texture = ExtResource("2_gxvrx")
 expand_mode = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-custom_minimum_size = Vector2(1000, 0)
+custom_minimum_size = Vector2(1010, 0)
 layout_mode = 2
+theme_override_constants/separation = 80
+alignment = 2
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+[node name="Icon" type="TextureRect" parent="HBoxContainer"]
+texture_filter = 1
 clip_contents = true
 custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
 size_flags_vertical = 4
-texture = ExtResource("2_7m28q")
+texture = ExtResource("3_wjr1e")
 expand_mode = 1
+stretch_mode = 4
 
 [node name="Name" type="Label" parent="HBoxContainer"]
-custom_minimum_size = Vector2(250, 0)
+custom_minimum_size = Vector2(220, 0)
 layout_mode = 2
 size_flags_vertical = 1
-text = "Very sentimental item"
+text = "Ring"
 label_settings = SubResource("LabelSettings_y36q5")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 1
 
 [node name="Description" type="Label" parent="HBoxContainer"]
-custom_minimum_size = Vector2(300, 0)
+custom_minimum_size = Vector2(350, 100)
 layout_mode = 2
 text = "This is a description of an item, it held a lot of sentimental value to its owner and now you've taken it, you fiend. You prayer of the weak and ignorant."
 label_settings = SubResource("LabelSettings_t51pq")
 autowrap_mode = 1
 
 [node name="Price" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(85, 0)
 layout_mode = 2
 text = "$21315"
 label_settings = SubResource("LabelSettings_on5cu")
+text_overrun_behavior = 1

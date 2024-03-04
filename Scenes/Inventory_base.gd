@@ -1,9 +1,14 @@
 extends Control
 
-var timer =0
+@export var priceN=0
+
+@onready var name_node = get_node("HBoxContainer/Name")
+@onready var price_node = get_node("HBoxContainer/Price")
+@onready var image_node = get_node("HBoxContainer/Icon")
+@onready var desc_node = get_node("HBoxContainer/Description")
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	timer=0
+	price_node.text= "$" + str(priceN)
 	pass # Replace with function body.
 
 

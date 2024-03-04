@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Money.gd" id="1_dygwe"]
 [ext_resource type="Script" path="res://Scripts/Shop_Manager.gd" id="1_ruhxm"]
 [ext_resource type="Texture2D" uid="uid://bbk2g748hlv51" path="res://Assets/person_base.png" id="2_q2o5f"]
-[ext_resource type="Texture2D" uid="uid://ct6vrrwc8lssc" path="res://Assets/cash final 64x64.png" id="3_clsbt"]
+[ext_resource type="Texture2D" uid="uid://ct6vrrwc8lssc" path="res://Assets/cash.png" id="3_clsbt"]
 [ext_resource type="Script" path="res://Scripts/Customer_functions.gd" id="3_x5wk7"]
 [ext_resource type="Script" path="res://Scripts/Speech_manager.gd" id="5_2j8ui"]
 [ext_resource type="Texture2D" uid="uid://d37rpu5aixpdx" path="res://Assets/Speech Bubble Final 64x64 (less shading).png" id="6_ahva7"]
@@ -14,7 +14,7 @@
 [ext_resource type="Script" path="res://Scripts/Check.gd" id="11_ca2va"]
 [ext_resource type="Texture2D" uid="uid://cadatuipseqoy" path="res://Assets/cross_norm.png" id="11_tse4m"]
 [ext_resource type="Texture2D" uid="uid://dytvihovhihl4" path="res://Assets/cross_press.png" id="12_5beyp"]
-[ext_resource type="Texture2D" uid="uid://b34hnxcmmeh3t" path="res://Assets/Counter top placeholder.png" id="14_hqgfg"]
+[ext_resource type="Texture2D" uid="uid://b34hnxcmmeh3t" path="res://Assets/counter.png" id="14_hqgfg"]
 [ext_resource type="Script" path="res://Scripts/Cross.gd" id="14_ynerj"]
 [ext_resource type="FontFile" uid="uid://b3v1an5qk731n" path="res://Assets/PatrickHand-Regular.ttf" id="16_1ht2d"]
 [ext_resource type="Texture2D" uid="uid://dvcqo0t7qd1j0" path="res://Assets/Wall with guitar-1.png" id="17_cg7pp"]
@@ -177,8 +177,11 @@ script = ExtResource("1_dygwe")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1.0
+offset_left = 99.0
+offset_right = -100.0
 offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
 scale = Vector2(1, 1.038)
 horizontal_scroll_mode = 0
 script = ExtResource("18_x3lcq")

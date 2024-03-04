@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b34hnxcmmeh3t"
-path="res://.godot/imported/Counter top placeholder.png-e3177aaf2bc94c5c03f90d964ec3a7b9.ctex"
+path="res://.godot/imported/counter.png-d094a924f99c3b8219b183afeb16d666.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Counter top placeholder.png"
-dest_files=["res://.godot/imported/Counter top placeholder.png-e3177aaf2bc94c5c03f90d964ec3a7b9.ctex"]
+source_file="res://Assets/counter.png"
+dest_files=["res://.godot/imported/counter.png-d094a924f99c3b8219b183afeb16d666.ctex"]
 
 [params]
 

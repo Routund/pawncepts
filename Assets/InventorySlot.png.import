@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cju1xcaax6dpa"
-path="res://.godot/imported/Inner dial final 128x128.png-e6329c007fb7d777436dd39e1c357889.ctex"
+uid="uid://n7hmsu5gx70y"
+path="res://.godot/imported/InventorySlot.png-b8b62402680c2409eed0ae8713e20715.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Inner dial final 128x128.png"
-dest_files=["res://.godot/imported/Inner dial final 128x128.png-e6329c007fb7d777436dd39e1c357889.ctex"]
+source_file="res://Assets/InventorySlot.png"
+dest_files=["res://.godot/imported/InventorySlot.png-b8b62402680c2409eed0ae8713e20715.ctex"]
 
 [params]
 

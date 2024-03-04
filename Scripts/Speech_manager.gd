@@ -9,6 +9,7 @@ var sell_price = 100
 @onready var spinner = get_node("Spinner")
 @onready var dialogue = get_node("Dialogue")
 @onready var cross = get_node("Cross")
+@onready var money = get_node("../../Label")
 var inventory = []
 var dialogues = []
 var check_price
@@ -131,6 +132,8 @@ func _on_check_checked():
 		if customerState == "sell":
 			# Handle selling behavior
 			check_price = spinner.price
+			if(check_price>money.balance):
+				return
 			# Check if the offered price is higher than or equal to the initial price
 			if check_price >= initial_price:
 				fin(check_price,7)

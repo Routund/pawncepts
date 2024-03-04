@@ -44,6 +44,7 @@ script = ExtResource("1_ruhxm")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(573, 323)
+zoom = Vector2(0.855, 0.855)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -198,6 +199,8 @@ texture_filter = 1
 position = Vector2(572.5, 321)
 scale = Vector2(4.19688, 4.2)
 texture = ExtResource("17_cg7pp")
+
+[node name="Store_timer" type="Timer" parent="."]
 
 [connection signal="entered" from="CanvasLayer/Customer" to="CanvasLayer/Customer/Speech_bubble" method="_on_customer_entered"]
 [connection signal="sold" from="CanvasLayer/Customer/Speech_bubble" to="." method="_on_speech_bubble_sold"]

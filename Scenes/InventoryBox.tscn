@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Scenes/Inventory_base.gd" id="1_01dfa"]
 [ext_resource type="Texture2D" uid="uid://n7hmsu5gx70y" path="res://Assets/InventorySlot.png" id="2_gxvrx"]
+[ext_resource type="Texture2D" uid="uid://br03r3febb2sk" path="res://Assets/spinner.png" id="3_coiqw"]
 [ext_resource type="FontFile" uid="uid://b3v1an5qk731n" path="res://Assets/PatrickHand-Regular.ttf" id="3_ory4n"]
-[ext_resource type="Texture2D" uid="uid://coyjgk852o645" path="res://Assets/Ring final 64x64.png" id="3_wjr1e"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_y36q5"]
 resource_name = "Inv_Big"
@@ -51,7 +51,7 @@ clip_contents = true
 custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
 size_flags_vertical = 4
-texture = ExtResource("3_wjr1e")
+texture = ExtResource("3_coiqw")
 expand_mode = 1
 stretch_mode = 4
 
@@ -70,7 +70,7 @@ custom_minimum_size = Vector2(350, 100)
 layout_mode = 2
 text = "This is a description of an item, it held a lot of sentimental value to its owner and now you've taken it, you fiend. You prayer of the weak and ignorant."
 label_settings = SubResource("LabelSettings_t51pq")
-autowrap_mode = 1
+autowrap_mode = 2
 
 [node name="Price" type="Label" parent="HBoxContainer"]
 custom_minimum_size = Vector2(85, 0)

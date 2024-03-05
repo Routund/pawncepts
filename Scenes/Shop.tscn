@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://so1vseffcoo2"]
+[gd_scene load_steps=28 format=3 uid="uid://so1vseffcoo2"]
 
 [ext_resource type="Script" path="res://Scripts/Money.gd" id="1_dygwe"]
 [ext_resource type="Script" path="res://Scripts/Shop_Manager.gd" id="1_ruhxm"]
@@ -16,8 +16,11 @@
 [ext_resource type="Texture2D" uid="uid://dytvihovhihl4" path="res://Assets/cross_press.png" id="12_5beyp"]
 [ext_resource type="Texture2D" uid="uid://b34hnxcmmeh3t" path="res://Assets/counter.png" id="14_hqgfg"]
 [ext_resource type="Script" path="res://Scripts/Cross.gd" id="14_ynerj"]
+[ext_resource type="Texture2D" uid="uid://ciiwn8jd2waf2" path="res://Assets/New Piskel-1.png.png" id="15_xaxon"]
 [ext_resource type="FontFile" uid="uid://b3v1an5qk731n" path="res://Assets/PatrickHand-Regular.ttf" id="16_1ht2d"]
+[ext_resource type="Script" path="res://Scenes/PriceGuide.gd" id="16_lsrla"]
 [ext_resource type="Texture2D" uid="uid://dvcqo0t7qd1j0" path="res://Assets/Wall with guitar-1.png" id="17_cg7pp"]
+[ext_resource type="Texture2D" uid="uid://brebajf03s64b" path="res://Assets/pamphlet_open.png" id="17_qay2g"]
 [ext_resource type="Script" path="res://Scenes/Menu.gd" id="18_x3lcq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_anbuk"]
@@ -145,9 +148,54 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Storefront" type="Sprite2D" parent="CanvasLayer"]
 texture_filter = 1
-position = Vector2(572, 321)
+position = Vector2(575, 324)
 scale = Vector2(4.2, 4.2)
 texture = ExtResource("14_hqgfg")
+
+[node name="Pamphlet" type="TextureButton" parent="CanvasLayer"]
+texture_filter = 1
+offset_left = 900.0
+offset_top = 409.0
+offset_right = 932.0
+offset_bottom = 441.0
+scale = Vector2(3.25419, 2.89888)
+texture_normal = ExtResource("15_xaxon")
+script = ExtResource("16_lsrla")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Pamphlet"]
+visible = false
+layout_mode = 0
+offset_left = -264.889
+offset_top = -134.88
+offset_right = 64.111
+offset_bottom = 82.1205
+texture = ExtResource("17_qay2g")
+
+[node name="HSplitContainer" type="HSplitContainer" parent="CanvasLayer/Pamphlet/TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -8.281
+anchor_top = -3.906
+anchor_right = -8.281
+anchor_bottom = -3.906
+offset_left = 2723.79
+offset_top = 852.932
+offset_right = 3052.79
+offset_bottom = 1062.93
+
+[node name="MarginContainer" type="Label" parent="CanvasLayer/Pamphlet/TextureRect/HSplitContainer"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+text = "THE PRICES -
+
+NECKLACE - 600
+RING - 435
+CONSOLE - 350
+VASE - 90"
+
+[node name="MarginContainer2" type="Label" parent="CanvasLayer/Pamphlet/TextureRect/HSplitContainer"]
+custom_minimum_size = Vector2(116, 0)
+layout_mode = 2
 
 [node name="CashFinal64x64" type="TextureRect" parent="CanvasLayer"]
 offset_left = 36.0
@@ -175,12 +223,14 @@ autowrap_mode = 2
 script = ExtResource("1_dygwe")
 
 [node name="Inventory" type="ScrollContainer" parent="CanvasLayer"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 99.0
-offset_right = -100.0
-offset_bottom = -24.0
+offset_left = 104.0
+offset_top = 59.0
+offset_right = -95.0
+offset_bottom = -58.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1, 1.038)
@@ -196,7 +246,7 @@ one_shot = true
 
 [node name="WallWithGuitar2" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(572.5, 321)
+position = Vector2(575, 324)
 scale = Vector2(4.19688, 4.2)
 texture = ExtResource("17_cg7pp")
 

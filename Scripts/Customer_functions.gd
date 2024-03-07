@@ -13,18 +13,18 @@ func _ready():
 func _process(delta):
 	if(customer_enter):
 		position.x+=450*delta
-		position.y=sin(position.x/20)*8+135
+		position.y=sin(position.x/20)*8+105
 		if(position.x>395):
 			entered.emit()
 			customer_enter=false
 		
 	if(customer_leave):
 		position.x-=450*delta
-		position.y=sin(position.x/20)*8+135
-		if(position.x<-337):
+		position.y=sin(position.x/20)*8+105
+		if(position.x<-390):
 			customer_leave=false
 	pass
 
 func enter():
 	customer_enter=true
-	position=Vector2(-337,135)
+	position=Vector2(-390,165)

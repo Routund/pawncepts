@@ -1,8 +1,8 @@
-[gd_scene load_steps=28 format=3 uid="uid://so1vseffcoo2"]
+[gd_scene load_steps=31 format=3 uid="uid://so1vseffcoo2"]
 
 [ext_resource type="Script" path="res://Scripts/Money.gd" id="1_dygwe"]
 [ext_resource type="Script" path="res://Scripts/Shop_Manager.gd" id="1_ruhxm"]
-[ext_resource type="Texture2D" uid="uid://bbk2g748hlv51" path="res://Assets/person_base.png" id="2_q2o5f"]
+[ext_resource type="Texture2D" uid="uid://bwxy0qs32wajc" path="res://Assets/customer.png" id="2_06yqu"]
 [ext_resource type="Texture2D" uid="uid://ct6vrrwc8lssc" path="res://Assets/cash.png" id="3_clsbt"]
 [ext_resource type="Script" path="res://Scripts/Customer_functions.gd" id="3_x5wk7"]
 [ext_resource type="Script" path="res://Scripts/Speech_manager.gd" id="5_2j8ui"]
@@ -18,10 +18,12 @@
 [ext_resource type="Script" path="res://Scripts/Cross.gd" id="14_ynerj"]
 [ext_resource type="Texture2D" uid="uid://ciiwn8jd2waf2" path="res://Assets/New Piskel-1.png.png" id="15_xaxon"]
 [ext_resource type="FontFile" uid="uid://b3v1an5qk731n" path="res://Assets/PatrickHand-Regular.ttf" id="16_1ht2d"]
-[ext_resource type="Script" path="res://Scenes/PriceGuide.gd" id="16_lsrla"]
+[ext_resource type="Script" path="res://Scripts/PriceGuide.gd" id="16_lsrla"]
 [ext_resource type="Texture2D" uid="uid://dvcqo0t7qd1j0" path="res://Assets/Wall with guitar-1.png" id="17_cg7pp"]
 [ext_resource type="Texture2D" uid="uid://brebajf03s64b" path="res://Assets/pamphlet_open.png" id="17_qay2g"]
-[ext_resource type="Script" path="res://Scenes/Menu.gd" id="18_x3lcq"]
+[ext_resource type="Script" path="res://Scripts/Menu.gd" id="18_x3lcq"]
+[ext_resource type="Texture2D" uid="uid://bg7r14a7t7y5h" path="res://Assets/icon.svg" id="22_yj20y"]
+[ext_resource type="Script" path="res://Assets/End_screen.gd" id="23_h3lyg"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_anbuk"]
 font_size = 200
@@ -42,6 +44,11 @@ font = SubResource("FontVariation_uji3a")
 font_size = 43
 font_color = Color(0, 0.521569, 0, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_dml0p"]
+font = ExtResource("16_1ht2d")
+font_size = 43
+font_color = Color(0, 0, 0, 1)
+
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_ruhxm")
 
@@ -49,15 +56,20 @@ script = ExtResource("1_ruhxm")
 position = Vector2(573, 323)
 zoom = Vector2(0.855, 0.855)
 
+[node name="TextureRect" type="TextureRect" parent="Camera2D"]
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Customer" type="TextureRect" parent="CanvasLayer"]
-offset_left = -227.0
-offset_top = 119.0
-offset_right = 4734.0
-offset_bottom = 4910.0
+texture_filter = 1
+offset_left = -257.0
+offset_top = 102.0
+offset_right = 4704.0
+offset_bottom = 4893.0
 scale = Vector2(0.0721125, 0.0710185)
-texture = ExtResource("2_q2o5f")
+texture = ExtResource("2_06yqu")
 script = ExtResource("3_x5wk7")
 
 [node name="Speech_bubble" type="Node2D" parent="CanvasLayer/Customer"]
@@ -152,6 +164,32 @@ position = Vector2(575, 324)
 scale = Vector2(4.2, 4.2)
 texture = ExtResource("14_hqgfg")
 
+[node name="CashFinal64x64" type="TextureRect" parent="CanvasLayer"]
+offset_left = 36.0
+offset_top = 46.0
+offset_right = 100.0
+offset_bottom = 110.0
+scale = Vector2(1.35938, 1.39063)
+texture = ExtResource("3_clsbt")
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.014
+anchor_top = 0.071
+anchor_right = 0.014
+anchor_bottom = 0.071
+offset_left = 101.872
+offset_top = -1.008
+offset_right = 244.872
+offset_bottom = 57.992
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.979851, 1)
+text = "adsasd"
+label_settings = SubResource("LabelSettings_04taw")
+autowrap_mode = 2
+script = ExtResource("1_dygwe")
+
 [node name="Pamphlet" type="TextureButton" parent="CanvasLayer"]
 texture_filter = 1
 offset_left = 900.0
@@ -178,13 +216,15 @@ anchor_left = -8.281
 anchor_top = -3.906
 anchor_right = -8.281
 anchor_bottom = -3.906
-offset_left = 2723.79
-offset_top = 852.932
-offset_right = 3052.79
-offset_bottom = 1062.93
+offset_left = 2737.97
+offset_top = 854.503
+offset_right = 3315.97
+offset_bottom = 1253.5
+scale = Vector2(0.30689, 0.294238)
 
 [node name="MarginContainer" type="Label" parent="CanvasLayer/Pamphlet/TextureRect/HSplitContainer"]
-custom_minimum_size = Vector2(160, 0)
+texture_filter = 1
+custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 text = "THE PRICES -
 
@@ -192,35 +232,11 @@ NECKLACE - 600
 RING - 435
 CONSOLE - 350
 VASE - 90"
+label_settings = SubResource("LabelSettings_dml0p")
 
 [node name="MarginContainer2" type="Label" parent="CanvasLayer/Pamphlet/TextureRect/HSplitContainer"]
-custom_minimum_size = Vector2(116, 0)
+custom_minimum_size = Vector2(450, 0)
 layout_mode = 2
-
-[node name="CashFinal64x64" type="TextureRect" parent="CanvasLayer"]
-offset_left = 36.0
-offset_top = 46.0
-offset_right = 100.0
-offset_bottom = 110.0
-scale = Vector2(1.35938, 1.39063)
-texture = ExtResource("3_clsbt")
-
-[node name="Label" type="Label" parent="CanvasLayer"]
-anchors_preset = -1
-anchor_left = 0.014
-anchor_top = 0.071
-anchor_right = 0.014
-anchor_bottom = 0.071
-offset_left = 101.872
-offset_top = -1.008
-offset_right = 279.872
-offset_bottom = 71.992
-grow_horizontal = 2
-grow_vertical = 2
-text = "adsasd"
-label_settings = SubResource("LabelSettings_04taw")
-autowrap_mode = 2
-script = ExtResource("1_dygwe")
 
 [node name="Inventory" type="ScrollContainer" parent="CanvasLayer"]
 visible = false
@@ -241,6 +257,19 @@ script = ExtResource("18_x3lcq")
 layout_mode = 2
 size_flags_horizontal = 0
 
+[node name="DayEndPanel" type="TextureRect" parent="CanvasLayer"]
+texture_filter = 1
+offset_left = 1153.0
+offset_right = 2306.0
+offset_bottom = 648.0
+texture = ExtResource("22_yj20y")
+script = ExtResource("23_h3lyg")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/DayEndPanel"]
+layout_mode = 0
+offset_right = 1153.0
+offset_bottom = 648.0
+
 [node name="Customer_timer" type="Timer" parent="."]
 one_shot = true
 
@@ -251,7 +280,9 @@ scale = Vector2(4.19688, 4.2)
 texture = ExtResource("17_cg7pp")
 
 [node name="Store_timer" type="Timer" parent="."]
+one_shot = true
 
+[connection signal="shop_end" from="." to="CanvasLayer/DayEndPanel" method="_on_node_2d_shop_end"]
 [connection signal="entered" from="CanvasLayer/Customer" to="CanvasLayer/Customer/Speech_bubble" method="_on_customer_entered"]
 [connection signal="sold" from="CanvasLayer/Customer/Speech_bubble" to="." method="_on_speech_bubble_sold"]
 [connection signal="sold" from="CanvasLayer/Customer/Speech_bubble" to="CanvasLayer/Customer/Speech_bubble/Spinner" method="_on_speech_bubble_sold"]

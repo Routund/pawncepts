@@ -13,7 +13,7 @@
 		<dialogue>I can finally sleep tonight. Thank you.</dialogue>
 	</customer_type>
 	<customer_type id="2">
-		<dialogue>Hey, that $%s looks really cool. Could I get it for $%d</dialogue>
+		<dialogue>Hey, that %s looks really cool. Could I get it for $%d</dialogue>
 		<dialogue>Oh ok. could you maybe do $%d</dialogue>
 		<dialogue>I may be stupid, but even I have my limits</dialogue>
 		<dialogue>Thanks so much!</dialogue>

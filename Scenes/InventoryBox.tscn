@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://dggqc1lplbq2f"]
 
-[ext_resource type="Script" path="res://Scenes/Inventory_base.gd" id="1_01dfa"]
+[ext_resource type="Script" path="res://Scripts/Inventory_base.gd" id="1_t8fg0"]
 [ext_resource type="Texture2D" uid="uid://n7hmsu5gx70y" path="res://Assets/InventorySlot.png" id="2_gxvrx"]
 [ext_resource type="Texture2D" uid="uid://br03r3febb2sk" path="res://Assets/spinner.png" id="3_coiqw"]
 [ext_resource type="FontFile" uid="uid://b3v1an5qk731n" path="res://Assets/PatrickHand-Regular.ttf" id="3_ory4n"]
@@ -30,7 +30,7 @@ offset_right = -34.0
 offset_bottom = -488.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_01dfa")
+script = ExtResource("1_t8fg0")
 
 [node name="Background" type="TextureRect" parent="."]
 texture_filter = 1

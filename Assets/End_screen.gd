@@ -2,6 +2,11 @@ extends TextureRect
 
 var goLeft=false
 var goRight = false
+
+@onready var Revenue = get_node("MarginContainer/HBoxContainer/Values/Revenue")
+@onready var Rent = get_node("MarginContainer/HBoxContainer/Values/Rent")
+@onready var Profits = get_node("MarginContainer/HBoxContainer/Values/Profits")
+@onready var Expenses = get_node("MarginContainer/HBoxContainer/Values/Expenses")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.

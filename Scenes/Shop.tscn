@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://so1vseffcoo2"]
+[gd_scene load_steps=37 format=3 uid="uid://so1vseffcoo2"]
 
 [ext_resource type="Script" path="res://Scripts/Money.gd" id="1_dygwe"]
 [ext_resource type="Script" path="res://Scripts/Shop_Manager.gd" id="1_ruhxm"]
@@ -51,16 +51,31 @@ font = ExtResource("21_gs46w")
 font_size = 43
 font_color = Color(0, 0, 0, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_j0ydy"]
+font = ExtResource("21_gs46w")
+font_size = 40
+font_color = Color(0, 0.870588, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_xsskk"]
+font = ExtResource("21_gs46w")
+font_size = 40
+font_color = Color(0.980392, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5iorc"]
+font = ExtResource("21_gs46w")
+font_size = 40
+font_color = Color(0.980392, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_6pcmy"]
+font = ExtResource("21_gs46w")
+font_size = 40
+font_color = Color(0.733333, 0.470588, 0, 1)
+
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_ruhxm")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(573, 323)
-zoom = Vector2(0.855, 0.855)
-
-[node name="TextureRect" type="TextureRect" parent="Camera2D"]
-offset_right = 40.0
-offset_bottom = 40.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -160,13 +175,14 @@ texture_pressed = ExtResource("12_5beyp")
 script = ExtResource("14_ynerj")
 metadata/_edit_use_anchors_ = true
 
-[node name="Storefront" type="Sprite2D" parent="CanvasLayer"]
-texture_filter = 1
-position = Vector2(575, 324)
+[node name="Counter" type="Sprite2D" parent="CanvasLayer"]
+texture_filter = 3
+position = Vector2(576, 324)
 scale = Vector2(4.2, 4.2)
 texture = ExtResource("14_hqgfg")
 
 [node name="CashFinal64x64" type="TextureRect" parent="CanvasLayer"]
+texture_filter = 1
 offset_left = 36.0
 offset_top = 46.0
 offset_right = 100.0
@@ -311,23 +327,23 @@ layout_mode = 2
 [node name="Revenue" type="Label" parent="CanvasLayer/DayEndPanel/MarginContainer/HBoxContainer/Values"]
 layout_mode = 2
 text = "$0"
-label_settings = ExtResource("25_vilef")
+label_settings = SubResource("LabelSettings_j0ydy")
 vertical_alignment = 1
 
 [node name="Expenses" type="Label" parent="CanvasLayer/DayEndPanel/MarginContainer/HBoxContainer/Values"]
 layout_mode = 2
 text = "$0"
-label_settings = ExtResource("25_vilef")
+label_settings = SubResource("LabelSettings_xsskk")
 
 [node name="Rent" type="Label" parent="CanvasLayer/DayEndPanel/MarginContainer/HBoxContainer/Values"]
 layout_mode = 2
 text = "$0"
-label_settings = ExtResource("25_vilef")
+label_settings = SubResource("LabelSettings_5iorc")
 
 [node name="Profits" type="Label" parent="CanvasLayer/DayEndPanel/MarginContainer/HBoxContainer/Values"]
 layout_mode = 2
 text = "$0"
-label_settings = ExtResource("25_vilef")
+label_settings = SubResource("LabelSettings_6pcmy")
 
 [node name="Customer_timer" type="Timer" parent="."]
 one_shot = true

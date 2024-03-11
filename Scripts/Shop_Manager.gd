@@ -13,7 +13,7 @@ var exp=0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Start the shop timer when the game starts
-	store_timer.start(120)  # Adjust the time as per your requirement
+	store_timer.start(90)  # Adjust the time as per your requirement
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):

@@ -8,7 +8,7 @@
 	</customer_type>
 	<customer_type id="1">
 		<dialogue>Hey, is that %s available for like $%d, my kid is going to keep me up all night if I dont buy one.</dialogue>
-		<dialogue>Umm, I could do %$d.</dialogue>
+		<dialogue>Umm, I could do $%d.</dialogue>
 		<dialogue>I'm going to blame you for my sleepless nights. Thanks alot.</dialogue>
 		<dialogue>I can finally sleep tonight. Thank you.</dialogue>
 	</customer_type>

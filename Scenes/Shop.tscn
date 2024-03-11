@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://so1vseffcoo2"]
+[gd_scene load_steps=38 format=3 uid="uid://so1vseffcoo2"]
 
 [ext_resource type="Script" path="res://Scripts/Money.gd" id="1_dygwe"]
 [ext_resource type="Script" path="res://Scripts/Shop_Manager.gd" id="1_ruhxm"]
@@ -24,8 +24,10 @@
 [ext_resource type="Script" path="res://Scripts/Menu.gd" id="18_x3lcq"]
 [ext_resource type="FontFile" uid="uid://cvg8q6w3cy6su" path="res://Assets/fonts/PixelifySans-Medium.ttf" id="21_gs46w"]
 [ext_resource type="Texture2D" uid="uid://uibhua2d1nxw" path="res://Assets/day_end.png" id="22_mkiqy"]
-[ext_resource type="Script" path="res://Assets/End_screen.gd" id="23_h3lyg"]
+[ext_resource type="Script" path="res://Scripts/End_screen.gd" id="23_h3lyg"]
 [ext_resource type="LabelSettings" uid="uid://cg2yv00651kjg" path="res://Assets/fonts/End_screen.tres" id="25_vilef"]
+[ext_resource type="Texture2D" uid="uid://boitv66tuqolh" path="res://Assets/newDay/sprite_0.png" id="26_0u6o6"]
+[ext_resource type="Texture2D" uid="uid://cjv83bcwkwe8s" path="res://Assets/newDay/sprite_1.png" id="27_87yxb"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_anbuk"]
 font_size = 200
@@ -51,31 +53,31 @@ font = ExtResource("21_gs46w")
 font_size = 43
 font_color = Color(0, 0, 0, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_j0ydy"]
+[sub_resource type="LabelSettings" id="LabelSettings_keh2d"]
 font = ExtResource("21_gs46w")
 font_size = 40
-font_color = Color(0, 0.870588, 0, 1)
+font_color = Color(0.0196078, 0.945098, 0, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_xsskk"]
+[sub_resource type="LabelSettings" id="LabelSettings_mbctk"]
 font = ExtResource("21_gs46w")
 font_size = 40
-font_color = Color(0.980392, 0, 0, 1)
+font_color = Color(0.996078, 0, 0, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_5iorc"]
+[sub_resource type="LabelSettings" id="LabelSettings_clnxp"]
 font = ExtResource("21_gs46w")
 font_size = 40
-font_color = Color(0.980392, 0, 0, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_6pcmy"]
-font = ExtResource("21_gs46w")
-font_size = 40
-font_color = Color(0.733333, 0.470588, 0, 1)
+font_color = Color(0.996078, 0, 0, 1)
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_ruhxm")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(573, 323)
+zoom = Vector2(0.855, 0.855)
+
+[node name="TextureRect" type="TextureRect" parent="Camera2D"]
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -175,14 +177,13 @@ texture_pressed = ExtResource("12_5beyp")
 script = ExtResource("14_ynerj")
 metadata/_edit_use_anchors_ = true
 
-[node name="Counter" type="Sprite2D" parent="CanvasLayer"]
-texture_filter = 3
-position = Vector2(576, 324)
+[node name="Storefront" type="Sprite2D" parent="CanvasLayer"]
+texture_filter = 1
+position = Vector2(575, 324)
 scale = Vector2(4.2, 4.2)
 texture = ExtResource("14_hqgfg")
 
 [node name="CashFinal64x64" type="TextureRect" parent="CanvasLayer"]
-texture_filter = 1
 offset_left = 36.0
 offset_top = 46.0
 offset_right = 100.0
@@ -290,67 +291,80 @@ offset_top = 326.0
 offset_right = 805.0
 offset_bottom = 624.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/DayEndPanel/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/DayEndPanel/MarginContainer"]
 layout_mode = 2
 
-[node name="Categories" type="VBoxContainer" parent="CanvasLayer/DayEndPanel/MarginContainer/HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/DayEndPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Categories" type="VBoxContainer" parent="CanvasLayer/DayEndPanel/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 
-[node name="Revenue" type="Label" parent="CanvasLayer/DayEndPanel/MarginContainer/HBoxContainer/Categories"]
+[node name="Revenue" type="Label" parent="CanvasLayer/DayEndPanel/MarginContainer/VBoxContainer/HBoxContainer/Categories"]
 layout_mode = 2
 text = "Revenue :"
 label_settings = ExtResource("25_vilef")
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Expenses" type="Label" parent="CanvasLayer/DayEndPanel/MarginContainer/HBoxContainer/Categories"]
+[node name="Expenses" type="Label" parent="CanvasLayer/DayEndPanel/MarginContainer/VBoxContainer/HBoxContainer/Categories"]
 layout_mode = 2
 text = "Expenses :"
 label_settings = ExtResource("25_vilef")
 horizontal_alignment = 2
 
-[node name="Rent" type="Label" parent="CanvasLayer/DayEndPanel/MarginContainer/HBoxContainer/Categories"]
+[node name="Rent" type="Label" parent="CanvasLayer/DayEndPanel/MarginContainer/VBoxContainer/HBoxContainer/Categories"]
 layout_mode = 2
 text = "Rent:"
 label_settings = ExtResource("25_vilef")
 horizontal_alignment = 2
 
-[node name="Profits" type="Label" parent="CanvasLayer/DayEndPanel/MarginContainer/HBoxContainer/Categories"]
+[node name="Profits" type="Label" parent="CanvasLayer/DayEndPanel/MarginContainer/VBoxContainer/HBoxContainer/Categories"]
 layout_mode = 2
 text = "TOTAL PROFIT:"
 label_settings = ExtResource("25_vilef")
 horizontal_alignment = 2
 
-[node name="Values" type="VBoxContainer" parent="CanvasLayer/DayEndPanel/MarginContainer/HBoxContainer"]
+[node name="Values" type="VBoxContainer" parent="CanvasLayer/DayEndPanel/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="Revenue" type="Label" parent="CanvasLayer/DayEndPanel/MarginContainer/HBoxContainer/Values"]
+[node name="Revenue" type="Label" parent="CanvasLayer/DayEndPanel/MarginContainer/VBoxContainer/HBoxContainer/Values"]
 layout_mode = 2
 text = "$0"
-label_settings = SubResource("LabelSettings_j0ydy")
+label_settings = SubResource("LabelSettings_keh2d")
 vertical_alignment = 1
 
-[node name="Expenses" type="Label" parent="CanvasLayer/DayEndPanel/MarginContainer/HBoxContainer/Values"]
+[node name="Expenses" type="Label" parent="CanvasLayer/DayEndPanel/MarginContainer/VBoxContainer/HBoxContainer/Values"]
 layout_mode = 2
 text = "$0"
-label_settings = SubResource("LabelSettings_xsskk")
+label_settings = SubResource("LabelSettings_mbctk")
 
-[node name="Rent" type="Label" parent="CanvasLayer/DayEndPanel/MarginContainer/HBoxContainer/Values"]
+[node name="Rent" type="Label" parent="CanvasLayer/DayEndPanel/MarginContainer/VBoxContainer/HBoxContainer/Values"]
 layout_mode = 2
 text = "$0"
-label_settings = SubResource("LabelSettings_5iorc")
+label_settings = SubResource("LabelSettings_clnxp")
 
-[node name="Profits" type="Label" parent="CanvasLayer/DayEndPanel/MarginContainer/HBoxContainer/Values"]
+[node name="Profits" type="Label" parent="CanvasLayer/DayEndPanel/MarginContainer/VBoxContainer/HBoxContainer/Values"]
 layout_mode = 2
 text = "$0"
-label_settings = SubResource("LabelSettings_6pcmy")
+label_settings = ExtResource("25_vilef")
+
+[node name="TextureButton" type="TextureButton" parent="CanvasLayer/DayEndPanel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 75)
+layout_mode = 2
+texture_normal = ExtResource("26_0u6o6")
+texture_pressed = ExtResource("27_87yxb")
+ignore_texture_size = true
+stretch_mode = 5
 
 [node name="Customer_timer" type="Timer" parent="."]
 one_shot = true
 
 [node name="WallWithGuitar2" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(575, 324)
+position = Vector2(574, 324)
 scale = Vector2(4.19688, 4.2)
 texture = ExtResource("17_cg7pp")
 

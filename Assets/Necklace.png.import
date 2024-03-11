@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjcfmok7cxdns"
-path="res://.godot/imported/counterbottom.png.png-09291ad5985a58eb78f622bafb6a484b.ctex"
+uid="uid://bjim0mp3wvctq"
+path="res://.godot/imported/Necklace.png-3854f9954884301be210701c00f03008.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/counterbottom.png.png"
-dest_files=["res://.godot/imported/counterbottom.png.png-09291ad5985a58eb78f622bafb6a484b.ctex"]
+source_file="res://Assets/Necklace.png"
+dest_files=["res://.godot/imported/Necklace.png-3854f9954884301be210701c00f03008.ctex"]
 
 [params]
 

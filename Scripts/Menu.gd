@@ -26,4 +26,5 @@ func _on_speech_bubble_sold(price):
 		inventory.append(item_instance)
 	elif(price<0):
 		inventory[Speech_manager.item_index].queue_free()
+		inventory.pop_at(Speech_manager.item_index)
 	pass # Replace with function body.

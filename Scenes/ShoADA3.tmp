@@ -354,7 +354,6 @@ label_settings = ExtResource("25_vilef")
 [node name="NextButton" type="TextureButton" parent="CanvasLayer/DayEndPanel/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(100, 75)
 layout_mode = 2
-toggle_mode = true
 texture_normal = ExtResource("26_0u6o6")
 texture_pressed = ExtResource("27_87yxb")
 stretch_mode = 5
@@ -385,6 +384,3 @@ one_shot = true
 [connection signal="NewDay" from="CanvasLayer/DayEndPanel" to="CanvasLayer/Label" method="_on_day_end_panel_new_day"]
 [connection signal="NewDay" from="CanvasLayer/DayEndPanel" to="CanvasLayer/Pamphlet" method="_on_day_end_panel_new_day"]
 [connection signal="NewDay" from="CanvasLayer/DayEndPanel" to="CanvasLayer/Inventory" method="_on_day_end_panel_new_day"]
-[connection signal="nDayPressed" from="CanvasLayer/DayEndPanel/MarginContainer/VBoxContainer/NextButton" to="." method="_on_next_button_n_day_pressed"]
-[connection signal="nDayPressed" from="CanvasLayer/DayEndPanel/MarginContainer/VBoxContainer/NextButton" to="CanvasLayer/DayEndPanel" method="_on_next_button_n_day_pressed"]
-[connection signal="nDayPressed" from="CanvasLayer/DayEndPanel/MarginContainer/VBoxContainer/NextButton" to="CanvasLayer/DayEndPanel/MarginContainer/VBoxContainer/NextButton" method="_on_n_day_pressed"]

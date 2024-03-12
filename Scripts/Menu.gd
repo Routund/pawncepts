@@ -28,3 +28,8 @@ func _on_speech_bubble_sold(price):
 		inventory[Speech_manager.item_index].queue_free()
 		inventory.pop_at(Speech_manager.item_index)
 	pass # Replace with function body.
+
+
+func _on_day_end_panel_new_day(rent):
+	visible=false
+	pass # Replace with function body.

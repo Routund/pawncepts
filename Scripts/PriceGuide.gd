@@ -22,3 +22,8 @@ func _process(_delta):
 		# Button is pressed for the first time
 		justPressed = true
 	pass
+
+
+func _on_day_end_panel_new_day(rent):
+	pamphlet.visible=false
+	pass # Replace with function body.

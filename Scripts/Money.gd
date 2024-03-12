@@ -17,3 +17,8 @@ func _process(_delta):
 func _on_speech_bubble_sold(price):
 	balance-=price
 	pass # Replace with function body.
+
+
+func _on_day_end_panel_new_day(rent):
+	balance-=rent
+	pass # Replace with function body.

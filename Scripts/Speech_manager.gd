@@ -28,7 +28,7 @@ var customerTypes = [
 ]
 var cust_variance = [
 	0.9, # Stingy, give high price and have relatively high min price
-	0.3, # Desperate, give low price, and have relatively low min price
+	0.6, # Desperate, give low price, and have relatively low min price
 	0.6, # Clueless, give high price, and have relatively low min price
 	0.8, # Veteran, give low price, and have relatively high min price   
 ]

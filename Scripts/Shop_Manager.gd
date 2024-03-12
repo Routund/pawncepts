@@ -50,3 +50,8 @@ func _on_speech_bubble_sold(price):
 	else:
 		rev-=price
 	pass # Replace with function body.
+
+func _on_next_button_n_day_pressed():
+	store_timer.start(90)
+	customer.enter()
+	pass # Replace with function body.

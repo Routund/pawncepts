@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://so1vseffcoo2"]
+[gd_scene load_steps=44 format=3 uid="uid://so1vseffcoo2"]
 
 [ext_resource type="Script" path="res://Scripts/Money.gd" id="1_dygwe"]
 [ext_resource type="Script" path="res://Scripts/Shop_Manager.gd" id="1_ruhxm"]
@@ -6,11 +6,15 @@
 [ext_resource type="Texture2D" uid="uid://ct6vrrwc8lssc" path="res://Assets/cash.png" id="3_clsbt"]
 [ext_resource type="Script" path="res://Scripts/Customer_functions.gd" id="3_x5wk7"]
 [ext_resource type="Script" path="res://Scripts/Speech_manager.gd" id="5_2j8ui"]
-[ext_resource type="FontFile" uid="uid://p6is53q5mcnk" path="res://Assets/fonts/PatrickHand-Regular - Copy.ttf" id="6_14rn3"]
 [ext_resource type="Texture2D" uid="uid://d37rpu5aixpdx" path="res://Assets/Speech Bubble Final 64x64 (less shading).png" id="6_ahva7"]
 [ext_resource type="FontFile" uid="uid://dq7isvv3tjmb5" path="res://Assets/fonts/PixelifySans-Medium - Copy.ttf" id="6_pdy8u"]
-[ext_resource type="Script" path="res://Scenes/blinkDialogue.gd" id="7_5et2d"]
+[ext_resource type="Texture2D" uid="uid://br03r3febb2sk" path="res://Assets/spinner.png" id="7_7b1i1"]
+[ext_resource type="Script" path="res://Scripts/spin.gd" id="8_rf3ha"]
+[ext_resource type="Texture2D" uid="uid://d1h4mxerlnj6f" path="res://Assets/check_norm.png" id="9_fqr4x"]
+[ext_resource type="Texture2D" uid="uid://dw3wlawekx5te" path="res://Assets/check_press.png" id="10_g7l0n"]
 [ext_resource type="Script" path="res://Scripts/Check.gd" id="11_ca2va"]
+[ext_resource type="Texture2D" uid="uid://cadatuipseqoy" path="res://Assets/cross_norm.png" id="11_tse4m"]
+[ext_resource type="Texture2D" uid="uid://dytvihovhihl4" path="res://Assets/cross_press.png" id="12_5beyp"]
 [ext_resource type="Texture2D" uid="uid://b34hnxcmmeh3t" path="res://Assets/counter.png" id="14_hqgfg"]
 [ext_resource type="Texture2D" uid="uid://bqw2xgadp5xl2" path="res://Assets/Calculator 64 x 64.png" id="14_nmlqa"]
 [ext_resource type="Script" path="res://Scripts/Cross.gd" id="14_ynerj"]
@@ -31,9 +35,15 @@
 [ext_resource type="Script" path="res://Scripts/NextDay.gd" id="28_fbp7n"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_anbuk"]
-font = ExtResource("6_14rn3")
 font_size = 200
 font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_5vnj3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gjitf"]
+font = SubResource("FontVariation_5vnj3")
+font_size = 200
+font_color = Color(0.866667, 0.878431, 0.858824, 1)
 
 [sub_resource type="FontVariation" id="FontVariation_uji3a"]
 base_font = ExtResource("6_pdy8u")
@@ -91,8 +101,7 @@ script = ExtResource("3_x5wk7")
 
 [node name="Speech_bubble" type="Node2D" parent="CanvasLayer/Customer"]
 visible = false
-position = Vector2(-1553.13, 1154.63)
-scale = Vector2(1.5, 1.5)
+position = Vector2(-707.229, 605.476)
 script = ExtResource("5_2j8ui")
 
 [node name="Bubble" type="NinePatchRect" parent="CanvasLayer/Customer/Speech_bubble"]
@@ -124,23 +133,56 @@ label_settings = SubResource("LabelSettings_anbuk")
 autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Dialogue2" type="Label" parent="CanvasLayer/Customer/Speech_bubble"]
-visible = false
+[node name="Spinner" type="TextureButton" parent="CanvasLayer/Customer/Speech_bubble"]
+offset_left = -485.817
+offset_top = 339.948
+offset_right = 1674.18
+offset_bottom = 2499.95
+scale = Vector2(0.65, 0.65)
+pivot_offset = Vector2(1080, 1080)
+texture_normal = ExtResource("7_7b1i1")
+script = ExtResource("8_rf3ha")
+metadata/_edit_use_anchors_ = true
+
+[node name="Price" type="Label" parent="CanvasLayer/Customer/Speech_bubble"]
 anchors_preset = -1
-anchor_left = 0.492348
-anchor_top = 1.52317
-anchor_right = 0.0810105
-anchor_bottom = 0.812671
-offset_left = -1469.92
-offset_top = 253.455
-offset_right = 1970.08
-offset_bottom = 1196.46
-scale = Vector2(0.8, 0.8)
-text = "Press Space to continue
-"
-label_settings = SubResource("LabelSettings_anbuk")
+anchor_left = 0.014
+anchor_top = 0.071
+anchor_right = 0.014
+anchor_bottom = 0.071
+offset_left = 193.677
+offset_top = 987.666
+offset_right = 1080.68
+offset_bottom = 1874.67
+grow_horizontal = 2
+grow_vertical = 2
+text = "$9999"
+label_settings = SubResource("LabelSettings_gjitf")
+horizontal_alignment = 1
+vertical_alignment = 1
 autowrap_mode = 2
-script = ExtResource("7_5et2d")
+metadata/_edit_use_anchors_ = true
+
+[node name="Check" type="TextureButton" parent="CanvasLayer/Customer/Speech_bubble"]
+offset_left = -1720.0
+offset_top = 875.02
+offset_right = 440.004
+offset_bottom = 3035.02
+scale = Vector2(0.25, 0.25)
+texture_normal = ExtResource("9_fqr4x")
+texture_pressed = ExtResource("10_g7l0n")
+script = ExtResource("11_ca2va")
+metadata/_edit_use_anchors_ = true
+
+[node name="Cross" type="TextureButton" parent="CanvasLayer/Customer/Speech_bubble"]
+offset_left = -846.366
+offset_top = 875.02
+offset_right = 1313.64
+offset_bottom = 3035.02
+scale = Vector2(0.25, 0.25)
+texture_normal = ExtResource("11_tse4m")
+texture_pressed = ExtResource("12_5beyp")
+script = ExtResource("14_ynerj")
 metadata/_edit_use_anchors_ = true
 
 [node name="Storefront" type="Sprite2D" parent="CanvasLayer"]
@@ -150,10 +192,10 @@ scale = Vector2(4.2, 4.2)
 texture = ExtResource("14_hqgfg")
 
 [node name="CashFinal64x64" type="TextureRect" parent="CanvasLayer"]
-offset_left = 5.0
-offset_top = 12.0
-offset_right = 69.0
-offset_bottom = 76.0
+offset_left = 36.0
+offset_top = 46.0
+offset_right = 100.0
+offset_bottom = 110.0
 scale = Vector2(1.35938, 1.39063)
 texture = ExtResource("3_clsbt")
 
@@ -163,10 +205,10 @@ anchor_left = 0.014
 anchor_top = 0.071
 anchor_right = 0.014
 anchor_bottom = 0.071
-offset_left = 70.872
-offset_top = -30.008
-offset_right = 213.872
-offset_bottom = 28.992
+offset_left = 101.872
+offset_top = -1.008
+offset_right = 244.872
+offset_bottom = 57.992
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.979851, 1)
@@ -291,7 +333,7 @@ offset_left = 460.0
 offset_top = 240.0
 offset_right = 2592.0
 offset_bottom = 1200.0
-text = "
+text = "9999
 "
 label_settings = SubResource("LabelSettings_oksqp")
 horizontal_alignment = 2
@@ -302,9 +344,7 @@ offset_top = 2850.0
 offset_right = 2710.0
 offset_bottom = 3310.0
 texture_pressed = ExtResource("19_iu4n1")
-texture_disabled = ExtResource("19_iu4n1")
 stretch_mode = 0
-script = ExtResource("11_ca2va")
 
 [node name="Back" type="TextureButton" parent="CanvasLayer/Calculator"]
 offset_left = 1270.0
@@ -313,7 +353,6 @@ offset_right = 1990.0
 offset_bottom = 3310.0
 texture_pressed = ExtResource("19_iu4n1")
 stretch_mode = 0
-script = ExtResource("14_ynerj")
 
 [node name="Pamphlet" type="TextureButton" parent="CanvasLayer"]
 texture_filter = 1
@@ -481,10 +520,12 @@ one_shot = true
 [connection signal="shop_end" from="." to="CanvasLayer/DayEndPanel" method="_on_node_2d_shop_end"]
 [connection signal="entered" from="CanvasLayer/Customer" to="CanvasLayer/Customer/Speech_bubble" method="_on_customer_entered"]
 [connection signal="sold" from="CanvasLayer/Customer/Speech_bubble" to="." method="_on_speech_bubble_sold"]
+[connection signal="sold" from="CanvasLayer/Customer/Speech_bubble" to="CanvasLayer/Customer/Speech_bubble/Spinner" method="_on_speech_bubble_sold"]
+[connection signal="sold" from="CanvasLayer/Customer/Speech_bubble" to="CanvasLayer/Customer/Speech_bubble/Cross" method="_on_speech_bubble_sold"]
 [connection signal="sold" from="CanvasLayer/Customer/Speech_bubble" to="CanvasLayer/Label" method="_on_speech_bubble_sold"]
 [connection signal="sold" from="CanvasLayer/Customer/Speech_bubble" to="CanvasLayer/Inventory" method="_on_speech_bubble_sold"]
-[connection signal="checked" from="CanvasLayer/Calculator/Confirm" to="CanvasLayer/Customer/Speech_bubble" method="_on_confirm_checked"]
-[connection signal="crossed" from="CanvasLayer/Calculator/Back" to="CanvasLayer/Customer/Speech_bubble" method="_on_back_crossed"]
+[connection signal="checked" from="CanvasLayer/Customer/Speech_bubble/Check" to="CanvasLayer/Customer/Speech_bubble" method="_on_check_checked"]
+[connection signal="crossed" from="CanvasLayer/Customer/Speech_bubble/Cross" to="CanvasLayer/Customer/Speech_bubble" method="_on_cross_crossed"]
 [connection signal="NewDay" from="CanvasLayer/DayEndPanel" to="." method="_on_day_end_panel_new_day"]
 [connection signal="NewDay" from="CanvasLayer/DayEndPanel" to="CanvasLayer/Label" method="_on_day_end_panel_new_day"]
 [connection signal="NewDay" from="CanvasLayer/DayEndPanel" to="CanvasLayer/Pamphlet" method="_on_day_end_panel_new_day"]

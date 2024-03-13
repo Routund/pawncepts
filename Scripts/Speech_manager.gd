@@ -6,10 +6,10 @@ var item_index=0
 var min_price = 0
 var initial_price = 0
 var sell_price = 100
-@onready var spinner = get_node("Spinner")
+@onready var calculator = get_node("../../Calculator")
 @onready var dialogue = get_node("Dialogue")
-@onready var cross = get_node("Cross")
 @onready var money = get_node("../../Label")
+@onready var escape = get_node("Dialogue2")
 var inventory = []
 var dialogues = []
 var check_price
@@ -63,24 +63,34 @@ func _process(_delta):
 		if(dia_index<len(dia)):
 			dialogue.text+=dia[dia_index]
 			dia_index+=1
+		else:
+			dia=""
+			if(!exit):
+				calculator.goUp=true
+	if(Input.is_action_just_pressed("escapeDialogue")):
+		if(exit):
+			visible = false
+			exit = false
+			escape.visible=false
+			escape.isFading=true
+			exitNow = true
+		elif(dia!=""):
+			dialogue.text=dia
+			dia=""
+			calculator.goUp=true
 	pass
 
 func _on_customer_entered():
 		if(randi_range(0,6)>=inventory.size()):
 			customerState="sell"
-			print(customerState)
 			# Pick random values for customer
 			item = randi() % items_dict.size()
 			cust = customerTypes[randi() % customerTypes.size()]
 			min_price = int(prices[item] * (cust_variance[cust] + rng.randf_range(-0.1, 0.1)))
 			initial_price = int(min_price*(init_variance[cust]+rng.randf_range(-0.05, 0.1))) 
-			patience = 5
-			
+
 			# Load Dialogue
 			dialogues = load_dialogues("res://Scripts/sellDialog.xml")
-			dia=dialogues[1]%[items_dict[item],initial_price]
-			dialogue.text=""
-			dia_index=0
 
 		else:
 			customerState="buy"
@@ -90,21 +100,20 @@ func _on_customer_entered():
 			cust = customerTypes[randi() % customerTypes.size()]
 			min_price = int(prices[item] / (cust_variance[cust] + rng.randf_range(-0.1, 0.1)))
 			initial_price = int(min_price/(init_variance[cust]+rng.randf_range(-0.1, 0.05))) 
-			patience = 5
-			
+
 			# Load Dialogue
 			dialogues = load_dialogues("res://Scripts/buyDialog.xml")
-			dia=dialogues[1]%[items_dict[item],initial_price]
-			dialogue.text=""
-			dia_index=0
 			
-		# Initialize all visible displays
+		# Initialize all things needed, such as the calculator and the dialoguw
+		patience=5
+		dia=dialogues[1]%[items_dict[item],initial_price]
+		dialogue.text=""
+		dia_index=0
+		calculator.finalValue=""
+		calculator.display.text=""
 		visible = true
-		spinner.visible=true
-		cross.visible=true
-		spinner.priceText.visible=true
-		spinner.price=initial_price
-		spinner.priceText.text="$%s"%[initial_price]
+		exit=false
+
 func load_dialogues(path : String) -> Array:
 	var dialogues2 = []
 	
@@ -126,12 +135,25 @@ func load_dialogues(path : String) -> Array:
 	return dialogues2
 
 
-func _on_check_checked():
-	if !exit:
-		# Check if the dialog is still active
+func fin(price,dia_id):
+	dia=dialogues[dia_id]
+	dialogue.text=""
+	dia_index=0
+	exit = true
+	escape.visible=true
+	escape.isFading=true
+	calculator.goDown=true
+	sold.emit(price)
+
+func _on_back_crossed():
+	fin(0,5)
+	pass # Replace with function body.
+
+
+func _on_confirm_checked():
 		if customerState == "sell":
 			# Handle selling behavior
-			check_price = spinner.price
+			check_price = int(calculator.finalValue)
 			if(check_price>money.balance):
 				return
 			# Check if the offered price is higher than or equal to the initial price
@@ -156,17 +178,17 @@ func _on_check_checked():
 					if patience == 0:
 						fin(0,5)
 					else:
-						var newPrice = (initial_price + spinner.price) / 2.1
+						var newPrice = (initial_price + check_price) / 2.1
 						newPrice = int(newPrice * (rng.randf_range(check_price / newPrice, initial_price / newPrice)))
-						spinner.price = newPrice
-						spinner.priceText.text = "$%s" % [newPrice]
 						initial_price = newPrice
 						dia=dialogues[3]%[initial_price]
 						dialogue.text=""
 						dia_index=0  # Price negotiation
+						calculator.finalValue=""
+						calculator.display.text=""
 		else:
 			# Handle buying behavior
-			check_price = spinner.price
+			check_price = int(calculator.finalValue)
 			
 			# Check if the offered price is lower than or equal to the initial price
 			if check_price <= initial_price:
@@ -189,27 +211,12 @@ func _on_check_checked():
 					if patience == 0:
 						fin(0,5)
 					else:
-						var newPrice = (initial_price + spinner.price) / 2
+						var newPrice = (initial_price + check_price) / 2
 						newPrice = int(newPrice * (rng.randf_range(check_price / newPrice, initial_price / newPrice)))
-						spinner.price = newPrice
-						spinner.priceText.text = "$%s" % [newPrice]
 						initial_price = newPrice
 						dia=dialogues[3]%[initial_price]
 						dialogue.text=""
 						dia_index=0  # Price negotiation
-	else:
-		# Exit the dialog and make it invisible
-		visible = false
-		exit = false
-		exitNow = true
-
-func fin(price,dia_id):
-	dia=dialogues[dia_id]
-	dialogue.text=""
-	dia_index=0
-	exit = true
-	sold.emit(price)
-
-func _on_cross_crossed():
-	fin(0,5)
-	pass # Replace with function body.
+						calculator.finalValue=""
+						calculator.display.text=""
+		pass # Replace with function body.

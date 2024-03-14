@@ -21,6 +21,7 @@ font = ExtResource("4_vrws1")
 font_size = 33
 
 [node name="InventoryBox" type="CenterContainer"]
+custom_minimum_size = Vector2(100, 0)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -30,19 +31,21 @@ offset_right = -34.0
 offset_bottom = -488.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
 script = ExtResource("1_t8fg0")
 
 [node name="Background" type="TextureRect" parent="."]
 texture_filter = 1
-custom_minimum_size = Vector2(1120, 161)
+custom_minimum_size = Vector2(1020, 161)
 layout_mode = 2
 texture = ExtResource("2_gxvrx")
 expand_mode = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-custom_minimum_size = Vector2(1010, 0)
+custom_minimum_size = Vector2(900, 0)
 layout_mode = 2
-theme_override_constants/separation = 80
+theme_override_constants/separation = 57
 alignment = 2
 
 [node name="Icon" type="TextureRect" parent="HBoxContainer"]
@@ -70,6 +73,8 @@ custom_minimum_size = Vector2(350, 100)
 layout_mode = 2
 text = "This is a description of an item, it held a lot of sentimental value to its owner and now you've taken it, you fiend. You prayer of the weak and ignorant."
 label_settings = SubResource("LabelSettings_t51pq")
+horizontal_alignment = 1
+vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="Price" type="Label" parent="HBoxContainer"]

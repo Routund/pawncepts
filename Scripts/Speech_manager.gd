@@ -89,9 +89,10 @@ func _on_customer_entered():
 			cust = customerTypes[randi() % customerTypes.size()]
 			min_price = int(prices[item] * (cust_variance[cust] + rng.randf_range(-0.1, 0.1)))
 			initial_price = int(min_price*(init_variance[cust]+rng.randf_range(-0.05, 0.1))) 
-
+			
 			# Load Dialogue
 			dialogues = load_dialogues("res://Scripts/sellDialog.xml")
+			dia=dialogues[1]%[items_dict[item],initial_price]
 
 		else:
 			customerState="buy"
@@ -104,10 +105,10 @@ func _on_customer_entered():
 
 			# Load Dialogue
 			dialogues = load_dialogues("res://Scripts/buyDialog.xml")
+			dia=dialogues[1]%["%s [%d]"%[items_dict[item],item+1],initial_price]
 			
 		# Initialize all things needed, such as the calculator and the dialoguw
 		patience=5
-		dia=dialogues[1]%[items_dict[item],initial_price]
 		dialogue.text=""
 		dia_index=0
 		calculator.finalValue=""

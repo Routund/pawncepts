@@ -72,8 +72,9 @@ func _process(_delta):
 			visible = false
 			exit = false
 			escape.visible=false
-			escape.isFading=true
+			escape.isFading=false
 			exitNow = true
+			dia=""
 		elif(dia!=""):
 			dialogue.text=dia
 			dia=""
@@ -113,6 +114,9 @@ func _on_customer_entered():
 		calculator.display.text=""
 		visible = true
 		exit=false
+		escape.visible=false
+		escape.isFading=false
+		calculator.cross.disabled=false
 
 func load_dialogues(path : String) -> Array:
 	var dialogues2 = []
@@ -136,6 +140,7 @@ func load_dialogues(path : String) -> Array:
 
 
 func fin(price,dia_id):
+	
 	dia=dialogues[dia_id]
 	dialogue.text=""
 	dia_index=0
@@ -143,6 +148,8 @@ func fin(price,dia_id):
 	escape.visible=true
 	escape.isFading=true
 	calculator.goDown=true
+	calculator.cross.disabled=true
+	calculator.confirm.disabled=true
 	sold.emit(price)
 
 func _on_back_crossed():

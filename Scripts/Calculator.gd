@@ -6,6 +6,7 @@ extends TextureRect
 ]
 @onready var display = get_node("Label")
 @onready var confirm = get_node("Confirm")
+@onready var cross = get_node("Back")
 
 var goDown = false
 var goUp = false

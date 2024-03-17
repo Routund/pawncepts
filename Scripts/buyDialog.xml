@@ -1,27 +1,43 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <dialogues>
 	<customer_type id="0">
-		<dialogue>I need a %s for cheap. Heres $%d for it</dialogue>
-		<dialogue>It isn't even worth that much, can't you give it to me for like $%d</dialogue>
+		<dialogue>I need to buy a %s for cheap. Here's $%d for it</dialogue>
 		<dialogue>I bet no one's ever going to buy it. Ta-ta.</dialogue>
-		<dialogue>I guess I can pay for that</dialogue>
+		<dialogue>Perfect, heres your money.</dialogue>
+		<dialogue>I guess I can pay for that.</dialogue>
+		<dialogue>This is ridiculous. Fine, $%d?</dialogue>
+		<dialogue>It isn't even worth that much, can't you give it to me for like $%d.</dialogue>
+		<dialogue>I can't believe this. Would you at least consider $%d?</dialogue>
+		<dialogue>This is my final offer. $%d. Take it or leave it.</dialogue>
 	</customer_type>
 	<customer_type id="1">
-		<dialogue>Hey, is that %s available for like $%d, my kid is going to keep me up all night if I dont buy one.</dialogue>
-		<dialogue>Umm, I could do $%d.</dialogue>
+		<dialogue>Hey, is that %s available for purchase for like $%d, my kid is going to keep me up all night if I dont buy one.</dialogue>
 		<dialogue>I'm going to blame you for my sleepless nights. Thanks alot.</dialogue>
-		<dialogue>I can finally sleep tonight. Thank you.</dialogue>
+		<dialogue>You can't believe how long I've been looking for one of these.</dialogue>
+		<dialogue>Sure, whatever, it'll be worth it.</dialogue>
+		<dialogue>Are you serious? $%d?</dialogue>
+		<dialogue>Couldn't you give it to me for $%d?</dialogue>
+		<dialogue>This is ridiculous. Fine, $%d?</dialogue>
+		<dialogue>I am not paying more than $%d!</dialogue>
 	</customer_type>
 	<customer_type id="2">
-		<dialogue>Hey, that %s looks really cool. Could I get it for $%d</dialogue>
-		<dialogue>Oh ok. could you maybe do $%d</dialogue>
-		<dialogue>I may be stupid, but even I have my limits</dialogue>
+		<dialogue>Hey, that %s looks really cool. Could I buy it for $%d</dialogue>
+		<dialogue>I'll just order one online</dialogue>
 		<dialogue>Thanks so much!</dialogue>
+		<dialogue>It's a bit pricey, but what's done is done.</dialogue>
+		<dialogue>Oh ok. could you maybe do $%d</dialogue>
+		<dialogue>I thought it'd be worth more like $%d.</dialogue>
+		<dialogue>Surely I can have it for $%d?</dialogue>
+		<dialogue>That's it. $%d. Take it or leave it.</dialogue>
 	</customer_type>
 	<customer_type id="3">
 		<dialogue>I saw that %s in your window. Are you willing to part with it for $%d?</dialogue>
-		<dialogue>You're never going to be able to move it at that price. How about $%d?</dialogue>
 		<dialogue>I was trying to be nice, but oh well, bye.</dialogue>
 		<dialogue>I'll take it, pleasure doing business.</dialogue>
+		<dialogue>I can see it being worth that. I'll take it.</dialogue>
+		<dialogue>You're never going to be able to move it at that price. How about $%d?</dialogue>
+		<dialogue>Nice try. How about $%d?</dialogue>
+		<dialogue>Just do $%d would you?</dialogue>
+		<dialogue>Final offer, $%d.</dialogue>
 	</customer_type>
 </dialogues>

@@ -30,13 +30,13 @@ var cust_variance = [
 	0.9, # Stingy, give high price and have relatively high min price
 	0.6, # Desperate, give low price, and have relatively low min price
 	0.6, # Clueless, give high price, and have relatively low min price
-	0.8, # Veteran, give low price, and have relatively high min price   
+	0.95, # Veteran, give low price, and have relatively high min price   
 ]
 var init_variance = [
 	1.4, # Stingy, give high price and have relatively high min price
 	1.3, # Desperate, give low price, and have relatively low min price
-	3, # Clueless, give high price, and have relatively low min price
-	1.2, # Veteran, give low price, and have relatively high min price   
+	2, # Clueless, give high price, and have relatively low min price
+	1.1, # Veteran, give low price, and have relatively high min price   
 ]	
 var items_dict = {
 	0:"Necklace",
@@ -54,7 +54,6 @@ var rng = RandomNumberGenerator.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	rng.randomize()
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -82,6 +81,7 @@ func _process(_delta):
 	pass
 
 func _on_customer_entered():
+		rng.randomize()
 		if(randi_range(0,6)>=inventory.size()):
 			customerState="sell"
 			# Pick random values for customer
@@ -105,7 +105,7 @@ func _on_customer_entered():
 
 			# Load Dialogue
 			dialogues = load_dialogues("res://Scripts/buyDialog.xml")
-			dia=dialogues[0]%["%s [%d]"%[items_dict[item],item+1],initial_price]
+			dia=dialogues[0]%["%s [%d]"%[items_dict[item],item_index+1],initial_price]
 			
 		# Initialize all things needed, such as the calculator and the dialoguw
 		patience=5
@@ -137,7 +137,6 @@ func load_dialogues(path : String) -> Array:
 		if(parser.get_node_type()==XMLParser.NODE_TEXT):
 			if(parser.get_node_data().strip_edges()!=""):
 				dialogues2.append(parser.get_node_data())
-	print(dialogues2)
 	return dialogues2
 
 
@@ -155,7 +154,7 @@ func fin(price,dia_id):
 	sold.emit(price)
 
 func _on_back_crossed():
-	fin(0,2)
+	fin(0,1)
 	pass # Replace with function body.
 
 
@@ -167,11 +166,11 @@ func _on_confirm_checked():
 				return
 			# Check if the offered price is higher than or equal to the initial price
 			if check_price >= initial_price:
-				fin(check_price,3)
+				fin(check_price,2)
 				inventory.append(item)
 			# Check if the offered price is lower than the minimum acceptable price
 			elif check_price < min_price:
-				fin(0,2)
+				fin(0,1)
 			else:
 				# Calculate a decision based on the difference between initial and offered prices
 				var diff = initial_price - check_price
@@ -180,17 +179,17 @@ func _on_confirm_checked():
 					fin(check_price,3)
 					inventory.append(item)
 				elif action > 90:
-					fin(0,2)
+					fin(0,1)
 				else:
 					# Adjust the patience level and negotiate the price
 					patience -= int(rng.randf_range(1, 2.4))
 					if patience == 0:
-						fin(0,2)
+						fin(0,1)
 					else:
 						var newPrice = (initial_price + check_price) / 2.1
 						newPrice = int(newPrice * (rng.randf_range(check_price / newPrice, initial_price / newPrice)))
 						initial_price = newPrice
-						dia=dialogues[1]%[initial_price]
+						dia=dialogues[8-patience]%[initial_price]
 						dialogue.text=""
 						dia_index=0  # Price negotiation
 						calculator.finalValue=""
@@ -201,10 +200,10 @@ func _on_confirm_checked():
 			
 			# Check if the offered price is lower than or equal to the initial price
 			if check_price <= initial_price:
-				fin(-check_price,3)
+				fin(-check_price,2)
 				inventory.pop_at(item_index)
 			elif check_price > min_price:
-				fin(0,2)
+				fin(0,1)
 			else:
 				# Calculate a decision based on the difference between initial and offered prices
 				var diff = check_price - initial_price
@@ -213,17 +212,16 @@ func _on_confirm_checked():
 					fin(-check_price,3)
 					inventory.pop_at(item_index)
 				elif action > 90:
-					fin(0,2)
+					fin(0,1)
 				else:
 					# Adjust the patience level and negotiate the price
-					patience -= int(rng.randf_range(1, 2.4))
+					patience -= int(rng.randf_range(1, 2.9))
 					if patience == 0:
-						fin(0,2)
+						fin(0,1)
 					else:
-						var newPrice = (initial_price + check_price) / 2
-						newPrice = int(newPrice * (rng.randf_range(check_price / newPrice, initial_price / newPrice)))
+						var newPrice = int(rng.randf_range(initial_price,check_price))
 						initial_price = newPrice
-						dia=dialogues[1]%[initial_price]
+						dia=dialogues[8-patience]%[initial_price]
 						dialogue.text=""
 						dia_index=0  # Price negotiation
 						calculator.finalValue=""

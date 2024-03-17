@@ -2,26 +2,42 @@
 <dialogues>
 	<customer_type id="0">
 		<dialogue>I'm looking to sell this %s. It's worth $%d. Any objections?</dialogue>
-		<dialogue>Harrumph. Fine, How about $%d.</dialogue>
 		<dialogue>You clearly have no appreciation for true value.</dialogue>
+		<dialogue>That wasn't too hard now was it? Here you go.</dialogue>
 		<dialogue>Fine, if you say so.</dialogue>
+		<dialogue>Harrumph. Fine, How about $%d.</dialogue>
+		<dialogue>Unbelievable. How about $%d?</dialogue>
+		<dialogue>This is getting ridiculous. $%d?</dialogue>
+		<dialogue>This is my final offer. $%d. Take it or leave it.</dialogue>
 	</customer_type>
 	<customer_type id="1">
-		<dialogue>Look man, you think this %s, is worth at least $%d?</dialogue>
+		<dialogue>Look, you think this %s, is worth at least $%d?</dialogue>
+		<dialogue>Y'all never want to help out someone in need.</dialogue>
+		<dialogue>Thanks for taking it off my hands.</dialogue>
+		<dialogue>I'll take it at this point. Thanks.</dialogue>
 		<dialogue>Could you please do $%d?</dialogue>
-		<dialogue>Yall never want to help out someone in need.</dialogue>
-		<dialogue>Thanks for taking it off my hands bud.</dialogue>
+		<dialogue>You've got to help me out here, $%d?</dialogue>
+		<dialogue>I can't believe this. Would you at least consider $%d?</dialogue>
+		<dialogue>This is my last offer. $%d. Take it or leave it.</dialogue>
 	</customer_type>
 	<customer_type id="2">
 		<dialogue>I'm not really sure what this %s is worth. would $%d work?</dialogue>
+		<dialogue>I can definitely find a better offer somewhere else.</dialogue>
+		<dialogue>Oh that price works? Wonderful.</dialogue>
+		<dialogue>Can't argue with an expert though, I guess. Here you go.</dialogue>
+		<dialogue>I thought it'd be worth more like $%d.</dialogue>
 		<dialogue>Oh, I see. Would $%d also work?</dialogue>
-		<dialogue>I may be dumb, but not that dumb.</dialogue>
-		<dialogue>I guess that's fair. Bye then.</dialogue>
+		<dialogue>I dont know man, maybe $%d or something?</dialogue>
+		<dialogue>$%d is my minimum, I'd rather just keep it past that point.</dialogue>
 	</customer_type>
 	<customer_type id="3">
 		<dialogue>I've done my own appraisal, and this %s is worth $%d.</dialogue>
-		<dialogue>Hmm, how about $%d.</dialogue>
-		<dialogue>Newbie.</dialogue>
+		<dialogue>I'll just take my business elsewhere</dialogue>
 		<dialogue>I'll take it, pleasure doing business</dialogue>
+		<dialogue>Not what I was hoping for, but sure.</dialogue>
+		<dialogue>I think $%d is a more fair price.</dialogue>
+		<dialogue>Hmm, how about $%d?</dialogue>
+		<dialogue>Just do $%d would you?</dialogue>
+		<dialogue>Final offer, $%d.</dialogue>
 	</customer_type>
 </dialogues>

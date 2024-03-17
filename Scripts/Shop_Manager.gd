@@ -53,5 +53,6 @@ func _on_speech_bubble_sold(price):
 
 func _on_next_button_n_day_pressed():
 	store_timer.start(90)
-	customer.enter()
+	custTimerStart = true
+	cust_timer.start(1)
 	pass # Replace with function body.

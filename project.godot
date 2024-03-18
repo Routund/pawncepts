@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Pawncepts"
-run/main_scene="res://Scenes/Shop.tscn"
+run/main_scene="res://Scenes/Starting_Menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://Assets/icon.svg"
 

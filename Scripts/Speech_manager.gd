@@ -175,10 +175,10 @@ func _on_confirm_checked():
 				# Calculate a decision based on the difference between initial and offered prices
 				var diff = initial_price - check_price
 				var action = rng.randf_range(0, 100) + min(30, diff * 7 / initial_price)
-				if action < 20:
+				if action < 15:
 					fin(check_price,3)
 					inventory.append(item)
-				elif action > 90:
+				elif action > 95:
 					fin(0,1)
 				else:
 					# Adjust the patience level and negotiate the price
@@ -189,6 +189,7 @@ func _on_confirm_checked():
 						var newPrice = (initial_price + check_price) / 2.1
 						newPrice = int(newPrice * (rng.randf_range(check_price / newPrice, initial_price / newPrice)))
 						initial_price = newPrice
+						min_price=check_price
 						dia=dialogues[8-patience]%[initial_price]
 						dialogue.text=""
 						dia_index=0  # Price negotiation
@@ -208,10 +209,10 @@ func _on_confirm_checked():
 				# Calculate a decision based on the difference between initial and offered prices
 				var diff = check_price - initial_price
 				var action = rng.randf_range(0, 100) + min(30, diff * 7 / initial_price)
-				if action < 20:
+				if action < 15:
 					fin(-check_price,3)
 					inventory.pop_at(item_index)
-				elif action > 90:
+				elif action > 95:
 					fin(0,1)
 				else:
 					# Adjust the patience level and negotiate the price
@@ -224,6 +225,8 @@ func _on_confirm_checked():
 						dia=dialogues[8-patience]%[initial_price]
 						dialogue.text=""
 						dia_index=0  # Price negotiation
+						min_price=check_price
 						calculator.finalValue=""
 						calculator.display.text=""
+						calculator.update_confirm_button_state()
 		pass # Replace with function body.

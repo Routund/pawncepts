@@ -2,13 +2,13 @@
 
 [ext_resource type="Texture2D" uid="uid://uibhua2d1nxw" path="res://Assets/day_end.png" id="1_4tnlj"]
 [ext_resource type="Texture2D" uid="uid://ciccn21clugwp" path="res://Assets/Ring animation sprite sheet.png" id="1_j5sk4"]
-[ext_resource type="Script" path="res://Scenes/AnimatedSprite2D.gd" id="2_kh6ck"]
+[ext_resource type="Script" path="res://Scripts/AnimatedSprite2D.gd" id="2_kh6ck"]
 [ext_resource type="FontFile" uid="uid://cwdi1ksrguxjm" path="res://Assets/fonts/pixel font-7.ttf" id="4_aaspp"]
 [ext_resource type="LabelSettings" uid="uid://cbodrxoxlvyxy" path="res://MenuButton.tres" id="5_nrwer"]
 [ext_resource type="Texture2D" uid="uid://jybsvpvkurlk" path="res://Assets/Menu button 64x64.png" id="5_qh2x8"]
 [ext_resource type="Texture2D" uid="uid://dgyhknflf8duv" path="res://Assets/Menu button on press 64 x 64.png" id="6_lnpf0"]
 [ext_resource type="Texture2D" uid="uid://3nbrosfdd5fh" path="res://Assets/Menu button on hover 64 x 64.png" id="7_iqko4"]
-[ext_resource type="Script" path="res://Scenes/Menu_Play.gd" id="8_1lu2g"]
+[ext_resource type="Script" path="res://Scripts/Menu_Play.gd" id="8_1lu2g"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_acajc"]
 atlas = ExtResource("1_j5sk4")

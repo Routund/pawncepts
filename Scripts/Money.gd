@@ -12,7 +12,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	
 	pass
 
 
@@ -21,6 +20,16 @@ func _on_speech_bubble_sold(price):
 	text = "$" + str(balance)
 	if(abs(price)>0):
 		sucess.play()
+		if(price<0):
+			var instance = preload("res://Scenes/money_added.tscn")
+			var item_instance = instance.instantiate()
+			item_instance.set("text","+$"+str(abs(price)))
+			add_child(item_instance)
+		else:
+			var instance = preload("res://Scenes/money_removed.tscn")
+			var item_instance = instance.instantiate()
+			item_instance.set("text","-$"+str(price))
+			add_child(item_instance)
 	pass # Replace with function body.
 
 

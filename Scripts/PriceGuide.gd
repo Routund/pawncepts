@@ -16,7 +16,7 @@ func _process(_delta):
 		pamphlet.visible=!pamphlet.visible
 		if(pamphlet.visible):
 			audio.play()
-	elif (justPressed and !open) and not is_pressed():
+	elif (justPressed and !pamphlet.visible) and not is_pressed():
 		# Button was pressed and is now released
 		justPressed = false
 		open=!open

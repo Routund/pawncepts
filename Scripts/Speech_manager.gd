@@ -66,7 +66,7 @@ func _process(_delta):
 			dia=""
 			if(!exit):
 				calculator.goUp=true
-	if(Input.is_action_just_pressed("escapeDialogue")):
+	if(Input.is_action_just_pressed("escapeDialogue") or Input.is_action_just_pressed("Confirm")):
 		if(exit):
 			visible = false
 			exit = false
@@ -186,8 +186,7 @@ func _on_confirm_checked():
 					if patience == 0:
 						fin(0,1)
 					else:
-						var newPrice = (initial_price + check_price) / 2.1
-						newPrice = int(newPrice * (rng.randf_range(check_price / newPrice, initial_price / newPrice)))
+						var newPrice = int(rng.randf_range(check_price+1,initial_price))
 						initial_price = newPrice
 						min_price=check_price
 						dia=dialogues[8-patience]%[initial_price]
@@ -220,7 +219,7 @@ func _on_confirm_checked():
 					if patience == 0:
 						fin(0,1)
 					else:
-						var newPrice = int(rng.randf_range(initial_price,check_price))
+						var newPrice = int(rng.randf_range(initial_price,check_price-1))
 						initial_price = newPrice
 						dia=dialogues[8-patience]%[initial_price]
 						dialogue.text=""

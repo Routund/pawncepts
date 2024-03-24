@@ -22,7 +22,7 @@ func _process(_delta):
 		customer.customer_leave = true
 		custTimerStart = true
 		# Start the customer timer when the speech bubble is closed
-		cust_timer.start(4.5)
+		cust_timer.start(3.5)
 
 	if custTimerStart:
 		if cust_timer.time_left == 0:

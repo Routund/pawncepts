@@ -41,7 +41,7 @@
 [ext_resource type="Texture2D" uid="uid://ckkpme2kb7lfv" path="res://Assets/Console.png" id="29_53av4"]
 [ext_resource type="Texture2D" uid="uid://wmxe813y4qy7" path="res://Assets/Vase.png" id="30_7epss"]
 [ext_resource type="Texture2D" uid="uid://b0bn1ljojgk7d" path="res://Assets/Cross.png" id="31_f83bf"]
-[ext_resource type="Script" path="res://Scenes/pamphletCross.gd" id="32_yfgei"]
+[ext_resource type="Script" path="res://Scripts/pamphletCross.gd" id="32_yfgei"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_anbuk"]
 font = ExtResource("6_m6qkd")
@@ -379,6 +379,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="GridContainer" type="GridContainer" parent="CanvasLayer/Pamphlet/TextureRect"]
+visible = false
 layout_mode = 2
 anchor_left = 0.179
 anchor_right = 0.179
@@ -409,6 +410,7 @@ expand_mode = 2
 stretch_mode = 4
 
 [node name="Label" type="Label" parent="CanvasLayer/Pamphlet/TextureRect/GridContainer/Ring/VBoxContainer"]
+texture_filter = 1
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 text = "$425"
@@ -436,6 +438,7 @@ expand_mode = 2
 stretch_mode = 4
 
 [node name="Label" type="Label" parent="CanvasLayer/Pamphlet/TextureRect/GridContainer/Necklace/VBoxContainer"]
+texture_filter = 1
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 text = "$600"
@@ -463,6 +466,7 @@ expand_mode = 2
 stretch_mode = 5
 
 [node name="Label" type="Label" parent="CanvasLayer/Pamphlet/TextureRect/GridContainer/Console/VBoxContainer"]
+texture_filter = 1
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 text = "$350
@@ -492,6 +496,7 @@ expand_mode = 1
 stretch_mode = 4
 
 [node name="Label" type="Label" parent="CanvasLayer/Pamphlet/TextureRect/GridContainer/Vase/VBoxContainer"]
+texture_filter = 1
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 text = "$90"
@@ -631,7 +636,7 @@ one_shot = true
 
 [node name="WallWithGuitar2" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(552, 325)
+position = Vector2(575, 322)
 scale = Vector2(4.19688, 4.2)
 texture = ExtResource("17_cg7pp")
 

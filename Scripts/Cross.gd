@@ -6,7 +6,7 @@ signal crossed
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	if is_button_pressed and not is_pressed():
+	if (is_button_pressed and not is_pressed() or (Input.is_action_just_pressed("Exit")))and visible:
 		is_button_pressed = false
 		# Button was pressed and is now released
 		if(base.finalValue==''):

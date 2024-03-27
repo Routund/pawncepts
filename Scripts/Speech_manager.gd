@@ -82,7 +82,9 @@ func _process(_delta):
 
 func _on_customer_entered():
 		rng.randomize()
-		if(randi_range(0,6)>=inventory.size()):
+		var a = randf_range(0,3)
+		var b =log(inventory.size()+1)/log(2)
+		if(a>=b):
 			customerState="sell"
 			# Pick random values for customer
 			item = randi() % items_dict.size()

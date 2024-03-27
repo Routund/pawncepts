@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://so1vseffcoo2"]
+[gd_scene load_steps=54 format=3 uid="uid://so1vseffcoo2"]
 
 [ext_resource type="Script" path="res://Scripts/Money.gd" id="1_dygwe"]
 [ext_resource type="Script" path="res://Scripts/Shop_Manager.gd" id="1_ruhxm"]
@@ -42,6 +42,10 @@
 [ext_resource type="Texture2D" uid="uid://wmxe813y4qy7" path="res://Assets/Vase.png" id="30_7epss"]
 [ext_resource type="Texture2D" uid="uid://b0bn1ljojgk7d" path="res://Assets/Cross.png" id="31_f83bf"]
 [ext_resource type="Script" path="res://Scripts/pamphletCross.gd" id="32_yfgei"]
+[ext_resource type="Texture2D" uid="uid://0r62xkympvxv" path="res://Assets/Letter.png" id="34_nc61u"]
+[ext_resource type="FontFile" uid="uid://cwi3v34sebk7s" path="res://Assets/fonts/Raleway-Regular.ttf" id="35_30tl8"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_lp8lr"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_anbuk"]
 font = ExtResource("6_m6qkd")
@@ -50,7 +54,7 @@ font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_04taw"]
 font = ExtResource("6_m6qkd")
-font_size = 43
+font_size = 40
 font_color = Color(0, 0.521569, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_oksqp"]
@@ -61,6 +65,12 @@ font_color = Color(0, 0.0588235, 0.0156863, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_j8rei"]
 font = ExtResource("6_m6qkd")
 font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_fgpn1"]
+line_spacing = 0.0
+font = ExtResource("35_30tl8")
+font_size = 60
+font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_keh2d"]
 font = ExtResource("6_m6qkd")
@@ -78,6 +88,7 @@ font_size = 40
 font_color = Color(0.996078, 0, 0, 1)
 
 [node name="Node2D" type="Node2D"]
+material = SubResource("CanvasItemMaterial_lp8lr")
 script = ExtResource("1_ruhxm")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -173,10 +184,10 @@ anchor_left = 0.014
 anchor_top = 0.071
 anchor_right = 0.014
 anchor_bottom = 0.071
-offset_left = 70.872
-offset_top = -30.008
-offset_right = 213.872
-offset_bottom = 28.992
+offset_left = 82.872
+offset_top = -16.008
+offset_right = 225.872
+offset_bottom = 42.992
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.979851, 1)
@@ -379,7 +390,6 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="GridContainer" type="GridContainer" parent="CanvasLayer/Pamphlet/TextureRect"]
-visible = false
 layout_mode = 2
 anchor_left = 0.179
 anchor_right = 0.179
@@ -413,6 +423,10 @@ stretch_mode = 4
 texture_filter = 1
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+size_flags_stretch_ratio = 5.0
+theme_override_font_sizes/font_size = 43
 text = "$425"
 label_settings = SubResource("LabelSettings_j8rei")
 horizontal_alignment = 1
@@ -441,6 +455,10 @@ stretch_mode = 4
 texture_filter = 1
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+size_flags_stretch_ratio = 5.0
+theme_override_font_sizes/font_size = 43
 text = "$600"
 label_settings = SubResource("LabelSettings_j8rei")
 horizontal_alignment = 1
@@ -469,6 +487,10 @@ stretch_mode = 5
 texture_filter = 1
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+size_flags_stretch_ratio = 5.0
+theme_override_font_sizes/font_size = 43
 text = "$350
 "
 label_settings = SubResource("LabelSettings_j8rei")
@@ -499,6 +521,10 @@ stretch_mode = 4
 texture_filter = 1
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+size_flags_stretch_ratio = 5.0
+theme_override_font_sizes/font_size = 43
 text = "$90"
 label_settings = SubResource("LabelSettings_j8rei")
 horizontal_alignment = 1
@@ -517,6 +543,36 @@ script = ExtResource("32_yfgei")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="CanvasLayer/Pamphlet"]
 stream = ExtResource("24_xq3dx")
+
+[node name="Letter" type="TextureRect" parent="CanvasLayer"]
+visible = false
+modulate = Color(0.882353, 0.882353, 0.882353, 1)
+texture_filter = 1
+offset_left = 336.0
+offset_top = -66.0
+offset_right = 396.0
+offset_bottom = 24.0
+scale = Vector2(7, 7)
+texture = ExtResource("34_nc61u")
+
+[node name="Label" type="Label" parent="CanvasLayer/Letter"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 33.5714
+offset_right = 1353.0
+offset_bottom = 1257.57
+scale = Vector2(0.04, 0.04)
+text = "Dear Shopkeeper,
+
+RE: Inheritance of Uncle's Pawn Shop and Outstanding Bail Charges
+
+We're writing to inform you that you've inherited [Uncle's Pawn Shop] from your late uncle. Unfortunately, the shop is facing outstanding bail charges related to fraud allegations against him.
+
+The bail charges amount to $5000. It's crucial to settle these charges promptly to avoid legal repercussions.
+
+We look forward to the payment in 10 business days"
+label_settings = SubResource("LabelSettings_fgpn1")
+autowrap_mode = 2
 
 [node name="InventoryBackGround" type="TextureRect" parent="CanvasLayer"]
 visible = false

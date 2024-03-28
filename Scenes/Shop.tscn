@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://so1vseffcoo2"]
+[gd_scene load_steps=55 format=3 uid="uid://so1vseffcoo2"]
 
 [ext_resource type="Script" path="res://Scripts/Money.gd" id="1_dygwe"]
 [ext_resource type="Script" path="res://Scripts/Shop_Manager.gd" id="1_ruhxm"]
@@ -44,6 +44,7 @@
 [ext_resource type="Script" path="res://Scripts/pamphletCross.gd" id="32_yfgei"]
 [ext_resource type="Texture2D" uid="uid://0r62xkympvxv" path="res://Assets/Letter.png" id="34_nc61u"]
 [ext_resource type="FontFile" uid="uid://cwi3v34sebk7s" path="res://Assets/fonts/Raleway-Regular.ttf" id="35_30tl8"]
+[ext_resource type="Script" path="res://Scenes/LetterCross.gd" id="36_t6338"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_lp8lr"]
 
@@ -545,7 +546,6 @@ script = ExtResource("32_yfgei")
 stream = ExtResource("24_xq3dx")
 
 [node name="Letter" type="TextureRect" parent="CanvasLayer"]
-visible = false
 modulate = Color(0.882353, 0.882353, 0.882353, 1)
 texture_filter = 1
 offset_left = 336.0
@@ -564,15 +564,25 @@ offset_bottom = 1257.57
 scale = Vector2(0.04, 0.04)
 text = "Dear Shopkeeper,
 
-RE: Inheritance of Uncle's Pawn Shop and Outstanding Bail Charges
+RE: Takeover of Uncle's Pawn Shop and Outstanding Bail Charges
 
-We're writing to inform you that you've inherited [Uncle's Pawn Shop] from your late uncle. Unfortunately, the shop is facing outstanding bail charges related to fraud allegations against him.
+We're writing to inform you that you've been granted the pawnshop from your currently missing uncle. Unfortunately, the shop is facing outstanding bail charges related to fraud allegations against him.
 
 The bail charges amount to $5000. It's crucial to settle these charges promptly to avoid legal repercussions.
 
 We look forward to the payment in 10 business days"
 label_settings = SubResource("LabelSettings_fgpn1")
 autowrap_mode = 2
+
+[node name="TextureButton" type="TextureButton" parent="CanvasLayer/Letter"]
+offset_left = 53.8571
+offset_top = 17.7143
+offset_right = 57.8571
+offset_bottom = 22.7143
+texture_normal = ExtResource("31_f83bf")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("36_t6338")
 
 [node name="InventoryBackGround" type="TextureRect" parent="CanvasLayer"]
 visible = false
@@ -706,6 +716,7 @@ one_shot = true
 [connection signal="sold" from="CanvasLayer/Customer/Speech_bubble" to="CanvasLayer/InventoryBackGround/Inventory" method="_on_speech_bubble_sold"]
 [connection signal="checked" from="CanvasLayer/Calculator/Confirm" to="CanvasLayer/Customer/Speech_bubble" method="_on_confirm_checked"]
 [connection signal="crossed" from="CanvasLayer/Calculator/Back" to="CanvasLayer/Customer/Speech_bubble" method="_on_back_crossed"]
+[connection signal="letter" from="CanvasLayer/Letter/TextureButton" to="." method="_on_texture_button_letter"]
 [connection signal="NewDay" from="CanvasLayer/DayEndPanel" to="." method="_on_day_end_panel_new_day"]
 [connection signal="NewDay" from="CanvasLayer/DayEndPanel" to="CanvasLayer/Label" method="_on_day_end_panel_new_day"]
 [connection signal="NewDay" from="CanvasLayer/DayEndPanel" to="CanvasLayer/Pamphlet" method="_on_day_end_panel_new_day"]

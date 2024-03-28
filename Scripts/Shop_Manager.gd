@@ -13,7 +13,7 @@ var exp=0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Start the shop timer when the game starts
-	store_timer.start(90)  # Adjust the time as per your requirement
+	pass # Adjust the time as per your requirement
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -51,7 +51,14 @@ func _on_speech_bubble_sold(price):
 		rev-=price
 	pass # Replace with function body.
 
-func _on_next_button_n_day_pressed():
+func _on_texture_button_letter():
+	store_timer.start(90)
+	custTimerStart = true
+	cust_timer.start(1)
+	pass # Replace with function body.
+
+
+func _on_day_end_panel_new_day(_rent):
 	store_timer.start(90)
 	custTimerStart = true
 	cust_timer.start(1)

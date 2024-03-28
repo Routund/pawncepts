@@ -6,7 +6,7 @@ signal entered
 signal exited
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	enter()
+	position=Vector2(-390,165)
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

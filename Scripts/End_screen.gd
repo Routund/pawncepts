@@ -7,10 +7,13 @@ var goRight = false
 @onready var Rent = get_node("MarginContainer/VBoxContainer/HBoxContainer/Values/Rent")
 @onready var Profits = get_node("MarginContainer/VBoxContainer/HBoxContainer/Values/Profits")
 @onready var Expenses = get_node("MarginContainer/VBoxContainer/HBoxContainer/Values/Expenses")
+@onready var money = get_node("../Label")
+@onready var letter = get_node("../Letter")
 var revValue=0
 var rentValue=75
 var profValue=0
 var expValue=0
+var paid = false
 signal NewDay(rent:int)
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -50,5 +53,10 @@ func _on_node_2d_shop_end(rev,exp):
 func _on_next_button_n_day_pressed():
 	goRight=true
 	goLeft=false
-	NewDay.emit(rentValue)
+	if(money.balance-rentValue>5000 and !paid):
+		money.balance-=5000
+		letter.visible=true
+		paid = true
+	else:
+		NewDay.emit(rentValue)
 	pass # Replace with function body.

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://boq8nx28rctu0"
-path="res://.godot/imported/Clock hand 64x64.png-44094bf23fd6198f61a3f3ac8c6e1d46.ctex"
+uid="uid://cjg32rr7ccka"
+path="res://.godot/imported/maleYellowHead.png-34e37cc2a457eaa23ecc2866c4a21a5a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Clock hand 64x64.png"
-dest_files=["res://.godot/imported/Clock hand 64x64.png-44094bf23fd6198f61a3f3ac8c6e1d46.ctex"]
+source_file="res://Assets/Customers/maleYellowHead.png"
+dest_files=["res://.godot/imported/maleYellowHead.png-34e37cc2a457eaa23ecc2866c4a21a5a.ctex"]
 
 [params]
 

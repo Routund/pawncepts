@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqw2xgadp5xl2"
-path="res://.godot/imported/Calculator 64 x 64.png-6dd707873f25181f85ab070469ed11a4.ctex"
+uid="uid://bo15nngrwa0cm"
+path="res://.godot/imported/Clock.png-a6848794cb21d62ed480f25eb6a1b78f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Calculator 64 x 64.png"
-dest_files=["res://.godot/imported/Calculator 64 x 64.png-6dd707873f25181f85ab070469ed11a4.ctex"]
+source_file="res://Assets/Clock.png"
+dest_files=["res://.godot/imported/Clock.png-a6848794cb21d62ed480f25eb6a1b78f.ctex"]
 
 [params]
 

@@ -2,6 +2,12 @@ extends TextureRect
 
 var customer_enter = false
 var customer_leave = false
+@onready var head = get_node("Head")
+var custAppearance=0
+var costumes = [
+	["res://Assets/Customers/maleYellowBody.png","res://Assets/Customers/maleYellowHead.png"],
+	["res://Assets/Customers/femaleGreenBody.png","res://Assets/Customers/femaleGreenHead.png"],
+]
 signal entered
 signal exited
 # Called when the node enters the scene tree for the first time.
@@ -17,6 +23,7 @@ func _process(delta):
 		if(position.x>395):
 			entered.emit()
 			customer_enter=false
+			head.keepBobbing=true
 		
 	if(customer_leave):
 		position.x-=450*delta
@@ -27,4 +34,9 @@ func _process(delta):
 
 func enter():
 	customer_enter=true
+	custAppearance=randi()%2
+	print(custAppearance)
+	texture = load(costumes[custAppearance][0])
+	head.texture = load(costumes[custAppearance][1])
+	head.reset()
 	position=Vector2(-390,165)

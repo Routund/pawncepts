@@ -16,10 +16,10 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 
-func _toggled(toggled_on):
+func _toggled(_toggled_on):
 	nDayPressed.emit()
 	set_toggle_mode(false)
 	set_toggle_mode(true)

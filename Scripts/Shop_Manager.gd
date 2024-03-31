@@ -52,14 +52,14 @@ func _on_speech_bubble_sold(price):
 	pass # Replace with function body.
 
 func _on_texture_button_letter():
-	store_timer.start(90)
+	store_timer.start(120)
 	custTimerStart = true
 	cust_timer.start(1)
 	pass # Replace with function body.
 
 
 func _on_day_end_panel_new_day(_rent):
-	store_timer.start(90)
+	store_timer.start(120)
 	custTimerStart = true
 	cust_timer.start(1)
 	pass # Replace with function body.

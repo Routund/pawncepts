@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3nbrosfdd5fh"
-path="res://.godot/imported/Menu button on hover 64 x 64.png-2ea430a385aaf4f36afc4dd530a3b06f.ctex"
+uid="uid://bqw2xgadp5xl2"
+path="res://.godot/imported/Calculator.png-75f8d09b1c835280f4f69a566a98af8e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Menu button on hover 64 x 64.png"
-dest_files=["res://.godot/imported/Menu button on hover 64 x 64.png-2ea430a385aaf4f36afc4dd530a3b06f.ctex"]
+source_file="res://Assets/Calculator.png"
+dest_files=["res://.godot/imported/Calculator.png-75f8d09b1c835280f4f69a566a98af8e.ctex"]
 
 [params]
 

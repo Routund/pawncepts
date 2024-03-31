@@ -1,18 +1,20 @@
-[gd_scene load_steps=55 format=3 uid="uid://so1vseffcoo2"]
+[gd_scene load_steps=57 format=3 uid="uid://so1vseffcoo2"]
 
 [ext_resource type="Script" path="res://Scripts/Money.gd" id="1_dygwe"]
 [ext_resource type="Script" path="res://Scripts/Shop_Manager.gd" id="1_ruhxm"]
-[ext_resource type="Texture2D" uid="uid://bwxy0qs32wajc" path="res://Assets/customer.png" id="2_06yqu"]
+[ext_resource type="Texture2D" uid="uid://dssv4ko23dti0" path="res://Assets/Customers/maleYellowBody.png" id="2_3famu"]
 [ext_resource type="Texture2D" uid="uid://ct6vrrwc8lssc" path="res://Assets/cash.png" id="3_clsbt"]
 [ext_resource type="Script" path="res://Scripts/Customer_functions.gd" id="3_x5wk7"]
 [ext_resource type="Script" path="res://Scripts/Speech_manager.gd" id="5_2j8ui"]
+[ext_resource type="Script" path="res://Scenes/Head.gd" id="5_g8xrj"]
 [ext_resource type="Texture2D" uid="uid://d37rpu5aixpdx" path="res://Assets/Speech Bubble Final 64x64 (less shading).png" id="6_ahva7"]
 [ext_resource type="FontFile" uid="uid://cwdi1ksrguxjm" path="res://Assets/fonts/pixel font-7.ttf" id="6_m6qkd"]
 [ext_resource type="Script" path="res://Scripts/blinkDialogue.gd" id="7_5et2d"]
+[ext_resource type="Texture2D" uid="uid://cjg32rr7ccka" path="res://Assets/Customers/maleYellowHead.png" id="8_y3mbd"]
 [ext_resource type="AudioStream" uid="uid://dnnktum0gr6du" path="res://Sounds/cash-register-purchase-87313.mp3" id="11_bu5t6"]
 [ext_resource type="Script" path="res://Scripts/Check.gd" id="11_ca2va"]
 [ext_resource type="Texture2D" uid="uid://b34hnxcmmeh3t" path="res://Assets/counter.png" id="14_hqgfg"]
-[ext_resource type="Texture2D" uid="uid://bqw2xgadp5xl2" path="res://Assets/Calculator 64 x 64.png" id="14_nmlqa"]
+[ext_resource type="Texture2D" uid="uid://bqw2xgadp5xl2" path="res://Assets/Calculator.png" id="14_nmlqa"]
 [ext_resource type="Script" path="res://Scripts/Cross.gd" id="14_ynerj"]
 [ext_resource type="FontFile" uid="uid://cnb5iveih7o6t" path="res://Assets/fonts/Digital Dismay.otf" id="15_kmqn1"]
 [ext_resource type="Script" path="res://Scripts/PriceGuide.gd" id="16_lsrla"]
@@ -22,10 +24,10 @@
 [ext_resource type="Texture2D" uid="uid://bytoklpq2wufk" path="res://Assets/calc_butt_shaded.png" id="19_iu4n1"]
 [ext_resource type="Script" path="res://Scripts/calc_number.gd" id="20_hyo5u"]
 [ext_resource type="Texture2D" uid="uid://uibhua2d1nxw" path="res://Assets/day_end.png" id="22_mkiqy"]
-[ext_resource type="Texture2D" uid="uid://bo15nngrwa0cm" path="res://Assets/Clock 64x64.png" id="22_uhws3"]
+[ext_resource type="Texture2D" uid="uid://bo15nngrwa0cm" path="res://Assets/Clock.png" id="22_uhws3"]
 [ext_resource type="Texture2D" uid="uid://dii50ip44uth7" path="res://Assets/pamphlet/Pamphlet 64x64.png" id="22_x42a1"]
 [ext_resource type="Script" path="res://Scripts/End_screen.gd" id="23_h3lyg"]
-[ext_resource type="Texture2D" uid="uid://boq8nx28rctu0" path="res://Assets/Clock hand 64x64.png" id="23_jwa78"]
+[ext_resource type="Texture2D" uid="uid://boq8nx28rctu0" path="res://Assets/Clock hand.png" id="23_jwa78"]
 [ext_resource type="Texture2D" uid="uid://d3u0cckhlo3su" path="res://Assets/pamphlet/Pamphlet 64x64 pressed.png" id="23_ngyd2"]
 [ext_resource type="Texture2D" uid="uid://baotkidu8ve81" path="res://Assets/inventoryBackground.png" id="24_3tiaq"]
 [ext_resource type="Script" path="res://Scripts/ClockHand.gd" id="24_66yru"]
@@ -44,7 +46,7 @@
 [ext_resource type="Script" path="res://Scripts/pamphletCross.gd" id="32_yfgei"]
 [ext_resource type="Texture2D" uid="uid://0r62xkympvxv" path="res://Assets/Letter.png" id="34_nc61u"]
 [ext_resource type="FontFile" uid="uid://cwi3v34sebk7s" path="res://Assets/fonts/Raleway-Regular.ttf" id="35_30tl8"]
-[ext_resource type="Script" path="res://Scenes/LetterCross.gd" id="36_t6338"]
+[ext_resource type="Script" path="res://Scripts/LetterCross.gd" id="36_t6338"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_lp8lr"]
 
@@ -108,8 +110,17 @@ offset_top = 102.0
 offset_right = 4704.0
 offset_bottom = 4893.0
 scale = Vector2(0.0721125, 0.0710185)
-texture = ExtResource("2_06yqu")
+texture = ExtResource("2_3famu")
 script = ExtResource("3_x5wk7")
+
+[node name="Head" type="TextureRect" parent="CanvasLayer/Customer"]
+layout_mode = 0
+offset_top = -42.2424
+offset_right = 64.0
+offset_bottom = 21.7576
+scale = Vector2(77.5, 77.5)
+texture = ExtResource("8_y3mbd")
+script = ExtResource("5_g8xrj")
 
 [node name="Speech_bubble" type="Node2D" parent="CanvasLayer/Customer"]
 visible = false
@@ -575,6 +586,7 @@ label_settings = SubResource("LabelSettings_fgpn1")
 autowrap_mode = 2
 
 [node name="TextureButton" type="TextureButton" parent="CanvasLayer/Letter"]
+layout_mode = 0
 offset_left = 53.8571
 offset_top = 17.7143
 offset_right = 57.8571

@@ -11,6 +11,8 @@ func _process(_delta):
 		# Button was pressed and is now released
 		if(base.finalValue==''):
 			crossed.emit()
+			toggle_mode=true
+			toggle_mode=false
 		else:
 			base.finalValue=""
 			base.display.text=""

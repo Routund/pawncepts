@@ -27,7 +27,7 @@
 		<dialogue>Can't argue with an expert though, I guess. Here you go.</dialogue>
 		<dialogue>I thought it'd be worth more like $%d.</dialogue>
 		<dialogue>Oh, I see. Would $%d also work?</dialogue>
-		<dialogue>I dont know man, maybe $%d or something?</dialogue>
+		<dialogue>I dont know, maybe $%d or something?</dialogue>
 		<dialogue>$%d is my minimum, I'd rather just keep it past that point.</dialogue>
 	</customer_type>
 	<customer_type id="3">

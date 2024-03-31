@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bo15nngrwa0cm"
-path="res://.godot/imported/Clock 64x64.png-84a811dc34153d70166f6c0f32f7fc4b.ctex"
+uid="uid://caavlsdulhigw"
+path="res://.godot/imported/femaleGreenHead.png-f8e6988e14fba57efeef3ef6c9d87327.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Clock 64x64.png"
-dest_files=["res://.godot/imported/Clock 64x64.png-84a811dc34153d70166f6c0f32f7fc4b.ctex"]
+source_file="res://Assets/Customers/femaleGreenHead.png"
+dest_files=["res://.godot/imported/femaleGreenHead.png-f8e6988e14fba57efeef3ef6c9d87327.ctex"]
 
 [params]
 

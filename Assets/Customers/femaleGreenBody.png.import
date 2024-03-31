@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://droyisvmh58c4"
-path="res://.godot/imported/Inventory 160 x 23 with outlines.png-ff56f99db8871a954998a1cba388df57.ctex"
+uid="uid://c3n1nc4m6l0m3"
+path="res://.godot/imported/femaleGreenBody.png-1dd94b505cb2182189c6641a811b7d0a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Inventory 160 x 23 with outlines.png"
-dest_files=["res://.godot/imported/Inventory 160 x 23 with outlines.png-ff56f99db8871a954998a1cba388df57.ctex"]
+source_file="res://Assets/Customers/femaleGreenBody.png"
+dest_files=["res://.godot/imported/femaleGreenBody.png-1dd94b505cb2182189c6641a811b7d0a.ctex"]
 
 [params]
 

@@ -185,7 +185,7 @@ func _on_confirm_checked():
 				else:
 					# Adjust the patience level and negotiate the price
 					patience -= int(rng.randf_range(1, 2.4))
-					if patience == 0:
+					if patience <= 0:
 						fin(0,1)
 					else:
 						var newPrice = int(rng.randf_range(check_price+1,initial_price))
@@ -218,7 +218,7 @@ func _on_confirm_checked():
 				else:
 					# Adjust the patience level and negotiate the price
 					patience -= int(rng.randf_range(1, 2.9))
-					if patience == 0:
+					if patience <= 0:
 						fin(0,1)
 					else:
 						var newPrice = int(rng.randf_range(initial_price,check_price-1))

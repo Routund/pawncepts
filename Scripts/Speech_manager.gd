@@ -27,15 +27,15 @@ var customerTypes = [
 	3, # Veteran, give low price, and have relatively high min price
 ]
 var cust_variance = [
-	0.9, # Stingy, give high price and have relatively high min price
-	0.6, # Desperate, give low price, and have relatively low min price
-	0.6, # Clueless, give high price, and have relatively low min price
-	0.95, # Veteran, give low price, and have relatively high min price   
+	0.85, # Stingy, give high price and have relatively high min price
+	0.4, # Desperate, give low price, and have relatively low min price
+	0.4, # Clueless, give high price, and have relatively low min price
+	0.8, # Veteran, give low price, and have relatively high min price   
 ]
 var init_variance = [
 	1.4, # Stingy, give high price and have relatively high min price
 	1.3, # Desperate, give low price, and have relatively low min price
-	2, # Clueless, give high price, and have relatively low min price
+	3.5, # Clueless, give high price, and have relatively low min price
 	1.1, # Veteran, give low price, and have relatively high min price   
 ]	
 var items_dict = {
@@ -90,7 +90,7 @@ func _on_customer_entered():
 			item = randi() % items_dict.size()
 			cust = customerTypes[randi() % customerTypes.size()]
 			min_price = int(prices[item] * (cust_variance[cust] + rng.randf_range(-0.1, 0.1)))
-			initial_price = int(min_price*(init_variance[cust]+rng.randf_range(-0.05, 0.1))) 
+			initial_price = int(min_price*max(0,(init_variance[cust]+rng.randf_range(-0.1, 0.05))))
 			
 			# Load Dialogue
 			dialogues = load_dialogues("res://Scripts/sellDialog.xml")
@@ -103,7 +103,7 @@ func _on_customer_entered():
 			item = inventory[item_index]
 			cust = customerTypes[randi() % customerTypes.size()]
 			min_price = int(prices[item] / (cust_variance[cust] + rng.randf_range(-0.1, 0.1)))
-			initial_price = int(min_price/(init_variance[cust]+rng.randf_range(-0.1, 0.05))) 
+			initial_price = int(min_price/max(0,(init_variance[cust]+rng.randf_range(-0.1, 0.05)))) 
 
 			# Load Dialogue
 			dialogues = load_dialogues("res://Scripts/buyDialog.xml")

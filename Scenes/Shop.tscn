@@ -560,18 +560,18 @@ stream = ExtResource("24_xq3dx")
 modulate = Color(0.882353, 0.882353, 0.882353, 1)
 texture_filter = 1
 offset_left = 336.0
-offset_top = -66.0
+offset_top = 23.0
 offset_right = 396.0
-offset_bottom = 24.0
+offset_bottom = 108.0
 scale = Vector2(7, 7)
 texture = ExtResource("34_nc61u")
 
 [node name="Label" type="Label" parent="CanvasLayer/Letter"]
 layout_mode = 0
-offset_left = 3.0
-offset_top = 33.5714
-offset_right = 1353.0
-offset_bottom = 1257.57
+offset_left = 2.71429
+offset_top = 23.5714
+offset_right = 1352.71
+offset_bottom = 1247.57
 scale = Vector2(0.04, 0.04)
 text = "Dear Shopkeeper,
 
@@ -588,9 +588,9 @@ autowrap_mode = 2
 [node name="TextureButton" type="TextureButton" parent="CanvasLayer/Letter"]
 layout_mode = 0
 offset_left = 53.8571
-offset_top = 17.7143
+offset_top = 2.28572
 offset_right = 57.8571
-offset_bottom = 22.7143
+offset_bottom = 7.28572
 texture_normal = ExtResource("31_f83bf")
 ignore_texture_size = true
 stretch_mode = 5

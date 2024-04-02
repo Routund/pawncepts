@@ -14,6 +14,7 @@ var rentValue=75
 var profValue=0
 var expValue=0
 var paid = false
+var days=0
 signal NewDay(rent:int)
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -53,10 +54,24 @@ func _on_node_2d_shop_end(rev,exp):
 func _on_next_button_n_day_pressed():
 	goRight=true
 	goLeft=false
+	days+=1
 	if(money.balance-rentValue>5000 and !paid):
 		money.balance-=5000
 		letter.visible=true
 		paid = true
+	elif (days==10):
+		money.balance-=5000
+		letter.visible=true
+		letter.text="Dear Ctizen,
+
+RE: Repossession of Pawn shop Due to Non-Payment of Bail Charges
+
+We regret to inform you that, as of today, the pawn shop is being repossessed due to failure to pay outstanding bail charges.
+
+Repossession proceedings will commence immediately. Please refrain from accessing the premises unlawfully.
+
+For further information, please contact our office.
+"
 	else:
 		NewDay.emit(rentValue)
 	pass # Replace with function body.

@@ -1,20 +1,15 @@
-[gd_scene load_steps=89 format=3 uid="uid://so1vseffcoo2"]
+[gd_scene load_steps=61 format=3 uid="uid://so1vseffcoo2"]
 
 [ext_resource type="Script" path="res://Scripts/Money.gd" id="1_dygwe"]
 [ext_resource type="Script" path="res://Scripts/Shop_Manager.gd" id="1_ruhxm"]
 [ext_resource type="Texture2D" uid="uid://dssv4ko23dti0" path="res://Assets/Customers/maleYellowBody.png" id="2_3famu"]
 [ext_resource type="Texture2D" uid="uid://ct6vrrwc8lssc" path="res://Assets/cash.png" id="3_clsbt"]
 [ext_resource type="Script" path="res://Scripts/Customer_functions.gd" id="3_x5wk7"]
-[ext_resource type="Texture2D" uid="uid://dd48y76vnopfm" path="res://Assets/Customers/Customer female face angry spritesheet.png" id="4_g46es"]
 [ext_resource type="Script" path="res://Scripts/Speech_manager.gd" id="5_2j8ui"]
-[ext_resource type="Texture2D" uid="uid://civyag5f2fqub" path="res://Assets/Customers/Customer female face happy spritesheet.png" id="5_bimq2"]
 [ext_resource type="Script" path="res://Scripts/Head.gd" id="5_g8xrj"]
 [ext_resource type="Texture2D" uid="uid://d37rpu5aixpdx" path="res://Assets/Speech Bubble Final 64x64 (less shading).png" id="6_ahva7"]
-[ext_resource type="Texture2D" uid="uid://caavlsdulhigw" path="res://Assets/Customers/femaleGreenHead.png" id="6_g4hlg"]
 [ext_resource type="FontFile" uid="uid://cwdi1ksrguxjm" path="res://Assets/fonts/pixel font-7.ttf" id="6_m6qkd"]
 [ext_resource type="Script" path="res://Scripts/blinkDialogue.gd" id="7_5et2d"]
-[ext_resource type="Texture2D" uid="uid://c0y21hfxfnb4l" path="res://Assets/Customers/Customer face angry spitesheet.png" id="7_6a6r1"]
-[ext_resource type="Texture2D" uid="uid://crd1prl8nbqod" path="res://Assets/Customers/Customer face happy.png" id="8_gmi2k"]
 [ext_resource type="Texture2D" uid="uid://cjg32rr7ccka" path="res://Assets/Customers/maleYellowHead.png" id="8_y3mbd"]
 [ext_resource type="AudioStream" uid="uid://d3oui0r62v4lq" path="res://Sounds/CustomerSounds/MaleInquisitive1.wav" id="10_2l2aw"]
 [ext_resource type="AudioStream" uid="uid://dnnktum0gr6du" path="res://Sounds/cash-register-purchase-87313.mp3" id="11_bu5t6"]
@@ -59,196 +54,14 @@
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_lp8lr"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2pruv"]
-atlas = ExtResource("4_g46es")
-region = Rect2(64, 128, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_d4x1b"]
-atlas = ExtResource("4_g46es")
-region = Rect2(0, 128, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xl0b3"]
-atlas = ExtResource("4_g46es")
-region = Rect2(64, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jtg0j"]
-atlas = ExtResource("4_g46es")
-region = Rect2(0, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wn4jj"]
-atlas = ExtResource("4_g46es")
-region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_st4ak"]
-atlas = ExtResource("4_g46es")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pu8m6"]
-atlas = ExtResource("5_bimq2")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rin7l"]
-atlas = ExtResource("5_bimq2")
-region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rplca"]
-atlas = ExtResource("5_bimq2")
-region = Rect2(128, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sy6xs"]
-atlas = ExtResource("5_bimq2")
-region = Rect2(0, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_shwra"]
-atlas = ExtResource("5_bimq2")
-region = Rect2(64, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bo7vf"]
-atlas = ExtResource("5_bimq2")
-region = Rect2(128, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_otn7i"]
-atlas = ExtResource("5_bimq2")
-region = Rect2(0, 128, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xtkw2"]
-atlas = ExtResource("5_bimq2")
-region = Rect2(64, 128, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_c14ke"]
-atlas = ExtResource("5_bimq2")
-region = Rect2(128, 128, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3wrl0"]
-atlas = ExtResource("5_bimq2")
-region = Rect2(0, 192, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_g0kmt"]
-atlas = ExtResource("5_bimq2")
-region = Rect2(64, 192, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_spfhm"]
-atlas = ExtResource("5_bimq2")
-region = Rect2(128, 192, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8fdxx"]
-atlas = ExtResource("7_6a6r1")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_c1c5k"]
-atlas = ExtResource("7_6a6r1")
-region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fvs7e"]
-atlas = ExtResource("7_6a6r1")
-region = Rect2(0, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_w8y78"]
-atlas = ExtResource("7_6a6r1")
-region = Rect2(64, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_73sw6"]
-atlas = ExtResource("7_6a6r1")
-region = Rect2(0, 128, 64, 64)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_3svv6"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2pruv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_d4x1b")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xl0b3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jtg0j")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wn4jj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_st4ak")
-}],
-"loop": true,
-"name": &"FemaleAngry",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pu8m6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rin7l")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rplca")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sy6xs")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_shwra")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bo7vf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_otn7i")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xtkw2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_c14ke")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3wrl0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_g0kmt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_spfhm")
-}],
-"loop": true,
-"name": &"FemaleHappy",
-"speed": 7.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("6_g4hlg")
-}],
+"frames": [],
 "loop": true,
 "name": &"FemaleNeutral",
 "speed": 5.0
 }, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8fdxx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_c1c5k")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fvs7e")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_w8y78")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_73sw6")
-}],
-"loop": true,
-"name": &"MaleAngry",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("8_gmi2k")
-}],
+"frames": [],
 "loop": true,
 "name": &"MaleHappy",
 "speed": 5.0
@@ -324,8 +137,7 @@ script = ExtResource("3_x5wk7")
 position = Vector2(2482.23, 2464.15)
 scale = Vector2(77.5, 77.5)
 sprite_frames = SubResource("SpriteFrames_3svv6")
-animation = &"MaleNeutral"
-frame_progress = 0.448131
+animation = &"MaleHappy"
 script = ExtResource("5_g8xrj")
 
 [node name="Speech_bubble" type="Node2D" parent="CanvasLayer/Customer"]

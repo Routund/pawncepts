@@ -163,6 +163,7 @@ func fin(price,dia_id):
 
 func _on_back_crossed():
 	audio.playAngry(parent.custAppearance)
+	parent.head.animation=parent.costumes[parent.custAppearance][3]
 	fin(0,1)
 	pass # Replace with function body.
 
@@ -177,10 +178,12 @@ func _on_confirm_checked():
 			if check_price >= initial_price:
 				fin(check_price,2)
 				audio.playAffirmative(parent.custAppearance)
+				parent.head.animation=parent.costumes[parent.custAppearance][2]
 				inventory.append(item)
 			# Check if the offered price is lower than the minimum acceptable price
 			elif check_price < min_price:
 				audio.playAngry(parent.custAppearance)
+				parent.head.animation=parent.costumes[parent.custAppearance][3]
 				fin(0,1)
 			else:
 				# Calculate a decision based on the difference between initial and offered prices
@@ -189,15 +192,18 @@ func _on_confirm_checked():
 				if action < 15:
 					fin(check_price,3)
 					audio.playAffirmative(parent.custAppearance)
+					parent.head.animation=parent.costumes[parent.custAppearance][2]
 					inventory.append(item)
 				elif action > 95:
 					audio.playAngry(parent.custAppearance)
+					parent.head.animation=parent.costumes[parent.custAppearance][3]
 					fin(0,1)
 				else:
 					# Adjust the patience level and negotiate the price
 					patience -= int(rng.randf_range(1, 2.4))
 					if patience <= 0:
 						audio.playAngry(parent.custAppearance)
+						parent.head.animation=parent.costumes[parent.custAppearance][3]
 						fin(0,1)
 					else:
 						var newPrice = int(rng.randf_range(check_price+1,initial_price))
@@ -216,10 +222,12 @@ func _on_confirm_checked():
 			# Check if the offered price is lower than or equal to the initial price
 			if check_price <= initial_price:
 				audio.playAffirmative(parent.custAppearance)
+				parent.head.animation=parent.costumes[parent.custAppearance][2]
 				fin(-check_price,2)
 				inventory.pop_at(item_index)
 			elif check_price > min_price:
 				audio.playAngry(parent.custAppearance)
+				parent.head.animation=parent.costumes[parent.custAppearance][3]
 				fin(0,1)
 			else:
 				# Calculate a decision based on the difference between initial and offered prices
@@ -228,15 +236,18 @@ func _on_confirm_checked():
 				if action < 15:
 					fin(-check_price,3)
 					audio.playAffirmative(parent.custAppearance)
+					parent.head.animation=parent.costumes[parent.custAppearance][2]
 					inventory.pop_at(item_index)
 				elif action > 95:
 					audio.playAngry(parent.custAppearance)
+					parent.head.animation=parent.costumes[parent.custAppearance][3]
 					fin(0,1)
 				else:
 					# Adjust the patience level and negotiate the price
 					patience -= int(rng.randf_range(1, 2.9))
 					if patience <= 0:
 						audio.playAngry(parent.custAppearance)
+						parent.head.animation=parent.costumes[parent.custAppearance][3]
 						fin(0,1)
 					else:
 						var newPrice = int(rng.randf_range(initial_price,check_price-1))

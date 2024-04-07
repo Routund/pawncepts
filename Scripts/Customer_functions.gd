@@ -5,8 +5,8 @@ var customer_leave = false
 @onready var head = get_node("Head")
 var custAppearance=0
 var costumes = [
-	["res://Assets/Customers/maleYellowBody.png","res://Assets/Customers/maleYellowHead.png"],
-	["res://Assets/Customers/femaleGreenBody.png","res://Assets/Customers/femaleGreenHead.png"],
+	["res://Assets/Customers/maleYellowBody.png","MaleNeutral","MaleHappy","MaleAngry"],
+	["res://Assets/Customers/femaleGreenBody.png","FemaleNeutral","FemaleHappy","FemaleAngry"],
 ]
 signal entered
 signal exited
@@ -37,6 +37,7 @@ func enter():
 	custAppearance=randi()%2
 	print(custAppearance)
 	texture = load(costumes[custAppearance][0])
-	head.texture = load(costumes[custAppearance][1])
+	head.animation = costumes[custAppearance][1]
 	head.reset()
+	head.play()
 	position=Vector2(-390,165)

@@ -50,6 +50,7 @@
 [ext_resource type="Texture2D" uid="uid://0r62xkympvxv" path="res://Assets/Letter.png" id="34_nc61u"]
 [ext_resource type="FontFile" uid="uid://cwi3v34sebk7s" path="res://Assets/fonts/Raleway-Regular.ttf" id="35_30tl8"]
 [ext_resource type="Script" path="res://Scripts/LetterCross.gd" id="36_t6338"]
+[ext_resource type="Texture2D" uid="uid://cnherkqistw4m" path="res://Assets/Ship in bottle.png" id="38_wuy6i"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_lp8lr"]
 
@@ -72,12 +73,6 @@ font_color = Color(0, 0.0588235, 0.0156863, 1)
 font = ExtResource("6_m6qkd")
 font_size = 20
 
-[sub_resource type="LabelSettings" id="LabelSettings_fgpn1"]
-line_spacing = 0.0
-font = ExtResource("35_30tl8")
-font_size = 60
-font_color = Color(0, 0, 0, 1)
-
 [sub_resource type="LabelSettings" id="LabelSettings_keh2d"]
 font = ExtResource("6_m6qkd")
 font_size = 40
@@ -94,6 +89,7 @@ font_size = 40
 font_color = Color(0.996078, 0, 0, 1)
 
 [node name="Node2D" type="Node2D"]
+texture_filter = 1
 material = SubResource("CanvasItemMaterial_lp8lr")
 script = ExtResource("1_ruhxm")
 
@@ -185,9 +181,21 @@ script = ExtResource("11_p7y5j")
 
 [node name="Storefront" type="Sprite2D" parent="CanvasLayer"]
 texture_filter = 1
-position = Vector2(575, 324)
+position = Vector2(576, 317)
 scale = Vector2(4.2, 4.2)
 texture = ExtResource("14_hqgfg")
+
+[node name="ShipInBottle" type="Sprite2D" parent="CanvasLayer/Storefront"]
+texture_filter = 1
+position = Vector2(132.857, 2.85714)
+scale = Vector2(0.595238, 0.714286)
+texture = ExtResource("38_wuy6i")
+
+[node name="ShipInBottle2" type="Sprite2D" parent="CanvasLayer/Storefront"]
+texture_filter = 1
+position = Vector2(132.857, -39.7619)
+scale = Vector2(0.595238, 0.714286)
+texture = ExtResource("38_wuy6i")
 
 [node name="CashFinal64x64" type="TextureRect" parent="CanvasLayer"]
 offset_left = 5.0
@@ -583,6 +591,7 @@ script = ExtResource("32_yfgei")
 stream = ExtResource("24_xq3dx")
 
 [node name="Letter" type="TextureRect" parent="CanvasLayer"]
+visible = false
 modulate = Color(0.882353, 0.882353, 0.882353, 1)
 texture_filter = 1
 offset_left = 336.0
@@ -592,13 +601,16 @@ offset_bottom = 108.0
 scale = Vector2(7, 7)
 texture = ExtResource("34_nc61u")
 
-[node name="Label" type="Label" parent="CanvasLayer/Letter"]
+[node name="Label" type="RichTextLabel" parent="CanvasLayer/Letter"]
 layout_mode = 0
-offset_left = 2.71429
-offset_top = 23.5714
-offset_right = 1352.71
-offset_bottom = 1247.57
+offset_left = 3.0
+offset_top = 24.0
+offset_right = 1353.0
+offset_bottom = 1410.0
 scale = Vector2(0.04, 0.04)
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("35_30tl8")
+theme_override_font_sizes/normal_font_size = 67
 text = "Dear Shopkeeper,
 
 RE: Takeover of Uncle's Pawn Shop and Outstanding Bail Charges
@@ -608,8 +620,9 @@ We're writing to inform you that you've been granted the pawnshop from your curr
 The bail charges amount to $5000. It's crucial to settle these charges promptly to avoid legal repercussions.
 
 We look forward to the payment in 10 business days"
-label_settings = SubResource("LabelSettings_fgpn1")
+scroll_active = false
 autowrap_mode = 2
+shortcut_keys_enabled = false
 
 [node name="TextureButton" type="TextureButton" parent="CanvasLayer/Letter"]
 layout_mode = 0

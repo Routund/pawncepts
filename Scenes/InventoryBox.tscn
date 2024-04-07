@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://dggqc1lplbq2f"]
 
 [ext_resource type="Script" path="res://Scripts/Inventory_base.gd" id="1_t8fg0"]
-[ext_resource type="Texture2D" uid="uid://droyisvmh58c4" path="res://Assets/InventorySlot.png" id="2_ghuf2"]
+[ext_resource type="Texture2D" path="res://Assets/Inventory 160 x 23 with outlines.png" id="2_j5ibs"]
 [ext_resource type="Texture2D" uid="uid://coyjgk852o645" path="res://Assets/ring.png" id="3_wu4jw"]
 [ext_resource type="FontFile" uid="uid://cwdi1ksrguxjm" path="res://Assets/fonts/pixel font-7.ttf" id="4_vrws1"]
 
@@ -38,7 +38,7 @@ script = ExtResource("1_t8fg0")
 texture_filter = 1
 custom_minimum_size = Vector2(1020, 161)
 layout_mode = 2
-texture = ExtResource("2_ghuf2")
+texture = ExtResource("2_j5ibs")
 expand_mode = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]

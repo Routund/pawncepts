@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://so1vseffcoo2"]
+[gd_scene load_steps=60 format=3 uid="uid://so1vseffcoo2"]
 
 [ext_resource type="Script" path="res://Scripts/Money.gd" id="1_dygwe"]
 [ext_resource type="Script" path="res://Scripts/Shop_Manager.gd" id="1_ruhxm"]
@@ -6,13 +6,15 @@
 [ext_resource type="Texture2D" uid="uid://ct6vrrwc8lssc" path="res://Assets/cash.png" id="3_clsbt"]
 [ext_resource type="Script" path="res://Scripts/Customer_functions.gd" id="3_x5wk7"]
 [ext_resource type="Script" path="res://Scripts/Speech_manager.gd" id="5_2j8ui"]
-[ext_resource type="Script" path="res://Scenes/Head.gd" id="5_g8xrj"]
+[ext_resource type="Script" path="res://Scripts/Head.gd" id="5_g8xrj"]
 [ext_resource type="Texture2D" uid="uid://d37rpu5aixpdx" path="res://Assets/Speech Bubble Final 64x64 (less shading).png" id="6_ahva7"]
 [ext_resource type="FontFile" uid="uid://cwdi1ksrguxjm" path="res://Assets/fonts/pixel font-7.ttf" id="6_m6qkd"]
 [ext_resource type="Script" path="res://Scripts/blinkDialogue.gd" id="7_5et2d"]
 [ext_resource type="Texture2D" uid="uid://cjg32rr7ccka" path="res://Assets/Customers/maleYellowHead.png" id="8_y3mbd"]
+[ext_resource type="AudioStream" uid="uid://d3oui0r62v4lq" path="res://Sounds/CustomerSounds/MaleInquisitive1.wav" id="10_2l2aw"]
 [ext_resource type="AudioStream" uid="uid://dnnktum0gr6du" path="res://Sounds/cash-register-purchase-87313.mp3" id="11_bu5t6"]
 [ext_resource type="Script" path="res://Scripts/Check.gd" id="11_ca2va"]
+[ext_resource type="Script" path="res://Scripts/CustomerTalkingSounds.gd" id="11_p7y5j"]
 [ext_resource type="Texture2D" uid="uid://b34hnxcmmeh3t" path="res://Assets/counter.png" id="14_hqgfg"]
 [ext_resource type="Texture2D" uid="uid://bqw2xgadp5xl2" path="res://Assets/Calculator.png" id="14_nmlqa"]
 [ext_resource type="Script" path="res://Scripts/Cross.gd" id="14_ynerj"]
@@ -35,6 +37,7 @@
 [ext_resource type="AudioStream" uid="uid://beab4w7ms02uy" path="res://Sounds/paper-01-87018.mp3" id="24_xq3dx"]
 [ext_resource type="LabelSettings" uid="uid://cg2yv00651kjg" path="res://Assets/fonts/End_screen.tres" id="25_vilef"]
 [ext_resource type="Texture2D" uid="uid://boitv66tuqolh" path="res://Assets/newDay/sprite_0.png" id="26_0u6o6"]
+[ext_resource type="AudioStream" uid="uid://tbh2yuea6wsx" path="res://Sounds/clock-tick-76039.mp3" id="26_246kl"]
 [ext_resource type="Texture2D" uid="uid://dia0wglmy2s2v" path="res://Assets/pamphlet/Pamphlet 64x64 open.png" id="26_wgigc"]
 [ext_resource type="Texture2D" uid="uid://cjv83bcwkwe8s" path="res://Assets/newDay/sprite_1.png" id="27_87yxb"]
 [ext_resource type="Texture2D" uid="uid://coyjgk852o645" path="res://Assets/ring.png" id="27_j8aei"]
@@ -176,6 +179,10 @@ autowrap_mode = 2
 script = ExtResource("7_5et2d")
 metadata/_edit_use_anchors_ = true
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="CanvasLayer/Customer/Speech_bubble"]
+stream = ExtResource("10_2l2aw")
+script = ExtResource("11_p7y5j")
+
 [node name="Storefront" type="Sprite2D" parent="CanvasLayer"]
 texture_filter = 1
 position = Vector2(575, 324)
@@ -227,6 +234,7 @@ offset_left = 560.0
 offset_top = 2840.0
 offset_right = 1220.0
 offset_bottom = 3300.0
+focus_mode = 0
 texture_pressed = ExtResource("19_iu4n1")
 stretch_mode = 5
 script = ExtResource("20_hyo5u")
@@ -237,6 +245,7 @@ offset_left = 560.0
 offset_top = 2340.0
 offset_right = 1220.0
 offset_bottom = 2800.0
+focus_mode = 0
 texture_pressed = ExtResource("19_iu4n1")
 stretch_mode = 5
 script = ExtResource("20_hyo5u")
@@ -247,6 +256,7 @@ offset_left = 1310.0
 offset_top = 2340.0
 offset_right = 1970.0
 offset_bottom = 2800.0
+focus_mode = 0
 texture_pressed = ExtResource("19_iu4n1")
 stretch_mode = 5
 script = ExtResource("20_hyo5u")
@@ -257,6 +267,7 @@ offset_left = 2040.0
 offset_top = 2340.0
 offset_right = 2700.0
 offset_bottom = 2800.0
+focus_mode = 0
 texture_pressed = ExtResource("19_iu4n1")
 stretch_mode = 5
 script = ExtResource("20_hyo5u")
@@ -267,6 +278,7 @@ offset_left = 560.0
 offset_top = 1820.0
 offset_right = 1220.0
 offset_bottom = 2280.0
+focus_mode = 0
 texture_pressed = ExtResource("19_iu4n1")
 stretch_mode = 5
 script = ExtResource("20_hyo5u")
@@ -277,6 +289,7 @@ offset_left = 1300.0
 offset_top = 1820.0
 offset_right = 1960.0
 offset_bottom = 2280.0
+focus_mode = 0
 texture_pressed = ExtResource("19_iu4n1")
 stretch_mode = 5
 script = ExtResource("20_hyo5u")
@@ -287,6 +300,7 @@ offset_left = 2040.0
 offset_top = 1820.0
 offset_right = 2700.0
 offset_bottom = 2280.0
+focus_mode = 0
 texture_pressed = ExtResource("19_iu4n1")
 stretch_mode = 5
 script = ExtResource("20_hyo5u")
@@ -297,6 +311,7 @@ offset_left = 560.0
 offset_top = 1310.0
 offset_right = 1220.0
 offset_bottom = 1770.0
+focus_mode = 0
 texture_pressed = ExtResource("19_iu4n1")
 stretch_mode = 5
 script = ExtResource("20_hyo5u")
@@ -307,6 +322,7 @@ offset_left = 1310.0
 offset_top = 1310.0
 offset_right = 1970.0
 offset_bottom = 1770.0
+focus_mode = 0
 texture_pressed = ExtResource("19_iu4n1")
 stretch_mode = 5
 script = ExtResource("20_hyo5u")
@@ -317,6 +333,7 @@ offset_left = 2040.0
 offset_top = 1310.0
 offset_right = 2700.0
 offset_bottom = 1770.0
+focus_mode = 0
 texture_pressed = ExtResource("19_iu4n1")
 stretch_mode = 5
 script = ExtResource("20_hyo5u")
@@ -336,6 +353,7 @@ offset_left = 2040.0
 offset_top = 2850.0
 offset_right = 2710.0
 offset_bottom = 3310.0
+focus_mode = 0
 texture_pressed = ExtResource("19_iu4n1")
 texture_disabled = ExtResource("19_iu4n1")
 stretch_mode = 0
@@ -347,6 +365,7 @@ offset_left = 1270.0
 offset_top = 2850.0
 offset_right = 1990.0
 offset_bottom = 3310.0
+focus_mode = 0
 texture_pressed = ExtResource("19_iu4n1")
 stretch_mode = 0
 script = ExtResource("14_ynerj")
@@ -376,6 +395,11 @@ pivot_offset = Vector2(31.9048, 31.9048)
 texture = ExtResource("23_jwa78")
 script = ExtResource("24_66yru")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasLayer/Clock"]
+stream = ExtResource("26_246kl")
+volume_db = -2.26
+pitch_scale = 0.74
+
 [node name="Pamphlet" type="TextureButton" parent="CanvasLayer"]
 texture_filter = 1
 offset_left = 799.0
@@ -383,6 +407,7 @@ offset_top = 374.0
 offset_right = 858.0
 offset_bottom = 410.0
 scale = Vector2(3.25419, 2.89888)
+focus_mode = 0
 texture_normal = ExtResource("22_x42a1")
 texture_pressed = ExtResource("23_ngyd2")
 texture_hover = ExtResource("24_fksg4")
@@ -548,6 +573,7 @@ offset_left = 22.9674
 offset_top = 4.33349
 offset_right = 39.9674
 offset_bottom = 22.3335
+focus_mode = 0
 texture_normal = ExtResource("31_f83bf")
 ignore_texture_size = true
 stretch_mode = 5
@@ -591,6 +617,7 @@ offset_left = 53.8571
 offset_top = 2.28572
 offset_right = 57.8571
 offset_bottom = 7.28572
+focus_mode = 0
 texture_normal = ExtResource("31_f83bf")
 ignore_texture_size = true
 stretch_mode = 5
@@ -703,6 +730,7 @@ label_settings = ExtResource("25_vilef")
 [node name="NextButton" type="TextureButton" parent="CanvasLayer/DayEndPanel/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(100, 75)
 layout_mode = 2
+focus_mode = 0
 toggle_mode = true
 texture_normal = ExtResource("26_0u6o6")
 texture_pressed = ExtResource("27_87yxb")
@@ -729,6 +757,7 @@ one_shot = true
 [connection signal="checked" from="CanvasLayer/Calculator/Confirm" to="CanvasLayer/Customer/Speech_bubble" method="_on_confirm_checked"]
 [connection signal="crossed" from="CanvasLayer/Calculator/Back" to="CanvasLayer/Customer/Speech_bubble" method="_on_back_crossed"]
 [connection signal="letter" from="CanvasLayer/Letter/TextureButton" to="." method="_on_texture_button_letter"]
+[connection signal="letter" from="CanvasLayer/Letter/TextureButton" to="CanvasLayer/Clock/ClockHand" method="_on_texture_button_letter"]
 [connection signal="NewDay" from="CanvasLayer/DayEndPanel" to="." method="_on_day_end_panel_new_day"]
 [connection signal="NewDay" from="CanvasLayer/DayEndPanel" to="CanvasLayer/Label" method="_on_day_end_panel_new_day"]
 [connection signal="NewDay" from="CanvasLayer/DayEndPanel" to="CanvasLayer/Pamphlet" method="_on_day_end_panel_new_day"]

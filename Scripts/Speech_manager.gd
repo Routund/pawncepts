@@ -10,6 +10,8 @@ var sell_price = 100
 @onready var dialogue = get_node("Dialogue")
 @onready var money = get_node("../../Label")
 @onready var escape = get_node("Dialogue2")
+@onready var audio = get_node("AudioStreamPlayer2D")
+@onready var parent = get_node("../../Customer")
 var inventory = []
 var dialogues = []
 var check_price
@@ -28,15 +30,15 @@ var customerTypes = [
 ]
 var cust_variance = [
 	0.85, # Stingy, give high price and have relatively high min price
-	0.4, # Desperate, give low price, and have relatively low min price
-	0.4, # Clueless, give high price, and have relatively low min price
-	0.8, # Veteran, give low price, and have relatively high min price   
+	0.54, # Desperate, give low price, and have relatively low min price
+	0.6, # Clueless, give high price, and have relatively low min price
+	0.9, # Veteran, give low price, and have relatively high min price   
 ]
 var init_variance = [
 	1.4, # Stingy, give high price and have relatively high min price
 	1.3, # Desperate, give low price, and have relatively low min price
 	3.5, # Clueless, give high price, and have relatively low min price
-	1.1, # Veteran, give low price, and have relatively high min price   
+	1.05, # Veteran, give low price, and have relatively high min price   
 ]	
 var items_dict = {
 	0:"Necklace",
@@ -78,6 +80,8 @@ func _process(_delta):
 			dialogue.text=dia
 			dia=""
 			calculator.goUp=true
+			calculator.goDown=false
+		audio.stop()
 	pass
 
 func _on_customer_entered():
@@ -118,6 +122,7 @@ func _on_customer_entered():
 		visible = true
 		exit=false
 		escape.visible=false
+		audio.playInquisitive(parent.custAppearance)
 		escape.isFading=false
 		calculator.cross.disabled=false
 
@@ -151,11 +156,13 @@ func fin(price,dia_id):
 	escape.visible=true
 	escape.isFading=true
 	calculator.goDown=true
+	calculator.goUp=false
 	calculator.cross.disabled=true
 	calculator.confirm.disabled=true
 	sold.emit(price)
 
 func _on_back_crossed():
+	audio.playAngry(parent.custAppearance)
 	fin(0,1)
 	pass # Replace with function body.
 
@@ -169,9 +176,11 @@ func _on_confirm_checked():
 			# Check if the offered price is higher than or equal to the initial price
 			if check_price >= initial_price:
 				fin(check_price,2)
+				audio.playAffirmative(parent.custAppearance)
 				inventory.append(item)
 			# Check if the offered price is lower than the minimum acceptable price
 			elif check_price < min_price:
+				audio.playAngry(parent.custAppearance)
 				fin(0,1)
 			else:
 				# Calculate a decision based on the difference between initial and offered prices
@@ -179,13 +188,16 @@ func _on_confirm_checked():
 				var action = rng.randf_range(0, 100) + min(30, diff * 7 / initial_price)
 				if action < 15:
 					fin(check_price,3)
+					audio.playAffirmative(parent.custAppearance)
 					inventory.append(item)
 				elif action > 95:
+					audio.playAngry(parent.custAppearance)
 					fin(0,1)
 				else:
 					# Adjust the patience level and negotiate the price
 					patience -= int(rng.randf_range(1, 2.4))
 					if patience <= 0:
+						audio.playAngry(parent.custAppearance)
 						fin(0,1)
 					else:
 						var newPrice = int(rng.randf_range(check_price+1,initial_price))
@@ -196,15 +208,18 @@ func _on_confirm_checked():
 						dia_index=0  # Price negotiation
 						calculator.finalValue=""
 						calculator.display.text=""
+						audio.playInquisitive(parent.custAppearance)
 		else:
 			# Handle buying behavior
 			check_price = int(calculator.finalValue)
 			
 			# Check if the offered price is lower than or equal to the initial price
 			if check_price <= initial_price:
+				audio.playAffirmative(parent.custAppearance)
 				fin(-check_price,2)
 				inventory.pop_at(item_index)
 			elif check_price > min_price:
+				audio.playAngry(parent.custAppearance)
 				fin(0,1)
 			else:
 				# Calculate a decision based on the difference between initial and offered prices
@@ -212,13 +227,16 @@ func _on_confirm_checked():
 				var action = rng.randf_range(0, 100) + min(30, diff * 7 / initial_price)
 				if action < 15:
 					fin(-check_price,3)
+					audio.playAffirmative(parent.custAppearance)
 					inventory.pop_at(item_index)
 				elif action > 95:
+					audio.playAngry(parent.custAppearance)
 					fin(0,1)
 				else:
 					# Adjust the patience level and negotiate the price
 					patience -= int(rng.randf_range(1, 2.9))
 					if patience <= 0:
+						audio.playAngry(parent.custAppearance)
 						fin(0,1)
 					else:
 						var newPrice = int(rng.randf_range(initial_price,check_price-1))
@@ -230,4 +248,5 @@ func _on_confirm_checked():
 						calculator.finalValue=""
 						calculator.display.text=""
 						calculator.update_confirm_button_state()
+						audio.playInquisitive(parent.custAppearance)
 		pass # Replace with function body.

@@ -2,8 +2,8 @@ extends AudioStreamPlayer2D
 
 # Sounds array containing paths to audio files for male and female customers
 var Sounds = [
-	["res://Sounds/CustomerSounds/MaleAngry.wav", "res://Sounds/CustomerSounds/MaleAffirmative.wav", "res://Sounds/CustomerSounds/MaleInquisitive1.wav", "res://Sounds/CustomerSounds/MaleInquisitive2.wav", "res://Sounds/CustomerSounds/MaleInquisitive3.wav"],
-	["res://Sounds/CustomerSounds/FemaleAngry.wav", "res://Sounds/CustomerSounds/FemaleAffirmative.wav", "res://Sounds/CustomerSounds/FemaleInquisitive1.wav", "res://Sounds/CustomerSounds/FemaleInquisitive3.wav"]
+	["res://Sounds/CustomerSounds/MaleAngry1.mp3","res://Sounds/CustomerSounds/MaleAngry2.mp3", "res://Sounds/CustomerSounds/MaleHappy1.mp3","res://Sounds/CustomerSounds/MaleHappy2.mp3","res://Sounds/CustomerSounds/MaleNeutral1.mp3","res://Sounds/CustomerSounds/MaleNeutral2.mp3","res://Sounds/CustomerSounds/MaleNeutral3.mp3"],
+	["res://Sounds/CustomerSounds/FemaleAngry1.mp3","res://Sounds/CustomerSounds/FemaleAngry2.mp3", "res://Sounds/CustomerSounds/FemaleHappy1.mp3","res://Sounds/CustomerSounds/FemaleHappy2.mp3","res://Sounds/CustomerSounds/FemaleNeutral1.mp3","res://Sounds/CustomerSounds/FemaleNeutral2.mp3","res://Sounds/CustomerSounds/FemaleNeutral3.mp3"]
 ]
 
 # Called when the node enters the scene tree for the first time.
@@ -14,21 +14,21 @@ func _ready():
 func playAffirmative(gender: int):
 	if gender < 0 or gender >= Sounds.size():
 		return
-	var sound_index = 1  # Index of affirmative sound in the array
+	var sound_index = randi_range(2,3) #Index of affirmative sound in the array
 	playSound(Sounds[gender][sound_index])
 
 # Function to play an angry sound
 func playAngry(gender: int):
 	if gender < 0 or gender >= Sounds.size():
 		return
-	var sound_index = 0  # Index of angry sound in the array
+	var sound_index = randi_range(0, 1)  # Index of angry sound in the array
 	playSound(Sounds[gender][sound_index])
 
 # Function to play an inquisitive sound
 func playInquisitive(gender: int):
 	if gender < 0 or gender >= Sounds.size():
 		return
-	var sound_index = randi_range(2, Sounds[gender].size() - 1)  # Randomly select an inquisitive sound
+	var sound_index = randi_range(4, Sounds[gender].size() - 1)  # Randomly select an inquisitive sound
 	playSound(Sounds[gender][sound_index])
 
 # Internal function to play the specified sound

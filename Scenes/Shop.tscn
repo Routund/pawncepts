@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=3 uid="uid://so1vseffcoo2"]
+[gd_scene load_steps=90 format=3 uid="uid://so1vseffcoo2"]
 
 [ext_resource type="Script" path="res://Scripts/Money.gd" id="1_dygwe"]
 [ext_resource type="Script" path="res://Scripts/Shop_Manager.gd" id="1_ruhxm"]
@@ -16,7 +16,6 @@
 [ext_resource type="Texture2D" uid="uid://c0y21hfxfnb4l" path="res://Assets/Customers/Customer face angry spitesheet.png" id="7_6a6r1"]
 [ext_resource type="Texture2D" uid="uid://crd1prl8nbqod" path="res://Assets/Customers/Customer face happy.png" id="8_gmi2k"]
 [ext_resource type="Texture2D" uid="uid://cjg32rr7ccka" path="res://Assets/Customers/maleYellowHead.png" id="8_y3mbd"]
-[ext_resource type="AudioStream" uid="uid://d3oui0r62v4lq" path="res://Sounds/CustomerSounds/MaleInquisitive1.wav" id="10_2l2aw"]
 [ext_resource type="AudioStream" uid="uid://dnnktum0gr6du" path="res://Sounds/cash-register-purchase-87313.mp3" id="11_bu5t6"]
 [ext_resource type="Script" path="res://Scripts/Check.gd" id="11_ca2va"]
 [ext_resource type="Script" path="res://Scripts/CustomerTalkingSounds.gd" id="11_p7y5j"]
@@ -56,6 +55,8 @@
 [ext_resource type="FontFile" uid="uid://cwi3v34sebk7s" path="res://Assets/fonts/Raleway-Regular.ttf" id="35_30tl8"]
 [ext_resource type="Script" path="res://Scripts/LetterCross.gd" id="36_t6338"]
 [ext_resource type="Texture2D" uid="uid://cnherkqistw4m" path="res://Assets/Ship in bottle.png" id="38_wuy6i"]
+[ext_resource type="AudioStream" uid="uid://cbkqwstaa7lju" path="res://Sounds/Backing track.mp3" id="56_374rv"]
+[ext_resource type="Script" path="res://Scenes/Backing Track.gd" id="57_jprgc"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_lp8lr"]
 
@@ -325,7 +326,7 @@ position = Vector2(2482.23, 2464.15)
 scale = Vector2(77.5, 77.5)
 sprite_frames = SubResource("SpriteFrames_3svv6")
 animation = &"MaleNeutral"
-frame_progress = 0.448131
+frame_progress = 0.556135
 script = ExtResource("5_g8xrj")
 
 [node name="Speech_bubble" type="Node2D" parent="CanvasLayer/Customer"]
@@ -383,7 +384,7 @@ script = ExtResource("7_5et2d")
 metadata/_edit_use_anchors_ = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="CanvasLayer/Customer/Speech_bubble"]
-stream = ExtResource("10_2l2aw")
+area_mask = 257
 script = ExtResource("11_p7y5j")
 
 [node name="Storefront" type="Sprite2D" parent="CanvasLayer"]
@@ -613,7 +614,7 @@ script = ExtResource("24_66yru")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasLayer/Clock"]
 stream = ExtResource("26_246kl")
 volume_db = -2.26
-pitch_scale = 0.74
+pitch_scale = 0.71
 
 [node name="Pamphlet" type="TextureButton" parent="CanvasLayer"]
 texture_filter = 1
@@ -968,7 +969,13 @@ texture = ExtResource("17_cg7pp")
 [node name="Store_timer" type="Timer" parent="."]
 one_shot = true
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("56_374rv")
+volume_db = -2.889
+script = ExtResource("57_jprgc")
+
 [connection signal="shop_end" from="." to="CanvasLayer/DayEndPanel" method="_on_node_2d_shop_end"]
+[connection signal="shop_end" from="." to="AudioStreamPlayer" method="_on_node_2d_shop_end"]
 [connection signal="entered" from="CanvasLayer/Customer" to="CanvasLayer/Customer/Speech_bubble" method="_on_customer_entered"]
 [connection signal="sold" from="CanvasLayer/Customer/Speech_bubble" to="." method="_on_speech_bubble_sold"]
 [connection signal="sold" from="CanvasLayer/Customer/Speech_bubble" to="CanvasLayer/Label" method="_on_speech_bubble_sold"]

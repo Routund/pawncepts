@@ -29,10 +29,10 @@ var customerTypes = [
 	3, # Veteran, give low price, and have relatively high min price
 ]
 var cust_variance = [
-	0.85, # Stingy, give high price and have relatively high min price
-	0.54, # Desperate, give low price, and have relatively low min price
-	0.6, # Clueless, give high price, and have relatively low min price
-	0.9, # Veteran, give low price, and have relatively high min price   
+	0.75, # Stingy, give high price and have relatively high min price
+	0.44, # Desperate, give low price, and have relatively low min price
+	0.5, # Clueless, give high price, and have relatively low min price
+	0.8, # Veteran, give low price, and have relatively high min price   
 ]
 var init_variance = [
 	1.4, # Stingy, give high price and have relatively high min price

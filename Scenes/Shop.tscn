@@ -1,4 +1,4 @@
-[gd_scene load_steps=90 format=3 uid="uid://so1vseffcoo2"]
+[gd_scene load_steps=95 format=3 uid="uid://so1vseffcoo2"]
 
 [ext_resource type="Script" path="res://Scripts/Money.gd" id="1_dygwe"]
 [ext_resource type="Script" path="res://Scripts/Shop_Manager.gd" id="1_ruhxm"]
@@ -45,17 +45,22 @@
 [ext_resource type="Texture2D" uid="uid://dia0wglmy2s2v" path="res://Assets/pamphlet/Pamphlet 64x64 open.png" id="26_wgigc"]
 [ext_resource type="Texture2D" uid="uid://cjv83bcwkwe8s" path="res://Assets/newDay/sprite_1.png" id="27_87yxb"]
 [ext_resource type="Texture2D" uid="uid://coyjgk852o645" path="res://Assets/ring.png" id="27_j8aei"]
+[ext_resource type="AudioStream" uid="uid://ckqd6lqvvd70l" path="res://Sounds/Calculator sfx 1.mp3" id="28_1qtlx"]
 [ext_resource type="Script" path="res://Scripts/NextDay.gd" id="28_fbp7n"]
 [ext_resource type="Texture2D" uid="uid://bjim0mp3wvctq" path="res://Assets/Necklace.png" id="28_nn5m2"]
 [ext_resource type="Texture2D" uid="uid://ckkpme2kb7lfv" path="res://Assets/Console.png" id="29_53av4"]
+[ext_resource type="Script" path="res://Scenes/calcSound.gd" id="29_t1taa"]
 [ext_resource type="Texture2D" uid="uid://wmxe813y4qy7" path="res://Assets/Vase.png" id="30_7epss"]
 [ext_resource type="Texture2D" uid="uid://b0bn1ljojgk7d" path="res://Assets/Cross.png" id="31_f83bf"]
 [ext_resource type="Script" path="res://Scripts/pamphletCross.gd" id="32_yfgei"]
+[ext_resource type="AudioStream" uid="uid://bjvu3p2e87b47" path="res://Sounds/microwave-timer-117077.mp3" id="34_28r7t"]
 [ext_resource type="Texture2D" uid="uid://0r62xkympvxv" path="res://Assets/Letter.png" id="34_nc61u"]
 [ext_resource type="FontFile" uid="uid://cwi3v34sebk7s" path="res://Assets/fonts/Raleway-Regular.ttf" id="35_30tl8"]
 [ext_resource type="Script" path="res://Scripts/LetterCross.gd" id="36_t6338"]
 [ext_resource type="Texture2D" uid="uid://cnherkqistw4m" path="res://Assets/Ship in bottle.png" id="38_wuy6i"]
+[ext_resource type="Texture2D" uid="uid://4v2ntp4u7hat" path="res://Assets/Menu Background.png" id="55_uq8t1"]
 [ext_resource type="AudioStream" uid="uid://cbkqwstaa7lju" path="res://Sounds/Backing track.mp3" id="56_374rv"]
+[ext_resource type="LabelSettings" uid="uid://bndmgejtv1oyd" path="res://PauseMenu.tres" id="56_i1wj4"]
 [ext_resource type="Script" path="res://Scenes/Backing Track.gd" id="57_jprgc"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_lp8lr"]
@@ -271,7 +276,8 @@ font_color = Color(0, 0, 0, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_04taw"]
 font = ExtResource("6_m6qkd")
 font_size = 40
-font_color = Color(0, 0.521569, 0, 1)
+font_color = Color(0, 0.701961, 0, 1)
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_oksqp"]
 font = ExtResource("15_kmqn1")
@@ -393,23 +399,18 @@ position = Vector2(576, 317)
 scale = Vector2(4.2, 4.2)
 texture = ExtResource("14_hqgfg")
 
-[node name="ShipInBottle" type="Sprite2D" parent="CanvasLayer/Storefront"]
-texture_filter = 1
-position = Vector2(132.857, 2.85714)
-scale = Vector2(0.595238, 0.714286)
-texture = ExtResource("38_wuy6i")
-
 [node name="ShipInBottle2" type="Sprite2D" parent="CanvasLayer/Storefront"]
 texture_filter = 1
-position = Vector2(132.857, -39.7619)
+position = Vector2(132.857, -27.381)
 scale = Vector2(0.595238, 0.714286)
 texture = ExtResource("38_wuy6i")
 
 [node name="CashFinal64x64" type="TextureRect" parent="CanvasLayer"]
+texture_filter = 1
 offset_left = 5.0
 offset_top = 12.0
-offset_right = 69.0
-offset_bottom = 76.0
+offset_right = 244.0
+offset_bottom = 90.0
 scale = Vector2(1.35938, 1.39063)
 texture = ExtResource("3_clsbt")
 
@@ -419,16 +420,17 @@ anchor_left = 0.014
 anchor_top = 0.071
 anchor_right = 0.014
 anchor_bottom = 0.071
-offset_left = 82.872
-offset_top = -16.008
-offset_right = 225.872
-offset_bottom = 42.992
+offset_left = 86.872
+offset_top = -10.008
+offset_right = 262.872
+offset_bottom = 53.992
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.979851, 1)
-text = "adsasd"
+scale = Vector2(0.77985, 0.84)
+text = "5000"
 label_settings = SubResource("LabelSettings_04taw")
-autowrap_mode = 2
+vertical_alignment = 1
+text_overrun_behavior = 1
 script = ExtResource("1_dygwe")
 
 [node name="Ka-Ching" type="AudioStreamPlayer2D" parent="CanvasLayer/Label"]
@@ -586,6 +588,10 @@ texture_pressed = ExtResource("19_iu4n1")
 stretch_mode = 0
 script = ExtResource("14_ynerj")
 
+[node name="CalcCound" type="AudioStreamPlayer2D" parent="CanvasLayer/Calculator"]
+stream = ExtResource("28_1qtlx")
+script = ExtResource("29_t1taa")
+
 [node name="Clock" type="TextureRect" parent="CanvasLayer"]
 texture_filter = 1
 offset_left = 855.0
@@ -611,10 +617,14 @@ pivot_offset = Vector2(31.9048, 31.9048)
 texture = ExtResource("23_jwa78")
 script = ExtResource("24_66yru")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasLayer/Clock"]
+[node name="Tick" type="AudioStreamPlayer" parent="CanvasLayer/Clock"]
 stream = ExtResource("26_246kl")
 volume_db = -2.26
 pitch_scale = 0.71
+
+[node name="Ring" type="AudioStreamPlayer" parent="CanvasLayer/Clock"]
+stream = ExtResource("34_28r7t")
+volume_db = -11.556
 
 [node name="Pamphlet" type="TextureButton" parent="CanvasLayer"]
 texture_filter = 1
@@ -799,6 +809,7 @@ script = ExtResource("32_yfgei")
 stream = ExtResource("24_xq3dx")
 
 [node name="Letter" type="TextureRect" parent="CanvasLayer"]
+visible = false
 modulate = Color(0.882353, 0.882353, 0.882353, 1)
 texture_filter = 1
 offset_left = 336.0
@@ -818,15 +829,14 @@ scale = Vector2(0.04, 0.04)
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("35_30tl8")
 theme_override_font_sizes/normal_font_size = 67
-text = "Dear Shopkeeper,
+text = "RE: Takeover of Uncle's Pawn Shop and Outstanding Bail Charges
 
-RE: Takeover of Uncle's Pawn Shop and Outstanding Bail Charges
+We're writing to inform you that you've been granted the pawnshop from your currently missing uncle. 
 
-We're writing to inform you that you've been granted the pawnshop from your currently missing uncle. Unfortunately, the shop is facing outstanding bail charges related to fraud allegations against him.
+Unfortunately, the shop is facing outstanding bail charges related to fraud allegations against him. The bail charges amount to $5000. It's crucial to settle these charges promptly to avoid legal repercussions.
 
-The bail charges amount to $5000. It's crucial to settle these charges promptly to avoid legal repercussions.
-
-We look forward to the payment in 10 business days"
+We look forward to the payment in 10 business days.
+"
 scroll_active = false
 autowrap_mode = 2
 shortcut_keys_enabled = false
@@ -957,12 +967,50 @@ texture_pressed = ExtResource("27_87yxb")
 stretch_mode = 5
 script = ExtResource("28_fbp7n")
 
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+visible = false
+self_modulate = Color(0, 0, 0, 0.654902)
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("55_uq8t1")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/TextureRect"]
+layout_mode = 0
+offset_top = 77.0
+offset_right = 1151.0
+offset_bottom = 346.0
+theme_override_constants/separation = 50
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/TextureRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/TextureRect/VBoxContainer/CenterContainer"]
+layout_mode = 2
+text = "Volume"
+label_settings = ExtResource("56_i1wj4")
+
+[node name="CenterContainer3" type="CenterContainer" parent="CanvasLayer/TextureRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="HSlider" parent="CanvasLayer/TextureRect/VBoxContainer/CenterContainer3"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+ticks_on_borders = true
+
+[node name="CenterContainer2" type="CenterContainer" parent="CanvasLayer/TextureRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/TextureRect/VBoxContainer/CenterContainer2"]
+layout_mode = 2
+text = "Volume"
+label_settings = ExtResource("56_i1wj4")
+
 [node name="Customer_timer" type="Timer" parent="."]
 one_shot = true
 
 [node name="WallWithGuitar2" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(575, 322)
+position = Vector2(574, 313)
 scale = Vector2(4.19688, 4.2)
 texture = ExtResource("17_cg7pp")
 
@@ -971,7 +1019,7 @@ one_shot = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("56_374rv")
-volume_db = -2.889
+volume_db = -10.593
 script = ExtResource("57_jprgc")
 
 [connection signal="shop_end" from="." to="CanvasLayer/DayEndPanel" method="_on_node_2d_shop_end"]

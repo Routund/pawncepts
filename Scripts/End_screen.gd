@@ -59,11 +59,10 @@ func _on_next_button_n_day_pressed():
 		money.balance-=5000
 		letter.visible=true
 		paid = true
-	elif (days==10):
+	elif (days>=10):
 		money.balance-=5000
 		letter.visible=true
-		letter.text="Dear Ctizen,
-
+		letter.get_node("Label").text="
 RE: Repossession of Pawn shop Due to Non-Payment of Bail Charges
 
 We regret to inform you that, as of today, the pawn shop is being repossessed due to failure to pay outstanding bail charges.
@@ -72,6 +71,7 @@ Repossession proceedings will commence immediately. Please refrain from accessin
 
 For further information, please contact our office.
 "
+		letter.get_node("TextureButton").endGame=true
 	else:
 		NewDay.emit(rentValue)
 	pass # Replace with function body.

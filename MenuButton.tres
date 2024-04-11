@@ -4,4 +4,5 @@
 
 [resource]
 font = ExtResource("1_skcku")
-font_size = 35
+font_size = 65
+font_color = Color(0.835294, 0.745098, 0.415686, 1)

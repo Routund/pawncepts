@@ -3,6 +3,7 @@ extends TextureButton
 var parent
 var text
 var is_button_pressed = false
+var endGame =false
 signal letter
 
 # Duration of the fade-in effect in seconds
@@ -31,6 +32,8 @@ Congratulations on settling the outstanding bail charges for the shop! With this
 You're now authorized to run the business and make it your own. We're here to support you every step of the way.
 
 Best wishes for your success as the new proprietor of your Uncle's Pawn Shop."
+		if(endGame):
+			get_tree().change_scene_to_file("res://Scenes/Starting_Menu.tscn")
 		letter.emit()
 	elif is_pressed() and not is_button_pressed:
 		# Button is pressed for the first time
@@ -41,6 +44,6 @@ Best wishes for your success as the new proprietor of your Uncle's Pawn Shop."
 
 	# Fade-in effect
 	if parent.visible:
-		fade_timer += delta/3.25
+		fade_timer += delta/2.5
 		print(fade_timer)
 		parent.modulate.a = min(fade_timer / fade_duration, 1.0)
